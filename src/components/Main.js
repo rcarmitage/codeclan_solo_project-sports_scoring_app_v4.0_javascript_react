@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import About from './About';
 import ErrorPage from './ErrorPage';
 import Fixtures from './Fixtures';
+import Header from './Header';
 import Home from './Home';
 import LeagueTable from './LeagueTable';
 import NavBar from './NavBar';
@@ -21,7 +22,8 @@ class Main extends Component {
     return (
       <Router>
         <React.Fragment>
-        <NavBar />
+        <Header />
+        <NavBar id="nav" />
         <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/teams" component={Teams} />
