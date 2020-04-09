@@ -2,21 +2,21 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const NavBar = () => (
-  <ul>
+  <ul id="nav">
     <li>
-      <Link to="/">Home</Link>
+      <Link class="btn" to="/">Home</Link>
     </li>
     <li>
-      <Link to="/teams">Teams</Link>
+      <Link class="btn" to="/teams">Teams</Link>
     </li>
     <li>
-      <Link to="/fixtures">Fixtures</Link>
+      <Link class="btn" to="/fixtures">Fixtures</Link>
     </li>
     <li>
-      <Link to="/league-table">League Table</Link>
+      <Link class="btn" to="/league-table">League Table</Link>
     </li>
     <li>
-      <Link to="/about">About</Link>
+      <Link class="btn" to="/about">About</Link>
     </li>
   </ul>
 )
