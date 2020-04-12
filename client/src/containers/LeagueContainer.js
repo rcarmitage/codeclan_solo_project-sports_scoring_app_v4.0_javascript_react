@@ -16,6 +16,15 @@ import About from '../components/About';
 import ErrorPage from '../components/ErrorPage';
 
 class LeagueContainer extends Component {
+  
+  componentDidMount() {
+    const promises =[
+      fetch('http://localhost:3001')
+        .then(response => response.json())
+        .then(json => console.log(json))
+    ]
+  }
+  
   render() {
     return (
       <Router>
