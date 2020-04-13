@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const createRouter = require('./helpers/create_router.js');
 
 const teams = [
   { name: "Team 01"},
@@ -12,31 +13,21 @@ const teams = [
   { name: "Team 06"}
 ];
 
+const fixtures = [
+  { name: "Fixture 01" },
+  { name: "Fixture 02" },
+  { name: "Fixture 03" },
+  { name: "Fixture 04" }
+]
+
 app.use(cors());
 app.use(bodyParser.json());
 
-app.get('/api/teams', (req, res) => {
-  res.json(teams);
-});
+const teamsRouter = createRouter(teams);
+app.use('/api/teams', teamsRouter);
 
-app.get('/api/teams/:id', (req, res) => {
-  res.json(teams[req.params.id]);
-});
-
-app.post('/api/teams', (req, res) => {
-  teams.push(req.body);
-  res.json(teams);
-});
-
-app.delete('api/teams/:id', (req, res => {
-  teams.splice(req.params.id, 1);
-  res.json(teams);
-}));
-
-app.put('api/teams/:id', (req, res) => {
-  teams[req.params.id] = req.body;
-  res.json(teams);
-});
+const fixturesRouter = createRouter(fixtures);
+app.use('/api/fixtures', fixturesRouter);
 
 app.listen(3001, function () {
   console.log('App running on port ${ this.address().port }');
