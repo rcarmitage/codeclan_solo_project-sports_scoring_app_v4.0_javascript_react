@@ -30,5 +30,5 @@ const fixturesRouter = createRouter(fixtures);
 app.use('/api/fixtures', fixturesRouter);
 
 app.listen(3001, function () {
-  console.log('App running on port ${ this.address().port }');
+  console.log(`App running on port ${ this.address().port }`);
 });

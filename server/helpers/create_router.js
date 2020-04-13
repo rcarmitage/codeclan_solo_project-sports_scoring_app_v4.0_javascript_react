@@ -22,10 +22,12 @@ const createRouter = function (data) {
     res.json(data);
   });
   
-  router.delete('/:id', (req, res => {
+  router.delete('/:id', (req, res) => {
     data.splice(req.params.id, 1);
     res.json(data);
-  }));
+  });
+
+  return router;
   
 };
 
