@@ -16,13 +16,28 @@ import About from '../components/About';
 import ErrorPage from '../components/ErrorPage';
 
 class LeagueContainer extends Component {
-  
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      teams: [],
+      fixtures: []
+    }
+  }
+
   componentDidMount() {
     const promises =[
-      fetch('http://localhost:3001')
-        .then(response => response.json())
-        .then(json => console.log(json))
+      fetch('http://localhost:3005/api/teams')
+        .then(res => res.json())
+        .then(res => res.teams)
+        .then(data => this.setState({ teams: data }))
+      ,
+      fetch('http://localhost:3005/api/fixtures')
+        .then(res => res.json())
+        .then(res => res.fixtures)
+        .then(data => this.setState({ fixtures: data }))
     ]
+    Promise.all(promises)
   }
   
   render() {
