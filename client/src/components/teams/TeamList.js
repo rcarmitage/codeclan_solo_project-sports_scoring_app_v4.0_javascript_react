@@ -1,12 +1,26 @@
 import React from 'react';
 import TeamDetail from './TeamDetail';
 
-const TeamList = () => {
+const TeamList = ({ teams = [] }) => {
+  const teamsNodes = teams.map((team) => {
+    return (
+      <TeamDetail
+        key={team.id}
+        team={team}
+      />
+    )
+  })
   return (
-    <div>
-      <p>Teams list goes here (TeamList)</p>
-      <TeamDetail />
-    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Team</th>
+        </tr>
+      </thead>
+      <tbody>
+        {teamsNodes}
+      </tbody>
+    </table>
   )
 }
 

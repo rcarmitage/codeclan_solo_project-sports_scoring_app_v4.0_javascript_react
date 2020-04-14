@@ -1,9 +1,12 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 
-const TeamDetail = () => {
+const TeamDetail = ({ team }) => {
+
   return (
-    <p>(TeamDetail)</p>
+    <tr>
+      <td>team</td>
+    </tr>
   )
 }
 

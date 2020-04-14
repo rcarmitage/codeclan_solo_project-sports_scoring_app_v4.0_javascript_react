@@ -11,7 +11,9 @@ class TeamsComponent extends Component {
           <button> Add a Team</button>
         </Link>
 
-        <TeamList />
+        <TeamList 
+          teams={this.props.teams}
+        />
       </div>
     );
   }

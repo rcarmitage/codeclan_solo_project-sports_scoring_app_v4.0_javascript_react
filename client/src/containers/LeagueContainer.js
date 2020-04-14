@@ -48,7 +48,14 @@ class LeagueContainer extends Component {
           <NavBar id="nav" />
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route exact path="/teams" component={TeamsComponent} />
+            <Route
+              exact path="/teams"
+              render={() => (
+                <TeamsComponent
+                  teams={this.state.teams}
+                />
+              )}
+            />
             <Route exact path="/fixtures" component={FixturesComponent} />
             <Route exact path="/league-table" component={LeagueTable} />
             <Route exact path="/about" component={About} />
