@@ -6,21 +6,7 @@ const createRouter = require('./helpers/create_router.js');
 
 require('dotenv').config();
 
-const teams = [
-  { name: "Team 01"},
-  { name: "Team 02"},
-  { name: "Team 03"},
-  { name: "Team 04"},
-  { name: "Team 05"},
-  { name: "Team 06"}
-];
 
-const fixtures = [
-  { name: "Fixture 01" },
-  { name: "Fixture 02" },
-  { name: "Fixture 03" },
-  { name: "Fixture 04" }
-]
 
 // db connection with localhost
 const Pool = require('pg').Pool
