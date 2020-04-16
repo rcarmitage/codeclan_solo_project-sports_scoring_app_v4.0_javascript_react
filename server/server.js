@@ -6,14 +6,15 @@ const createRouter = require('./helpers/create_router.js');
 
 require('dotenv').config();
 
-
+const teams = []
+const fixtures = []
 
 // db connection with localhost
 const Pool = require('pg').Pool
 const pool = new Pool({
-  user: '',
+  user: 'postgres',
   host: 'localhost',
-  password: '',
+  password: 'Gl55sql',
   database: 'sports_scoring_app_v4.0'
 });
 
