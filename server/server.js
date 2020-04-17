@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const PORT = 3005;
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const createRouter = require('./helpers/create_router.js');
@@ -27,6 +28,10 @@ app.use('/api/teams', teamsRouter);
 const fixturesRouter = createRouter(fixtures);
 app.use('/api/fixtures', fixturesRouter);
 
-app.listen(3005, function () {
+app.listen(PORT, function () {
   console.log(`App running on port ${ this.address().port }`);
 });
+
+module.exports = {
+  pool
+};
