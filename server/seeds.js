@@ -2,11 +2,7 @@ const express = require('express');
 
 const teamsData = [
   {
-    name: "The Gym Bunnies",
-    played: 2,
-    won: 1,
-    lost: 1,
-    points: 1
+
   },
   {
     name: "Shop Winventory",
@@ -44,6 +40,14 @@ const teamsData = [
     points: 0
   },
 ]
+
+const team01 = team.post({
+    name: "The Gym Bunnies",
+    played: 2,
+    won: 1,
+    lost: 1,
+    points: 1
+  });
 
 const fixturesData = [
   // TODO: work out how to use above teams for fixturesData
