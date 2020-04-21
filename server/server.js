@@ -7,7 +7,16 @@ const createRouter = require('./helpers/create_router.js');
 
 require('dotenv').config();
 
-const teams = [];
+const teams = [
+  {
+    name: "The Gym Bunnies",
+    played: 2,
+    won: 1,
+    lost: 1,
+    points: 1
+  }
+];
+
 const fixtures = [];
 
 // db connection with localhost
