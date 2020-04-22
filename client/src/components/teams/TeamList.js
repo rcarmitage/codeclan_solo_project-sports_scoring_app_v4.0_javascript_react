@@ -1,7 +1,7 @@
 import React from 'react';
 import TeamDetail from './TeamDetail';
 
-const TeamList = ({ teams }) => {
+const TeamList = ({ teams = [] }) => {
   const teamsNodes = teams.map((team) => {
     return (
       <TeamDetail
