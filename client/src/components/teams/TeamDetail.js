@@ -5,7 +5,7 @@ const TeamDetail = ({ team }) => {
 
   return (
     <tr>
-      <td>team</td>
+      <td>{team.name}</td>
     </tr>
   )
 }
