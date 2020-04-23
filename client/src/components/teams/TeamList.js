@@ -14,7 +14,11 @@ const TeamList = ({ teams = [] }) => {
     <table>
       <thead>
         <tr>
-          <th>Team</th>
+          <th> Team </th>
+          <th> Played </th>
+          <th> Won </th>
+          <th> Lost </th>
+          <th> Points </th>
         </tr>
       </thead>
       <tbody>
