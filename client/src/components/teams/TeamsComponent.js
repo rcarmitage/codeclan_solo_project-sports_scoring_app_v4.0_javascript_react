@@ -6,26 +6,33 @@ class TeamsComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      teams: [
-        {
-          id: 1,
-          name: "The Gym Bunnies",
-          played: 2,
-          won: 1,
-          lost: 1,
-          points: 1
-        },
-        {
-          id: 2,
-          name: "Shop Winventory",
-          played: 2,
-          won: 2,
-          lost: 0,
-          points: 2
-        }
-      ]
+      teams: []
     }
   }
+
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     teams: [
+  //       {
+  //         id: 1,
+  //         name: "The Gym Bunnies (TeamsComponent)",
+  //         played: 2,
+  //         won: 1,
+  //         lost: 1,
+  //         points: 1
+  //       },
+  //       {
+  //         id: 2,
+  //         name: "Shop Winventory (TeamsComponent)",
+  //         played: 2,
+  //         won: 2,
+  //         lost: 0,
+  //         points: 2
+  //       }
+  //     ]
+  //   }
+  // }
 
   render() {
     return (

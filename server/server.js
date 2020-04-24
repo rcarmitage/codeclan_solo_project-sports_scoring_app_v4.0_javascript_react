@@ -9,11 +9,20 @@ require('dotenv').config();
 
 const teams = [
   {
-    name: "The Gym Bunnies",
+    id: 1, 
+    name: "The Gym Bunnies (server.js)",
     played: 2,
     won: 1,
     lost: 1,
     points: 1
+  },
+  {
+    id: 2,
+    name: "Shop Winventory (server.js)",
+    played: 2,
+    won: 2,
+    lost: 0,
+    points: 2
   }
 ];
 
