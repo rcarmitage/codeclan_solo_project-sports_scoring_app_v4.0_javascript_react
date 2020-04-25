@@ -1,7 +1,7 @@
 import React from 'react';
 import TeamDetail from './TeamDetail';
 
-const TeamList = ({ teams = [] }) => {
+const TeamList = ({ teams }) => {
   const teamsNodes = teams.map((team) => {
     return (
       <TeamDetail
@@ -11,20 +11,22 @@ const TeamList = ({ teams = [] }) => {
     )
   })
   return (
-    <table>
-      <thead>
-        <tr>
-          <th> Team </th>
-          <th> Played </th>
-          <th> Won </th>
-          <th> Lost </th>
-          <th> Points </th>
-        </tr>
-      </thead>
-      <tbody>
-        {teamsNodes}
-      </tbody>
-    </table>
+    <React.Fragment>
+      <table>
+        <thead>
+          <tr>
+            <th> Team </th>
+            <th> Played </th>
+            <th> Won </th>
+            <th> Lost </th>
+            <th> Points </th>
+          </tr>
+        </thead>
+        <tbody>
+          {teamsNodes}
+        </tbody>
+      </table>
+    </React.Fragment>
   )
 }
 

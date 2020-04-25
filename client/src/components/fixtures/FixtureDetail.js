@@ -1,9 +1,9 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 
 const FixtureDetail = () => {
   return (
-    <p>(FixtureDetail</p>
+    <p>(FixtureDetail)</p>
   )
 }
 
