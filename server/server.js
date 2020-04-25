@@ -7,37 +7,57 @@ const createRouter = require('./helpers/create_router.js');
 
 require('dotenv').config();
 
-const teams = [
-  {
-    id: 1, 
-    name: "The Gym Bunnies (server.js)",
-    played: 2,
-    won: 1,
-    lost: 1,
-    points: 1
-  },
-  {
-    id: 2,
-    name: "Shop Winventory (server.js)",
-    played: 2,
-    won: 2,
-    lost: 0,
-    points: 2
-  }
-];
+const teams_model = require('./teams_model');
+
+app.use(express.json());
+app.use(function (req, res, next) {
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+  res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Access-Control-Allow-Headers');
+  next();
+})
+
+app.get('/', (req, res) => {
+  teams_model.getTeams()
+  .then(response => {
+    res.status(200).send(response);
+  })
+  .catch(error => {
+    res.status(500).send(error);
+  })
+})
+
+const teams = [];
+
+// const teams = [
+//   {
+//     id: 1, 
+//     name: "The Gym Bunnies (server.js)",
+//     played: 2,
+//     won: 1,
+//     lost: 1,
+//     points: 1
+//   },
+//   {
+//     id: 2,
+//     name: "Shop Winventory (server.js)",
+//     played: 2,
+//     won: 2,
+//     lost: 0,
+//     points: 2
+//   }
+// ];
 
 const fixtures = [];
 
 // db connection with localhost
-const Pool = require('pg').Pool
-const pool = new Pool({
-  user: 'postgres',
-  host: 'localhost',
-  password: 'password',
-  database: 'sports_scoring_app_v4.0'
-});
-
-// Adding a line for a new commit
+// const Pool = require('pg').Pool
+// const pool = new Pool({
+//   user: 'postgres',
+//   host: 'localhost',
+//   password: 'password',
+//   database: 'sports_scoring_app_v4.0'
+// });
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -52,6 +72,6 @@ app.listen(PORT, function () {
   console.log(`App running on port ${ this.address().port }`);
 });
 
-module.exports = {
-  pool
-};
+// module.exports = {
+//   pool
+// };
