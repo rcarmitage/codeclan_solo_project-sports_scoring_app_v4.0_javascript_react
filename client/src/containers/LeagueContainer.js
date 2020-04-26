@@ -5,8 +5,8 @@ import NavBar from '../components/NavBar';
 import Home from '../components/Home';
 import TeamsComponent from '../components/teams/TeamsComponent';
 import TeamView from '../components/teams/TeamView';
-// import AddTeam from '../components/teams/AddTeam';
-// import EditTeam from '../components/teams/EditTeam';
+// import AddTeamForm from '../components/teams/AddTeam';
+import EditTeamForm from '../components/teams/EditTeamForm';
 import FixturesComponent from '../components/fixtures/FixturesComponent';
 // import FixtureView from '../components/fixtures/FixtureView';
 // import AddFixture from '../components/fixtures/AddFixture';
@@ -25,16 +25,8 @@ class LeagueContainer extends Component {
       currentTeam: null
     }
     this.onTeamSelected = this.onTeamSelected.bind(this);
+    this.onTeamEdit = this.onTeamEdit(this);
   }
-
-  // componentDidMount() {
-  //   const url = 'http://localhost:3005/api/teams';
-
-  //   fetch(url)
-  //     .then(res => res.json())
-  //     .then(teams => this.setState({ teams: teams }))
-  //     .catch(err => console.error);
-  // }
 
   componentDidMount() {
     const promises =[
@@ -53,6 +45,21 @@ class LeagueContainer extends Component {
   onTeamSelected(id) {
     const selectedTeam = this.state.teams.find((team) => { return team.id === id })
     this.setState({ currentTeam: selectedTeam })
+  }
+
+  onTeamEdit(updatedTeam) {
+    fetch(`http://localhost:3005/api/teams/${updatedTeam.id}`, {
+      method: 'PUT',
+      headers: {
+        accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(updatedTeam),
+    }).then(() =>
+    fetch('http://localhost:3005/api/teams')
+      .then(res => res.json())
+      .then(teams => this.setState({ teams: teams }))
+    )
   }
   
   render() {
@@ -76,6 +83,14 @@ class LeagueContainer extends Component {
               render={() => 
                 <TeamView 
                   onTeamSelected={this.handleSelect} team={this.state.currentTeam}
+                />
+              }
+            />
+            <Route 
+              exact path="/teams/:id/edit"
+              render={() =>
+                <EditTeamForm
+                  onTeamEdit={this.onTeamEdit} team={this.state.currentTeam}
                 />
               }
             />
