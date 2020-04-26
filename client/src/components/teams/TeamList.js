@@ -12,7 +12,10 @@ const TeamList = ({ teams }) => {
   })
   return (
     <React.Fragment>
-      <table>
+    <div className="team-list">
+      {teamsNodes}
+    </div>
+      {/* <table>
         <thead>
           <tr>
             <th> Team </th>
@@ -25,7 +28,20 @@ const TeamList = ({ teams }) => {
         <tbody>
           {teamsNodes}
         </tbody>
-      </table>
+      </table> */}
+      {/* <div className="teams-container-top-row">
+          <a className="team-name">__</a>
+        </div>
+        <div class="teams-container-middle-row">
+          <a class="btn-team-details" href="/teams/<%= team.id %>">Team Details</a>
+        </div>
+        <div class="teams-container-bottom-row">
+          <a class="btn-edit-team" href="/teams/<%= team.id %>/edit">Edit</a>
+          <form class="btn-delete-team" method="post" action="/teams/<%= team.id %>/delete">
+            <input type="submit" value="Delete"/>
+          </form>
+        </div>
+      </div> */}
     </React.Fragment>
   )
 }

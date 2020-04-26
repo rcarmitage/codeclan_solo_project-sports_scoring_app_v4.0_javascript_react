@@ -27,26 +27,58 @@ app.get('/', (req, res) => {
   })
 })
 
-const teams = [];
+// const teams = [];
 
-// const teams = [
-//   {
-//     id: 1, 
-//     name: "The Gym Bunnies (server.js)",
-//     played: 2,
-//     won: 1,
-//     lost: 1,
-//     points: 1
-//   },
-//   {
-//     id: 2,
-//     name: "Shop Winventory (server.js)",
-//     played: 2,
-//     won: 2,
-//     lost: 0,
-//     points: 2
-//   }
-// ];
+const teams = [
+  {
+    id: 1, 
+    name: "The Gym Bunnies (server.js)",
+    played: 2,
+    won: 1,
+    lost: 1,
+    points: 1
+  },
+  {
+    id: 2,
+    name: "Shop Winventory (server.js)",
+    played: 2,
+    won: 2,
+    lost: 0,
+    points: 2
+  },
+  {
+    id: 3,
+    name: "Spending Tracker Big Spenders (server.js)",
+    played: 2,
+    won: 0,
+    lost: 2,
+    points: 0
+  },
+  {
+    id: 4,
+    name: "Sports Scorers (server.js)",
+    played: 2,
+    won: 2,
+    lost: 2,
+    points: 0
+  },
+  {
+    id: 5,
+    name: "Travel Bucket List Jetsetters (server.js)",
+    played: 2,
+    won: 1,
+    lost: 1,
+    points: 1
+  },
+  {
+    id: 6,
+    name: "Vet Squad Managers (server.js)",
+    played: 2,
+    won: 0,
+    lost: 2,
+    points: 0
+  }
+];
 
 const fixtures = [];
 

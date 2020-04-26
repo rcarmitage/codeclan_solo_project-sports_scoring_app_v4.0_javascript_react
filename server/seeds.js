@@ -1,7 +1,7 @@
 const express = require('express');
 
 const team01 = {
-  name: "The Gym Bunnies",
+  name: "The Gym Bunnies (db seeds.js)",
   played: 2,
   won: 1,
   lost: 1,
@@ -9,7 +9,7 @@ const team01 = {
 };
 
 const team02 = {
-  name: "Shop Winventory",
+  name: "Shop Winventory (db seeds.js)",
   played: 2,
   won: 2,
   lost: 0,
@@ -17,7 +17,7 @@ const team02 = {
 };
 
 const team03 = {
-  name: "Spending Tracker Big Spenders",
+  name: "Spending Tracker Big Spenders (db seeds.js)",
   played: 2,
   won: 0,
   lost: 2,
@@ -25,7 +25,7 @@ const team03 = {
 };
 
 const team04 = {
-  name: "Sports Scorers",
+  name: "Sports Scorers (db seeds.js)",
   played: 2,
   won: 2,
   lost: 2,
@@ -33,7 +33,7 @@ const team04 = {
 };
 
 const team05 = {
-  name: "Travel Bucket List Jetsetters",
+  name: "Travel Bucket List Jetsetters (db seeds.js)",
   played: 2,
   won: 1,
   lost: 1,
@@ -41,7 +41,7 @@ const team05 = {
 };
 
 const team06 = {
-  name: "Vet Squad Managers",
+  name: "Vet Squad Managers (db seeds.js)",
   played: 2,
   won: 0,
   lost: 2,
