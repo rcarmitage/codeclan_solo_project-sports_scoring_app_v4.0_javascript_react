@@ -8,7 +8,7 @@ const TeamDetail = ({ team }) => {
         <a className="team-name">{team.name}</a>
       </div>
       <div className="teams-container-middle-row">
-        <a className="btn-team-details" href="/teams/__">Team Details</a>
+        <a className="btn-team-details" href="/teams/:id">Team Details</a>
       </div>
       <div className="teams-container-bottom-row">
         <a className="btn-edit-team" href="/teams/__/edit">Edit</a>

@@ -4,7 +4,7 @@ import Header from '../components/Header';
 import NavBar from '../components/NavBar';
 import Home from '../components/Home';
 import TeamsComponent from '../components/teams/TeamsComponent';
-// import TeamView from '../components/teams/TeamView';
+import TeamView from '../components/teams/TeamView';
 // import AddTeam from '../components/teams/AddTeam';
 // import EditTeam from '../components/teams/EditTeam';
 import FixturesComponent from '../components/fixtures/FixturesComponent';
@@ -21,8 +21,10 @@ class LeagueContainer extends Component {
 
     this.state = {
       teams: [],
-      fixtures: []
+      fixtures: [],
+      currentTeam: null
     }
+    this.onTeamSelected = this.onTeamSelected.bind(this);
   }
 
   // componentDidMount() {
@@ -47,6 +49,11 @@ class LeagueContainer extends Component {
     ]
     Promise.all(promises)
   }
+
+  onTeamSelected(id) {
+    const selectedTeam = this.state.teams.find((team) => { return team.id === id })
+    this.setState({ currentTeam: selectedTeam })
+  }
   
   render() {
     return (
@@ -63,6 +70,14 @@ class LeagueContainer extends Component {
                   teams={this.state.teams}
                 />
               )}
+            />
+            <Route 
+              exact path="/teams/:id"
+              render={() => 
+                <TeamView 
+                  onTeamSelected={this.handleSelect} team={this.state.currentTeam}
+                />
+              }
             />
             <Route exact path="/fixtures" component={FixturesComponent} />
             <Route exact path="/league-table" component={LeagueTable} />
