@@ -21,12 +21,12 @@ class LeagueContainer extends Component {
 
     this.state = {
       teams: [],
-      fixtures: [],
-      currentTeam: null
+      fixtures: []
+      // currentTeam: null
     }
     // this.handleSelect = this.handleSelect.bind(this);
     // this.handleTeamSelected = this.handleTeamSelected.bind(this);
-    this.handleTeamEdit = this.handleTeamEdit(this);
+    // this.handleTeamEdit = this.handleTeamEdit(this);
   }
 
   componentDidMount() {
@@ -87,13 +87,13 @@ class LeagueContainer extends Component {
             />
             <Route path="/teams/:id" component={TeamDetail} />
             <Route 
-              path="/teams/:id/edit"
-              render={() =>
-                <EditTeamForm
-                  handleTeamEdit={this.handleTeamEdit}
-                  team={this.state.currentTeam}
-                />
-              }
+              path="/teams/:id/edit" component={EditTeamForm}
+              // render={() =>
+              //   <EditTeamForm
+              //     handleTeamEdit={this.handleTeamEdit}
+              //     team={this.state.currentTeam}
+              //   />
+              // }
             />
             <Route exact path="/fixtures" component={FixturesComponent} />
             <Route exact path="/league-table" component={LeagueTable} />

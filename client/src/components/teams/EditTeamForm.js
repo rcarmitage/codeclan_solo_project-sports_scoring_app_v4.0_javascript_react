@@ -70,16 +70,26 @@ class EditTeamForm extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-      Name:
-      <input type="text" value={this.state.name} onChange={this.handleNameChange} />
-      Played: 
-      <input type="text" value={this.state.played} onChange={this.handlePlayedChange} />
-      Won:
-      <input type="text" value={this.state.won} onChange={this.handleWonChange} />
-      Lost:
-      <input type="text" value={this.state.lost} onChange={this.handleLostChange} />
-      Points:
-      <input type="text" value={this.state.points} onChange={this.handlePointsChange} />
+      <label>
+        Name:
+        <input type="text" value={this.state.name} onChange={this.handleNameChange} />
+      </label>
+      <label>
+        Played: 
+        {/* <input type="number" value={this.state.played} onChange={this.handlePlayedChange} /> */}
+      </label>
+      <label>
+        Won:
+        {/* <input type="number" value={this.state.won} onChange={this.handleWonChange} /> */}
+      </label>
+      <label>
+        Lost:
+        {/* <input type="number" value={this.state.lost} onChange={this.handleLostChange} /> */}
+      </label>
+      <label>
+        Points:
+        {/* <input type="number" value={this.state.points} onChange={this.handlePointsChange} /> */}
+      </label>
       <button type="submit" value="Post">Update Team</button>
       </form>
     )
