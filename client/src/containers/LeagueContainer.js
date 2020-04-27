@@ -82,7 +82,7 @@ class LeagueContainer extends Component {
               exact path="/teams/:id"
               render={() => 
                 <TeamView 
-                  onTeamSelected={this.handleSelect} team={this.state.currentTeam}
+                  handleTeamSelected={this.handleSelect} team={this.state.currentTeam}
                 />
               }
             />
@@ -90,7 +90,7 @@ class LeagueContainer extends Component {
               exact path="/teams/:id/edit"
               render={() =>
                 <EditTeamForm
-                  onTeamEdit={this.onTeamEdit} team={this.state.currentTeam}
+                  handleTeamEdit={this.handleTeamEdit} team={this.state.currentTeam}
                 />
               }
             />
