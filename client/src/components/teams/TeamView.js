@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 
 const TeamView = ({ team }) => {
   if (!team) return null
 
   return (
-    <React.Fragment>
+    <Fragment>
       <form>
         <h3>Team: {team.name}</h3>
         <h4>Played: {team.played}</h4>
@@ -20,7 +20,7 @@ const TeamView = ({ team }) => {
       <Link to={`/teams/${team.id}/delete`}>
         <button>Delete</button>
       </Link>
-    </React.Fragment>
+    </Fragment>
   )
 }
 

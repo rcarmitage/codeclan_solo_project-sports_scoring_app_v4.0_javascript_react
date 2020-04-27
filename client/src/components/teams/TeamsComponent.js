@@ -13,7 +13,7 @@ class TeamsComponent extends Component {
 
         <TeamList 
           teams={this.props.teams}
-          onTeamSelected={this.props.onTeamSelected}
+          handleTeamSelected={this.props.handleTeamSelected}
           editTeam={this.props.editTeam}
         />
       </div>

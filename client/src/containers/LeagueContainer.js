@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Header from '../components/Header';
 import NavBar from '../components/NavBar';
@@ -24,8 +24,8 @@ class LeagueContainer extends Component {
       fixtures: [],
       currentTeam: null
     }
-    this.onTeamSelected = this.onTeamSelected.bind(this);
-    this.onTeamEdit = this.onTeamEdit(this);
+    this.handleTeamSelected = this.handleTeamSelected.bind(this);
+    this.handleTeamEdit = this.handleTeamEdit(this);
   }
 
   componentDidMount() {
@@ -42,12 +42,12 @@ class LeagueContainer extends Component {
     Promise.all(promises)
   }
 
-  onTeamSelected(id) {
+  handleTeamSelected(id) {
     const selectedTeam = this.state.teams.find((team) => { return team.id === id })
     this.setState({ currentTeam: selectedTeam })
   }
 
-  onTeamEdit(updatedTeam) {
+  handleTeamEdit(updatedTeam) {
     fetch(`http://localhost:3005/api/teams/${updatedTeam.id}`, {
       method: 'PUT',
       headers: {
@@ -65,7 +65,7 @@ class LeagueContainer extends Component {
   render() {
     return (
       <Router>
-        <React.Fragment>
+        <Fragment>
           <Header />
           <NavBar id="nav" />
           <Switch>
@@ -99,7 +99,7 @@ class LeagueContainer extends Component {
             <Route exact path="/about" component={About} />
             <Route component={ErrorPage} />
           </Switch>
-        </React.Fragment>
+        </Fragment>
       </Router>
     );
   }

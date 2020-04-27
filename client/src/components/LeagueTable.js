@@ -2,6 +2,24 @@ import React, { Component } from 'react';
 import TeamList from './teams/TeamList';
 import TeamDetail from '../components/teams/TeamDetail';
 
+// class LeagueTable extends Component {
+//   render() {
+//     const teamsNodes = this.props.teams.map (team => {
+//       return (
+//         <TeamDetail key={team.id}>
+//           {team.name}
+//         </TeamDetail>
+//       )
+//     })
+
+//     return (
+//       <div className="league-table">
+//         {teamsNodes}
+//       </div>
+//     )
+//   }
+// }
+
 const LeagueTable = ({ teams }) => {
   const teamsNodes = teams.map((team) => {
     return (
