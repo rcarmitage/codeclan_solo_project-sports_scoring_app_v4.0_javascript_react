@@ -5,6 +5,7 @@ import NavBar from '../components/NavBar';
 import Home from '../components/Home';
 import TeamsComponent from '../components/teams/TeamsComponent';
 import TeamView from '../components/teams/TeamView';
+import TeamDetail from '../components/teams/TeamDetail';
 // import AddTeamForm from '../components/teams/AddTeam';
 import EditTeamForm from '../components/teams/EditTeamForm';
 import FixturesComponent from '../components/fixtures/FixturesComponent';
@@ -24,7 +25,8 @@ class LeagueContainer extends Component {
       fixtures: [],
       currentTeam: null
     }
-    this.handleTeamSelected = this.handleTeamSelected.bind(this);
+    // this.handleSelect = this.handleSelect.bind(this);
+    // this.handleTeamSelected = this.handleTeamSelected.bind(this);
     this.handleTeamEdit = this.handleTeamEdit(this);
   }
 
@@ -42,10 +44,14 @@ class LeagueContainer extends Component {
     Promise.all(promises)
   }
 
-  handleTeamSelected(id) {
-    const selectedTeam = this.state.teams.find((team) => { return team.id === id })
-    this.setState({ currentTeam: selectedTeam })
-  }
+  // handleSelect(event) {
+  //   console.log(event.target.value);
+  // }
+
+  // handleTeamSelected(id) {
+  //   const selectedTeam = this.state.teams.find((team) => { return team.id === id })
+  //   this.setState({ currentTeam: selectedTeam })
+  // }
 
   handleTeamEdit(updatedTeam) {
     fetch(`http://localhost:3005/api/teams/${updatedTeam.id}`, {
@@ -75,22 +81,26 @@ class LeagueContainer extends Component {
               render={() => (
                 <TeamsComponent
                   teams={this.state.teams}
+                  // handleTeamSelected={this.handleTeamSelected}
+                  // handleSelect={this.handleSelect}
                 />
               )}
             />
             <Route 
-              exact path="/teams/:id"
-              render={() => 
-                <TeamView 
-                  handleTeamSelected={this.handleSelect} team={this.state.currentTeam}
-                />
-              }
+              exact path="/teams/:id" component={TeamDetail}
+              // render={() => 
+              //   <TeamView 
+              //     // handleTeamSelected={this.handleSelect}
+              //     team={this.state.currentTeam}
+              //   />
+              // }
             />
             <Route 
               exact path="/teams/:id/edit"
               render={() =>
                 <EditTeamForm
-                  handleTeamEdit={this.handleTeamEdit} team={this.state.currentTeam}
+                  handleTeamEdit={this.handleTeamEdit}
+                  team={this.state.currentTeam}
                 />
               }
             />

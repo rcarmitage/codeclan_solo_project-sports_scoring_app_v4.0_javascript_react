@@ -1,38 +1,56 @@
-import React, { Fragment } from 'react';
-import { Link } from 'react-router-dom';
+import React, { Component, Fragment, useState, useEffect } from 'react';
 // import { useHistory } from 'react-router-dom';
 
-const TeamDetail = ({ team }) => {
+function Team() {
 
-  // let history = useHistory();
+  useEffect(() => {
+    fetchTeams();
+  }, [])
 
-  // function handleClick() {
-  //   handleTeamSelected(team.id);
-  //   // history.push(`/teams/${team.id}`)
-  // }
+  const [team, setTeam] = useState({});
+
+  const fetchTeam = async () => {
+
+  }
 
   return (
-    <Fragment>
-      <div className="teams-container">
-        <div className="teams-container-top-row">
-          <p className="team-name">{team.name}</p>
-        </div>
-        <div className="teams-container-middle-row">
-          <Link className="btn-team-details" to={`/teams/${team.id}`}>
-            <button>Team Details</button>
-          </Link>
-        </div>
-        <div className="teams-container-bottom-row">
-          <Link className="btn-edit-team" to={`/teams/${team.id}/edit`}>
-            <button>Edit</button>
-          </Link>
-          <Link className="btn-delete-team" to={`/teams/${team.id}/delete`}>
-            <button>Delete</button>
-          </Link>
-        </div>
-      </div>
-    </Fragment>
-  )
+    <div>
+      <h4>Team (TeamDetail with hooks)</h4>
+    </div>
+  );
 }
 
-export default TeamDetail;
+// const TeamDetail = ({ team }) => {
+
+//   // let history = useHistory();
+
+//   // function handleClick() {
+//   //   handleTeamSelected(team.id);
+//   //   // history.push(`/teams/${team.id}`)
+//   // }
+
+//   return (
+//     <Fragment>
+//       <div className="teams-container">
+//         <div className="teams-container-top-row">
+//           <p className="team-name">{team.name}</p>
+//         </div>
+//         <div className="teams-container-middle-row">
+//           <Link className="btn-team-details" to={`/teams/${team.id}`}>
+//             <button>Team Details</button>
+//           </Link>
+//         </div>
+//         <div className="teams-container-bottom-row">
+//           <Link className="btn-edit-team" to={`/teams/${team.id}/edit`}>
+//             <button>Edit</button>
+//           </Link>
+//           <Link className="btn-delete-team" to={`/teams/${team.id}/delete`}>
+//             <button>Delete</button>
+//           </Link>
+//         </div>
+//       </div>
+//     </Fragment>
+//   )
+// }
+
+export default Team;
