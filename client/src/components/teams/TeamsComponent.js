@@ -1,6 +1,5 @@
-import React, { Component, useState, useEffect } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-// import TeamList from './TeamList';
 
 function TeamsComponent() {
 
@@ -19,34 +18,32 @@ function TeamsComponent() {
   }
 
   return (
-    <div>
-      <h4>(TeamsComponent with hooks)</h4>
-      {teams.map(team => (
-        <p key={team.id}>
-          <Link to={`/teams/${team.id}`}>{team.name}</Link>
-        </p>
-      ))}
-    </div>
+    <Fragment>
+      <div>
+        <h4>Teams (TeamsComponent with hooks)</h4>
+        {teams.map(team => (
+          <div className="teams-container" key={team.id}>
+            <div className="teams-container-top-row">
+              <p className="team-name">{team.name}</p>
+            </div>
+            <div className="teams-container-middle-row">
+              <Link className="btn-team-details" to={`/teams/${team.id}`}>
+                <button>Team Details</button>
+              </Link>
+            </div>
+            <div className="teams-container-bottom-row">
+              <Link className="btn-edit-team" to={`/teams/${team.id}/edit`}>
+                <button>Edit</button>
+              </Link>
+              <Link className="btn-delete-team" to={`/teams/${team.id}/delete`}>
+                <button>Delete</button>
+              </Link>
+            </div>
+          </div>
+        ))}
+      </div>
+    </Fragment>
   );
 }
-
-// class TeamsComponent extends Component {
-//   render() {
-//     return (
-//       <div>
-//         <h4>Teams (TeamsComponent)</h4>
-//         <Link to="/add-team">
-//           <button>Add a Team</button>
-//         </Link>
-
-//         <TeamList 
-//           teams={this.props.teams}
-//           handleTeamSelected={this.props.handleTeamSelected}
-//           editTeam={this.props.editTeam}
-//         />
-//       </div>
-//     );
-//   }
-// }
 
 export default TeamsComponent;

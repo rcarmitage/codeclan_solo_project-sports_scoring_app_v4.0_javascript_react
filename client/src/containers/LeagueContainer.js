@@ -4,7 +4,6 @@ import Header from '../components/Header';
 import NavBar from '../components/NavBar';
 import Home from '../components/Home';
 import TeamsComponent from '../components/teams/TeamsComponent';
-import TeamView from '../components/teams/TeamView';
 import TeamDetail from '../components/teams/TeamDetail';
 // import AddTeamForm from '../components/teams/AddTeam';
 import EditTeamForm from '../components/teams/EditTeamForm';
@@ -86,15 +85,7 @@ class LeagueContainer extends Component {
                 />
               )}
             />
-            <Route 
-              exact path="/teams/:id" component={TeamDetail}
-              // render={() => 
-              //   <TeamView 
-              //     // handleTeamSelected={this.handleSelect}
-              //     team={this.state.currentTeam}
-              //   />
-              // }
-            />
+            <Route exact path="/teams/:id" component={TeamDetail} />
             <Route 
               exact path="/teams/:id/edit"
               render={() =>

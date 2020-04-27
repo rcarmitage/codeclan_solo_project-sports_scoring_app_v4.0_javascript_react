@@ -1,5 +1,5 @@
-import React, { Component, Fragment, useState, useEffect } from 'react';
-// import { useHistory } from 'react-router-dom';
+import React, { Fragment, useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 function Team({ match }) {
 
@@ -18,10 +18,25 @@ function Team({ match }) {
   }
 
   return (
-    <div>
-      <h4>Team (TeamDetail with hooks)</h4>
-      <p>{team.name}</p>
-    </div>
+    <Fragment>
+      <div>
+        <h4>Team (TeamDetail with hooks)</h4>
+        <h5>Name: {team.name}</h5>
+        <h6>Played: {team.played}</h6>
+        <h6>Won: {team.won}</h6>
+        <h6>Lost: {team.lost}</h6>
+        <h6>Points: {team.points}</h6>
+        <p>(Results of last 5 games go here)</p>
+      </div>
+      <div>
+        <Link to={`/teams/${team.id}/edit`}>
+          <button>Edit</button>
+        </Link>
+        <Link to={`/teams/${team.id}/delete`}>
+          <button>Delete</button>
+        </Link>
+      </div>
+    </Fragment>
   );
 }
 
