@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import TeamList from './teams/TeamList';
+import TeamsComponent from '../components/teams/TeamsComponent';
 import TeamDetail from '../components/teams/TeamDetail';
 
 // class LeagueTable extends Component {
