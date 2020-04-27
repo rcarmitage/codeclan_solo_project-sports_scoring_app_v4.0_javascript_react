@@ -23,7 +23,9 @@ function TeamsComponent() {
     <Fragment>
       <div>
         <h4>Teams (TeamsComponent with hooks)</h4>
-        <h3>Add a Team</h3>
+        <Link to="/add-team">
+          <button>Add a Team</button>
+        </Link>
         {teams.map(team => (
           <div className="teams-container" key={team.id}>
             <div className="teams-container-top-row">

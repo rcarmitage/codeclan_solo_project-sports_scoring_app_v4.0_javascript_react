@@ -5,7 +5,7 @@ import NavBar from '../components/NavBar';
 import Home from '../components/Home';
 import TeamsComponent from '../components/teams/TeamsComponent';
 import TeamDetail from '../components/teams/TeamDetail';
-// import AddTeamForm from '../components/teams/AddTeam';
+import AddTeamForm from '../components/teams/AddTeamForm';
 import EditTeamForm from '../components/teams/EditTeamForm';
 import FixturesComponent from '../components/fixtures/FixturesComponent';
 // import FixtureView from '../components/fixtures/FixtureView';
@@ -86,6 +86,7 @@ class LeagueContainer extends Component {
               )}
             />
             <Route path="/teams/:id" component={TeamDetail} />
+            <Route path="/teams/add-team" component={AddTeamForm} />
             <Route 
               path="/teams/:id/edit" component={EditTeamForm}
               // render={() =>
