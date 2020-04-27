@@ -1,21 +1,26 @@
 import React, { Component, Fragment, useState, useEffect } from 'react';
 // import { useHistory } from 'react-router-dom';
 
-function Team() {
+function Team({ match }) {
 
   useEffect(() => {
-    fetchTeams();
-  }, [])
+    fetchTeam();
+    console.log(match);
+  }, []);
 
   const [team, setTeam] = useState({});
 
   const fetchTeam = async () => {
-
+    const fetchTeam = await fetch(`http://localhost:3005/api/teams/${match.params.id}`);
+    const team = await fetchTeam.json();
+    setTeam(team);
+    console.log(team);
   }
 
   return (
     <div>
       <h4>Team (TeamDetail with hooks)</h4>
+      <p>{team.name}</p>
     </div>
   );
 }
