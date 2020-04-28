@@ -27,6 +27,7 @@ class LeagueContainer extends Component {
     // this.handleSelect = this.handleSelect.bind(this);
     // this.handleTeamSelected = this.handleTeamSelected.bind(this);
     // this.handleTeamEdit = this.handleTeamEdit(this);
+    this.onTeamSubmit - this.onTeamSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -51,6 +52,22 @@ class LeagueContainer extends Component {
   //   const selectedTeam = this.state.teams.find((team) => { return team.id === id })
   //   this.setState({ currentTeam: selectedTeam })
   // }
+
+  onTeamSubmit(newTeam) {
+    fetch('http://localhost:3005/api/teams', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newTeam),
+    })
+    .then(res => res.json())
+    .then(newEntry => {
+      const updatedTeams = [...this.state.teams, newEntry]
+      this.setState({ teams: updatedTeams })
+    })
+  }
 
   handleTeamEdit(updatedTeam) {
     fetch(`http://localhost:3005/api/teams/${updatedTeam.id}`, {
@@ -85,7 +102,7 @@ class LeagueContainer extends Component {
                 />
               )}
             />
-            <Route exact path="/teams/add-team" component={AddTeamForm} />
+            <Route exact path="/teams/add-team" onTeamSubmit={this.onTeamSubmit} component={AddTeamForm} />
             <Route exact path="/teams/:id" component={TeamDetail} />
             <Route 
               exact path="/teams/:id/edit" component={EditTeamForm}

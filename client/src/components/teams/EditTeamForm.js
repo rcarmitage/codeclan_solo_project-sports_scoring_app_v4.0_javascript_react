@@ -55,7 +55,7 @@ class EditTeamForm extends Component {
     })
   }
 
-  handleNLostChange(event) {
+  handleLostChange(event) {
     this.setState({
       lost: event.target.value
     })
