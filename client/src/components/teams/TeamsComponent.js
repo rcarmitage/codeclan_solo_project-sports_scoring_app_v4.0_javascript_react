@@ -1,5 +1,5 @@
 import React, { Fragment, useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function TeamsComponent() {
 
@@ -9,7 +9,7 @@ function TeamsComponent() {
 
   const [teams, setTeams] = useState([]);
 
-  let params = useParams();
+  // let params = useParams();
 
   const fetchTeams = async () => {
     const data = await fetch('http://localhost:3005/api/teams');
