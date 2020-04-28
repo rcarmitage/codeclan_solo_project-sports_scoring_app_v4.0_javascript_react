@@ -23,7 +23,7 @@ function TeamsComponent() {
     <Fragment>
       <div>
         <h4>Teams (TeamsComponent with hooks)</h4>
-        <Link to="/add-team">
+        <Link to="/teams/add-team">
           <button>Add a Team</button>
         </Link>
         {teams.map(team => (

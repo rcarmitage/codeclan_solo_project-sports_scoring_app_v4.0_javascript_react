@@ -85,10 +85,10 @@ class LeagueContainer extends Component {
                 />
               )}
             />
-            <Route path="/teams/:id" component={TeamDetail} />
-            <Route path="/teams/add-team" component={AddTeamForm} />
+            <Route exact path="/teams/add-team" component={AddTeamForm} />
+            <Route exact path="/teams/:id" component={TeamDetail} />
             <Route 
-              path="/teams/:id/edit" component={EditTeamForm}
+              exact path="/teams/:id/edit" component={EditTeamForm}
               // render={() =>
               //   <EditTeamForm
               //     handleTeamEdit={this.handleTeamEdit}
