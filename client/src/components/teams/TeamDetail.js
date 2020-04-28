@@ -11,12 +11,13 @@ function Team({ match }) {
   const [team, setTeam] = useState({});
 
   let params = useParams();
+  // let team = team();
 
   const fetchTeam = async () => {
-    const fetchTeam = await fetch(`http://localhost:3005/api/teams/${match.params.id}`);
-    const team = await fetchTeam.json();
-    setTeam(team);
-    console.log(team);
+    const fetchTeam = await fetch(`http://localhost:3005/api/teams/${team.slug}`);
+    const teamInfo = await fetchTeam.json();
+    setTeam(teamInfo);
+    console.log(teamInfo);
   }
 
   return (

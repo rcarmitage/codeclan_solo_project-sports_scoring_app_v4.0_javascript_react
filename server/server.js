@@ -36,7 +36,8 @@ const teams = [
     played: 2,
     won: 1,
     lost: 1,
-    points: 1
+    points: 1,
+    slug: "the-gym-bunnies-server-js-1"
   },
   {
     id: 2,
@@ -44,7 +45,8 @@ const teams = [
     played: 2,
     won: 2,
     lost: 0,
-    points: 2
+    points: 2,
+    slug: "shop-winventory-server-js-2"
   },
   {
     id: 3,
@@ -52,7 +54,8 @@ const teams = [
     played: 2,
     won: 0,
     lost: 2,
-    points: 0
+    points: 0,
+    slug: "spending-tracker-big-spenders-server-js-3"
   },
   {
     id: 4,
@@ -60,7 +63,8 @@ const teams = [
     played: 2,
     won: 2,
     lost: 2,
-    points: 0
+    points: 0,
+    slug: "sports-scorers-server-js-4"
   },
   {
     id: 5,
@@ -68,7 +72,8 @@ const teams = [
     played: 2,
     won: 1,
     lost: 1,
-    points: 1
+    points: 1,
+    slug: "travel-bucket-list-jetsetters-server-js-5"
   },
   {
     id: 6,
@@ -76,7 +81,8 @@ const teams = [
     played: 2,
     won: 0,
     lost: 2,
-    points: 0
+    points: 0,
+    slug: "vet-squad-managers-server-js-6"
   }
 ];
 
