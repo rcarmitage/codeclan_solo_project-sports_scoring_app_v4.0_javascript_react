@@ -21,10 +21,10 @@ class AddTeamForm extends Component {
   handleSubmit(event) {
     event.preventDefault();
     const name = this.state.name.trim();
-    const played = this.state.played.trim();
-    const won = this.state.won.trim();
-    const lost = this.state.lost.trim();
-    const points = this.state.points.trim();
+    const played = this.state.played.toString();
+    const won = this.state.won.toString();
+    const lost = this.state.lost.toString();
+    const points = this.state.points.toString();
     this.props.onTeamSubmit({
       name: name,
       played: played,

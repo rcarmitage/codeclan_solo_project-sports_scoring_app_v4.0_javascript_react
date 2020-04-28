@@ -27,7 +27,7 @@ class LeagueContainer extends Component {
     // this.handleSelect = this.handleSelect.bind(this);
     // this.handleTeamSelected = this.handleTeamSelected.bind(this);
     // this.handleTeamEdit = this.handleTeamEdit(this);
-    this.onTeamSubmit - this.onTeamSubmit.bind(this);
+    // this.onTeamSubmit - this.onTeamSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -102,7 +102,15 @@ class LeagueContainer extends Component {
                 />
               )}
             />
-            <Route exact path="/teams/add-team" onTeamSubmit={this.onTeamSubmit} component={AddTeamForm} />
+            <Route 
+              exact path="/teams/add-team"
+              render={() =>
+                <AddTeamForm
+                  onTeamSubmit={this.onTeamSubmit}
+                />
+              }
+              />
+            {/* onTeamSubmit={this.onTeamSubmit} component={AddTeamForm} /> */}
             <Route exact path="/teams/:id" component={TeamDetail} />
             <Route 
               exact path="/teams/:id/edit" component={EditTeamForm}
