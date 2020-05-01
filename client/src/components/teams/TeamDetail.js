@@ -14,7 +14,7 @@ function Team({ match }) {
   // let team = team();
 
   const fetchTeam = async () => {
-    const fetchTeam = await fetch(`http://localhost:3005/api/teams/${team.slug}`);
+    const fetchTeam = await fetch(`http://localhost:3005/api/teams/${team.id}`);
     const teamInfo = await fetchTeam.json();
     setTeam(teamInfo);
     console.log(teamInfo);
