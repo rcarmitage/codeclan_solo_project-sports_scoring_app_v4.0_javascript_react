@@ -15,9 +15,9 @@ function TeamsComponent() {
     const data = await fetch('http://localhost:3005/api/teams');
     
     const teams = await data.json();
-    console.log(teams);
+    console.log(data);
     setTeams(teams);
-  }
+  };
 
   return (
     <Fragment>
@@ -31,19 +31,19 @@ function TeamsComponent() {
             <div className="teams-container-top-row">
               <p className="team-name">{team.name}</p>
             </div>
-            <div className="teams-container-middle-row">
-              <Link className="btn-team-details" to={`/teams/${team.id}`}>
+            {/* <div className="teams-container-middle-row">
+              <Link className="btn-team-details" to={`/teams/${team.slug}`}>
                 <button>Team Details</button>
               </Link>
             </div>
             <div className="teams-container-bottom-row">
-              <Link className="btn-edit-team" to={`/teams/${team.id}/edit`}>
+              <Link className="btn-edit-team" to={`/teams/${team.slug}/edit`}>
                 <button>Edit</button>
               </Link>
-              <Link className="btn-delete-team" to={`/teams/${team.id}/delete`}>
+              <Link className="btn-delete-team" to={`/teams/${team.slug}/delete`}>
                 <button>Delete</button>
-              </Link>
-            </div>
+              </Link> */}
+            {/* </div> */}
           </div>
         ))}
       </div>

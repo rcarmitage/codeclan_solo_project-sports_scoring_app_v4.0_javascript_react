@@ -11,10 +11,9 @@ function Team({ match }) {
   const [team, setTeam] = useState({});
 
   let params = useParams();
-  // let team = team();
 
   const fetchTeam = async () => {
-    const fetchTeam = await fetch(`http://localhost:3005/api/teams/${team.id}`);
+    const fetchTeam = await fetch(`http://localhost:3005/api/teams/${team.slug}`);
     const teamInfo = await fetchTeam.json();
     setTeam(teamInfo);
     console.log(teamInfo);
@@ -34,10 +33,10 @@ function Team({ match }) {
         <p>(Results of last 5 games go here)</p>
       </div>
       <div>
-        <Link to={`/teams/${team.id}/edit`}>
+        <Link to={`/teams/${team.slug}/edit`}>
           <button>Edit</button>
         </Link>
-        <Link to={`/teams/${team.id}/delete`}>
+        <Link to={`/teams/${team.slug}/delete`}>
           <button>Delete</button>
         </Link>
       </div>
