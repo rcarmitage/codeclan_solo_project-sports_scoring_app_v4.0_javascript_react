@@ -15,21 +15,26 @@ import LeagueTable from '../components/LeagueTable';
 import About from '../components/About';
 import ErrorPage from '../components/ErrorPage';
 
+// LeagueContainer orginally contained all logic for TeamsComponent and FixturesComponent, however I have moved some of this into the respective components and LeagueContainer now holds __ and the routes for all components
 class LeagueContainer extends Component {
+  // Constructor: __
   constructor(props) {
     super(props);
 
+    // State: Empty arrays for both teams and fixtures, which will be populated by data from the server which is requested by API calls from TeamsComponent and FixturesComponent (the API calls were originally in LeagueContainer)
     this.state = {
       teams: [],
       fixtures: []
       // currentTeam: null
     }
+    // bind the functions __ below
     // this.handleSelect = this.handleSelect.bind(this);
     // this.handleTeamSelected = this.handleTeamSelected.bind(this);
     // this.handleTeamEdit = this.handleTeamEdit(this);
     // this.onTeamSubmit - this.onTeamSubmit.bind(this);
   }
 
+  // componentDidMount: API call to fetch the data from the server (there are currently also API fetches in TeamsComponent and FixturesComponent so I don't think I need these here)
   componentDidMount() {
     const promises =[
       fetch('http://localhost:3005/api/teams')
