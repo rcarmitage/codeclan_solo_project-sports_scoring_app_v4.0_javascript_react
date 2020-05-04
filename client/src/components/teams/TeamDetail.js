@@ -13,10 +13,10 @@ function Team({ match }) {
   let params = useParams();
 
   const fetchTeam = async () => {
-    const fetchTeam = await fetch(`http://localhost:3005/api/teams/${team.slug}`);
-    const teamInfo = await fetchTeam.json();
-    setTeam(teamInfo);
-    console.log(teamInfo);
+    const fetchTeam = await fetch(`http://localhost:3005/api/teams/${match.params.id}`);
+    const team = await fetchTeam.json();
+    setTeam(team);
+    console.log(team);
   }
 
   return (
@@ -25,7 +25,7 @@ function Team({ match }) {
         <h4>Team (TeamDetail with hooks)</h4>
         <h5>Name: {team.name}</h5>
         <h5>ID: {team.id}</h5>
-        <h5>ID parameter: {params.id}</h5>
+        <h5>params ID: {params.id}</h5>
         <h6>Played: {team.played}</h6>
         <h6>Won: {team.won}</h6>
         <h6>Lost: {team.lost}</h6>
@@ -33,10 +33,10 @@ function Team({ match }) {
         <p>(Results of last 5 games go here)</p>
       </div>
       <div>
-        <Link to={`/teams/${team.slug}/edit`}>
+        <Link to={`/teams/${team.id}/edit`}>
           <button>Edit</button>
         </Link>
-        <Link to={`/teams/${team.slug}/delete`}>
+        <Link to={`/teams/${team.id}/delete`}>
           <button>Delete</button>
         </Link>
       </div>
