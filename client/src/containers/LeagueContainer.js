@@ -30,8 +30,8 @@ class LeagueContainer extends Component {
     // bind the functions __ below
     // this.handleSelect = this.handleSelect.bind(this);
     // this.handleTeamSelected = this.handleTeamSelected.bind(this);
-    // this.handleTeamEdit = this.handleTeamEdit(this);
-    // this.onTeamSubmit - this.onTeamSubmit.bind(this);
+    this.handleTeamEdit = this.handleTeamEdit(this);
+    this.onTeamSubmit = this.onTeamSubmit.bind(this);
   }
 
   // componentDidMount: API call to fetch the data from the server (there are currently also API fetches in TeamsComponent and FixturesComponent so I don't think I need these here)
@@ -115,18 +115,17 @@ class LeagueContainer extends Component {
                 />
               }
               />
-            {/* onTeamSubmit={this.onTeamSubmit} component={AddTeamForm} /> */}
             <Route path="/teams/:id" component={TeamDetail}>
               {/* <TeamDetail /> */}
             </Route>
             <Route 
-              exact path="/teams/:id/edit" component={EditTeamForm}
-              // render={() =>
-              //   <EditTeamForm
-              //     handleTeamEdit={this.handleTeamEdit}
-              //     team={this.state.currentTeam}
-              //   />
-              // }
+              exact path="/teams/:id/edit"
+              render={() =>
+                <EditTeamForm
+                  handleTeamEdit={this.handleTeamEdit}
+                  // team={this.state.currentTeam}
+                />
+              }
             />
             <Route exact path="/fixtures" component={FixturesComponent} />
             <Route exact path="/league-table" component={LeagueTable} />
