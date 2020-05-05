@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 const AddTeamForm = props => {
-  const initialFormState = { id: null, name: '', played: '', won: '', lost: '', points: '', slug: ''};
+  const initialFormState = {id: null, name: '', played: '', won: '', lost: '', points: '', slug: ''};
   const [team, setTeam] = useState(initialFormState);
 
   const handleInputChange = event => {
