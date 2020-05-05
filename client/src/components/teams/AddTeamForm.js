@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 const AddTeamForm = props => {
-  const initialFormState = {id: null, name: '', played: '', won: '', lost: '', points: '', slug: ''};
+  const initialFormState = {id: '', name: '', played: '', won: '', lost: '', points: '', slug: ''};
   const [team, setTeam] = useState(initialFormState);
 
   const handleInputChange = event => {
@@ -20,6 +20,8 @@ const AddTeamForm = props => {
         setTeam(initialFormState)
       }}
     >
+      <label>ID (integer, choose higher than 6): </label>
+      <input type="number" name="id" value={team.id} onChange={handleInputChange} />
       <label>Name: </label>
       <input type="text" name="name" value={team.name} onChange={handleInputChange} />
       <label>Played: </label>

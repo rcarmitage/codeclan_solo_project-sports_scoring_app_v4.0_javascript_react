@@ -21,11 +21,10 @@ const LeagueContainer = () => {
   const initialFormState = {id: null, name: '', played: '', won: '', lost: '', points: '', slug: ''};
 
   const [teams, setTeams] = useState(teamsData);
-  const [currentTeam, setCurrentTeam] = useState(initialFormState);
+  // const [currentTeam, setCurrentTeam] = useState(initialFormState);
 
   // CRUD operations
   const addTeam = team => {
-    team.id = teams.length + 1
     setTeams([ ...teams, team ])
   }
 
@@ -48,9 +47,7 @@ const LeagueContainer = () => {
             exact path="/teams"
             render={() => (
               <TeamsComponent
-                teams={this.state.teams}
-                // handleTeamSelected={this.handleTeamSelected}
-                // handleSelect={this.handleSelect}
+                teams={teamsData}
               />
             )}
           />
@@ -58,19 +55,17 @@ const LeagueContainer = () => {
             exact path="/teams/add-team"
             render={() =>
               <AddTeamForm
-                onTeamSubmit={this.onTeamSubmit}
+                addTeam={addTeam}
               />
             }
             />
           <Route path="/teams/:id" component={TeamDetail}>
-            {/* <TeamDetail /> */}
           </Route>
           <Route 
             exact path="/teams/:id/edit"
             render={() =>
               <EditTeamForm
-                handleTeamEdit={this.handleTeamEdit}
-                // team={this.state.currentTeam}
+                updateTeam={updateTeam}
               />
             }
           />
