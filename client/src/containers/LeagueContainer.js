@@ -1,40 +1,45 @@
-import React, { useState, Fragment, useReducer } from 'react';
+import React, { Fragment, useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Header from '../components/Header';
-import NavBar from '../components/NavBar';
-import Home from '../components/Home';
-import TeamsComponent from '../components/teams/TeamsComponent';
-import TeamDetail from '../components/teams/TeamDetail';
+import Header from '../components/layout/Header';
+import NavBar from '../components/layout/NavBar';
+import Home from '../components/pages/Home';
+import Teams from '../components/teams/Teams';
+import Team from '../components/teams/Team';
 import AddTeamForm from '../components/teams/AddTeamForm';
 import EditTeamForm from '../components/teams/EditTeamForm';
 import FixturesComponent from '../components/fixtures/FixturesComponent';
 // import FixtureView from '../components/fixtures/FixtureView';
 // import AddFixture from '../components/fixtures/AddFixture';
 // import EditFixture from '../components/fixtures/EditFixture';
-import LeagueTable from '../components/LeagueTable';
-import About from '../components/About';
-import ErrorPage from '../components/ErrorPage';
+import LeagueTable from '../components/pages/LeagueTable';
+import About from '../components/pages/About';
+import ErrorPage from '../components/pages/ErrorPage';
+import axios from 'axios';
 
 const LeagueContainer = () => {
-  const teamsData = [];
+  const [teams, setTeams] = useState([]);
+  const [team, setTeam] = useState({});
 
-  const initialFormState = {id: null, name: '', played: '', won: '', lost: '', points: '', slug: ''};
+  // View all teams
+  const getTeams = async __ => {
+    const res = await axios.get(`http://localhost:3005/api/teams/`);
 
-  const [teams, setTeams] = useState(teamsData);
-  // const [currentTeam, setCurrentTeam] = useState(initialFormState);
+    console.log(res.data);
+  };
+  
 
   // CRUD operations
-  const addTeam = team => {
-    setTeams([ ...teams, team ])
-  }
+  // const addTeam = team => {
+  //   setTeams([ ...teams, team ])
+  // }
 
-  const deleteTeam = id => {
-    setTeams(teams.filter(team => team.id !== id))
-  }
+  // const deleteTeam = id => {
+  //   setTeams(teams.filter(team => team.id !== id))
+  // }
 
-  const updateTeam = (id, updatedTeam) => {
-    setTeams(teams.map(team => (team.id === id ? updatedTeam : team)))
-  }
+  // const updateTeam = (id, updatedTeam) => {
+  //   setTeams(teams.map(team => (team.id === id ? updatedTeam : team)))
+  // }
 
   return (
     <Router>
@@ -46,8 +51,8 @@ const LeagueContainer = () => {
           <Route
             exact path="/teams"
             render={() => (
-              <TeamsComponent
-                teams={teamsData}
+              <Teams
+                // teams={teamsData}
               />
             )}
           />
@@ -55,17 +60,17 @@ const LeagueContainer = () => {
             exact path="/teams/add-team"
             render={() =>
               <AddTeamForm
-                addTeam={addTeam}
+                // addTeam={addTeam}
               />
             }
             />
-          <Route path="/teams/:id" component={TeamDetail}>
-          </Route>
+          {/* <Route path="/teams/:id" component={TeamDetail}>
+          </Route> */}
           <Route 
             exact path="/teams/:id/edit"
             render={() =>
               <EditTeamForm
-                updateTeam={updateTeam}
+                // updateTeam={updateTeam}
               />
             }
           />

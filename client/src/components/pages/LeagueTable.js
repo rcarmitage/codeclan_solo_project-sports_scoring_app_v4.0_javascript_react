@@ -1,6 +1,6 @@
 import React from 'react';
 // import TeamsComponent from '../components/teams/TeamsComponent';
-import TeamDetail from '../components/teams/TeamDetail';
+import TeamDetail from '../teams/TeamItem';
 
 // class LeagueTable extends Component {
 //   render() {
