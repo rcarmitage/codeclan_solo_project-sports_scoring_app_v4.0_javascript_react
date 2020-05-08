@@ -14,44 +14,12 @@ import FixturesComponent from '../components/fixtures/FixturesComponent';
 import LeagueTable from '../components/pages/LeagueTable';
 import About from '../components/pages/About';
 import ErrorPage from '../components/pages/ErrorPage';
-// import axios from 'axios';
 
 const LeagueContainer = () => {
   const [teams, setTeams] = useState([]);
   // const [team, setTeam] = useState({});
 
-  // View all teams - axios
-  // const getTeams = async teams => {
-  //   const res = await axios.get('http://localhost:3005/api/teams/');
-
-  //   console.log(res);
-  //   console.log(res.data);
-  //   console.log(teams);
-  //   console.log(getTeams);
-  //   setTeams(res.data);
-  // // };
-
-  // const getTeams = async teams => {
-  //   useEffect(() => {
-  //     const fetchData = async () => {
-  //       const result = await axios('http://localhost:3005/api/teams/');
-
-  //       setTeams(result.data);
-  //     };
-      
-  //     fetchData();
-  //   }, [])
-    
-  //   const res = await axios.get('http://localhost:3005/api/teams/');
-
-  //   console.log(res);
-  //   console.log(res.data);
-  //   console.log(teams);
-  //   console.log(getTeams);
-  //   setTeams(res.data);
-  // };
-
-  // View all teams - fetch
+  // View all teams
   useEffect(() => {
     const getTeams = () => {
       fetch('http://localhost:3005/api/teams/')
@@ -62,21 +30,6 @@ const LeagueContainer = () => {
     getTeams();
   }, []);
 
-
-
-  // componentDidMount() {
-  //   const promises =[
-  //     fetch('http://localhost:3005/api/teams')
-  //       .then(res => res.json())
-  //       .then(teams => this.setState({ teams: teams }))
-  //     ,
-  //     fetch('http://localhost:3005/api/fixtures')
-  //       .then(res => res.json())
-  //       .then(res => res.fixtures)
-  //       .then(data => this.setState({ fixtures: data }))
-  //   ]
-  //   Promise.all(promises)
-  // }
 
   // CRUD operations
   // const addTeam = team => {
@@ -102,7 +55,6 @@ const LeagueContainer = () => {
             exact path="/teams"
             render={props => (
               <Teams
-                // getTeams={getTeams}
                 teams={teams}
               />
             )}

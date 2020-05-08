@@ -1,23 +1,27 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import { Link } from 'react-router-dom';
 import TeamItem from './TeamItem';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 const Teams = ({ teams }) => {
   return (
-    <div>
-      {teams.map(team => (
-        <TeamItem key={team.id} team={team} />
-      ))}
-    </div>
+    <Fragment>
+      <div>
+        <h4>Teams (Teams.js with hooks)</h4>
+        <Link to="/teams/add-team">
+            <button>Add a Team</button>
+        </Link>
+        {teams.map(team => (
+          <TeamItem key={team.id} team={team} />
+        ))}
+      </div>
+    </Fragment>
   );
 
   // return (
   //   <Fragment>
   //     <div>
   //       <h4>Teams (TeamsComponent with hooks)</h4>
-  //       <Link to="/teams/add-team">
-  //         <button>Add a Team</button>
-  //       </Link>
   //       {teams.map(team => (
   //         <div className="teams-container" key={team.id}>
   //           <div className="teams-container-top-row">
@@ -43,8 +47,8 @@ const Teams = ({ teams }) => {
   // );
 };
 
-// Teams.propTypes = {
-//   teams: PropTypes.array.isRequired
-// };
+Teams.propTypes = {
+  teams: PropTypes.array.isRequired
+};
 
 export default Teams;
