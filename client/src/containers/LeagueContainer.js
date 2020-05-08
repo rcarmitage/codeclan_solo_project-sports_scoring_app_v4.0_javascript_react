@@ -18,13 +18,17 @@ import axios from 'axios';
 
 const LeagueContainer = () => {
   const [teams, setTeams] = useState([]);
-  const [team, setTeam] = useState({});
+  // const [team, setTeam] = useState({});
 
   // View all teams
-  const getTeams = async __ => {
-    const res = await axios.get(`http://localhost:3005/api/teams/`);
+  const getTeams = async teams => {
+    const res = await axios.get('http://localhost:3005/api/teams/');
 
+    console.log(res);
     console.log(res.data);
+    console.log(teams);
+    console.log(getTeams);
+    setTeams(res.data);
   };
   
 
@@ -50,9 +54,10 @@ const LeagueContainer = () => {
           <Route exact path="/" component={Home} />
           <Route
             exact path="/teams"
-            render={() => (
+            render={props => (
               <Teams
-                // teams={teamsData}
+                getTeams={getTeams}
+                teams={teams}
               />
             )}
           />
@@ -64,8 +69,14 @@ const LeagueContainer = () => {
               />
             }
             />
-          {/* <Route path="/teams/:id" component={TeamDetail}>
-          </Route> */}
+          <Route
+            exact path="/teams/:id"
+            render={props => (
+              <Team 
+                { ...props }
+              />
+            )}
+          />
           <Route 
             exact path="/teams/:id/edit"
             render={() =>
