@@ -14,7 +14,7 @@ import FixturesComponent from '../components/fixtures/FixturesComponent';
 import LeagueTable from '../components/pages/LeagueTable';
 import About from '../components/pages/About';
 import ErrorPage from '../components/pages/ErrorPage';
-import axios from 'axios';
+// import axios from 'axios';
 
 const LeagueContainer = () => {
   const [teams, setTeams] = useState([]);
@@ -53,13 +53,16 @@ const LeagueContainer = () => {
 
   // View all teams - fetch
   useEffect(() => {
-    const fetchTeams = () =>
+    const getTeams = () => {
       fetch('http://localhost:3005/api/teams/')
-        .then(res => res.json)
-        .then(data = setTeams(data))
-      
-      fetchTeams();
+      .then(res => res.json())
+      .then(res => setTeams(res))
+    };
+    
+    getTeams();
   }, []);
+
+
 
   // componentDidMount() {
   //   const promises =[

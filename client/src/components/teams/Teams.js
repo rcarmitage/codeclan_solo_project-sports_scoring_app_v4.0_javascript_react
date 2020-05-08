@@ -1,6 +1,6 @@
 import React from 'react';
 import TeamItem from './TeamItem';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 const Teams = ({ teams }) => {
   return (
@@ -43,8 +43,8 @@ const Teams = ({ teams }) => {
   // );
 };
 
-Teams.propTypes = {
-  teams: PropTypes.array.isRequired
-};
+// Teams.propTypes = {
+//   teams: PropTypes.array.isRequired
+// };
 
 export default Teams;
