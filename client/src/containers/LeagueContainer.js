@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Header from '../components/layout/Header';
 import NavBar from '../components/layout/NavBar';
@@ -20,17 +20,60 @@ const LeagueContainer = () => {
   const [teams, setTeams] = useState([]);
   // const [team, setTeam] = useState({});
 
-  // View all teams
-  const getTeams = async teams => {
-    const res = await axios.get('http://localhost:3005/api/teams/');
+  // View all teams - axios
+  // const getTeams = async teams => {
+  //   const res = await axios.get('http://localhost:3005/api/teams/');
 
-    console.log(res);
-    console.log(res.data);
-    console.log(teams);
-    console.log(getTeams);
-    setTeams(res.data);
-  };
-  
+  //   console.log(res);
+  //   console.log(res.data);
+  //   console.log(teams);
+  //   console.log(getTeams);
+  //   setTeams(res.data);
+  // // };
+
+  // const getTeams = async teams => {
+  //   useEffect(() => {
+  //     const fetchData = async () => {
+  //       const result = await axios('http://localhost:3005/api/teams/');
+
+  //       setTeams(result.data);
+  //     };
+      
+  //     fetchData();
+  //   }, [])
+    
+  //   const res = await axios.get('http://localhost:3005/api/teams/');
+
+  //   console.log(res);
+  //   console.log(res.data);
+  //   console.log(teams);
+  //   console.log(getTeams);
+  //   setTeams(res.data);
+  // };
+
+  // View all teams - fetch
+  useEffect(() => {
+    const fetchTeams = () =>
+      fetch('http://localhost:3005/api/teams/')
+        .then(res => res.json)
+        .then(data = setTeams(data))
+      
+      fetchTeams();
+  }, []);
+
+  // componentDidMount() {
+  //   const promises =[
+  //     fetch('http://localhost:3005/api/teams')
+  //       .then(res => res.json())
+  //       .then(teams => this.setState({ teams: teams }))
+  //     ,
+  //     fetch('http://localhost:3005/api/fixtures')
+  //       .then(res => res.json())
+  //       .then(res => res.fixtures)
+  //       .then(data => this.setState({ fixtures: data }))
+  //   ]
+  //   Promise.all(promises)
+  // }
 
   // CRUD operations
   // const addTeam = team => {
@@ -56,7 +99,7 @@ const LeagueContainer = () => {
             exact path="/teams"
             render={props => (
               <Teams
-                getTeams={getTeams}
+                // getTeams={getTeams}
                 teams={teams}
               />
             )}
@@ -115,19 +158,19 @@ const LeagueContainer = () => {
 //   }
 
 //   // componentDidMount: API call to fetch the data from the server (there are currently also API fetches in TeamsComponent and FixturesComponent so I don't think I need these here)
-//   componentDidMount() {
-//     const promises =[
-//       fetch('http://localhost:3005/api/teams')
-//         .then(res => res.json())
-//         .then(teams => this.setState({ teams: teams }))
-//       ,
-//       fetch('http://localhost:3005/api/fixtures')
-//         .then(res => res.json())
-//         .then(res => res.fixtures)
-//         .then(data => this.setState({ fixtures: data }))
-//     ]
-//     Promise.all(promises)
-//   }
+  // componentDidMount() {
+  //   const promises =[
+  //     fetch('http://localhost:3005/api/teams')
+  //       .then(res => res.json())
+  //       .then(teams => this.setState({ teams: teams }))
+  //     ,
+  //     fetch('http://localhost:3005/api/fixtures')
+  //       .then(res => res.json())
+  //       .then(res => res.fixtures)
+  //       .then(data => this.setState({ fixtures: data }))
+  //   ]
+  //   Promise.all(promises)
+  // }
 
 //   // handleSelect(event) {
 //   //   console.log(event.target.value);
