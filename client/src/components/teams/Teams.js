@@ -17,34 +17,6 @@ const Teams = ({ teams }) => {
       </div>
     </Fragment>
   );
-
-  // return (
-  //   <Fragment>
-  //     <div>
-  //       <h4>Teams (TeamsComponent with hooks)</h4>
-  //       {teams.map(team => (
-  //         <div className="teams-container" key={team.id}>
-  //           <div className="teams-container-top-row">
-  //             <p className="team-name">{team.name}</p>
-  //           </div>
-  //           <div className="teams-container-middle-row">
-  //             <Link className="btn-team-details" to={`/teams/${team.id}`}>
-  //               <button>Team Details</button>
-  //             </Link>
-  //           </div>
-  //           <div className="teams-container-bottom-row">
-  //             <Link className="btn-edit-team" to={`/teams/${team.id}/edit`}>
-  //               <button>Edit</button>
-  //             </Link>
-  //             <Link className="btn-delete-team" to={`/teams/${team.id}/delete`}>
-  //               <button>Delete</button>
-  //             </Link>
-  //           </div>
-  //         </div>
-  //       ))}
-  //     </div>
-  //   </Fragment>
-  // );
 };
 
 Teams.propTypes = {

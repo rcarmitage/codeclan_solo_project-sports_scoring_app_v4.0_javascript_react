@@ -17,9 +17,9 @@ import ErrorPage from '../components/pages/ErrorPage';
 
 const LeagueContainer = () => {
   const [teams, setTeams] = useState([]);
-  // const [team, setTeam] = useState({});
+  const [team, setTeam] = useState({});
 
-  // View all teams
+  // Get all teams
   useEffect(() => {
     const getTeams = () => {
       fetch('http://localhost:3005/api/teams/')
@@ -30,6 +30,16 @@ const LeagueContainer = () => {
     getTeams();
   }, []);
 
+  // Get single team
+  useEffect(() => {
+    const getTeam = (id) => {
+      fetch(`http://localhost:3005/api/teams/${id}`)
+      .then(res => res.json())
+      .then(res => setTeam(res))
+    };
+
+    getTeam();
+  }, []);
 
   // CRUD operations
   // const addTeam = team => {
@@ -72,6 +82,8 @@ const LeagueContainer = () => {
             render={props => (
               <Team 
                 { ...props }
+                // getTeam={getTeam}
+                team={team}
               />
             )}
           />
@@ -93,39 +105,6 @@ const LeagueContainer = () => {
   )
 }
 
-// // LeagueContainer orginally contained all logic for TeamsComponent and FixturesComponent, however I have moved some of this into the respective components and LeagueContainer now holds __ and the routes for all components
-// class LeagueContainer extends Component {
-//   // Constructor: __
-//   constructor(props) {
-//     super(props);
-
-//     // State: Empty arrays for both teams and fixtures, which will be populated by data from the server which is requested by API calls from TeamsComponent and FixturesComponent (the API calls were originally in LeagueContainer)
-//     this.state = {
-//       teams: [],
-//       fixtures: []
-//       // currentTeam: null
-//     }
-//     // bind the functions __ below
-//     // this.handleSelect = this.handleSelect.bind(this);
-//     // this.handleTeamSelected = this.handleTeamSelected.bind(this);
-//     this.handleTeamEdit = this.handleTeamEdit(this);
-//     this.onTeamSubmit = this.onTeamSubmit.bind(this);
-//   }
-
-//   // componentDidMount: API call to fetch the data from the server (there are currently also API fetches in TeamsComponent and FixturesComponent so I don't think I need these here)
-  // componentDidMount() {
-  //   const promises =[
-  //     fetch('http://localhost:3005/api/teams')
-  //       .then(res => res.json())
-  //       .then(teams => this.setState({ teams: teams }))
-  //     ,
-  //     fetch('http://localhost:3005/api/fixtures')
-  //       .then(res => res.json())
-  //       .then(res => res.fixtures)
-  //       .then(data => this.setState({ fixtures: data }))
-  //   ]
-  //   Promise.all(promises)
-  // }
 
 //   // handleSelect(event) {
 //   //   console.log(event.target.value);
