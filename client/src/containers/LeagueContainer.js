@@ -38,9 +38,9 @@ const LeagueContainer = () => {
     .then(res => setTeam(res))
   };
 
-  useEffect(() => {
-    getTeam();
-  }, []);
+  // useEffect(() => {
+  //   getTeam();
+  // }, []);
 
   // CRUD operations
   // const addTeam = team => {
