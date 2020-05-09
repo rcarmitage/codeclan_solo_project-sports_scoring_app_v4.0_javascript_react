@@ -32,15 +32,15 @@ const LeagueContainer = () => {
   }, []);
 
   // Get single team
-  useEffect(() => {
-    getTeam();
-  }, []);
-
-  const getTeam = (slug) => {
-    fetch(`http://localhost:3005/api/teams/${slug}`)
+  const getTeam = (id) => {
+    fetch(`http://localhost:3005/api/teams/${id}`)
     .then(res => res.json())
     .then(res => setTeam(res))
   };
+
+  useEffect(() => {
+    getTeam();
+  }, []);
 
   // CRUD operations
   // const addTeam = team => {
@@ -71,7 +71,7 @@ const LeagueContainer = () => {
             )}
           />
           <Route
-            exact path="/teams/:slug"
+            exact path="/teams/:id"
             render={props => (
               <Team 
                 { ...props }
