@@ -2,7 +2,7 @@ import React, { Fragment, useEffect } from 'react';
 // import { Link } from 'react-router-dom';
 // import PropTypes from 'prop-types';
 
-const Team = ({ team: {name}, getTeam, match }) => {
+const Team = ({ team, getTeam, match }) => {
   useEffect(() => {
     getTeam(match.params.id);
     // eslint-disable-next-line
@@ -22,7 +22,7 @@ const Team = ({ team: {name}, getTeam, match }) => {
     <Fragment>
       <div>
         <h4>Team (Team.js)</h4>
-        {/* <h5>Name: {team.name}</h5> */}
+        <h5>Name: {team.name}</h5>
         {/* <h5>ID: {id}</h5> */}
         {/* <h5>params ID: {params.id}</h5> */}
         {/* <h6>Played: {played}</h6>

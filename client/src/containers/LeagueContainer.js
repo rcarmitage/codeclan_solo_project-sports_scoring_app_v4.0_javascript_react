@@ -32,14 +32,14 @@ const LeagueContainer = () => {
 
   // Get single team
   useEffect(() => {
-    const getTeam = (id) => {
-      fetch(`http://localhost:3005/api/teams/${id}`)
-      .then(res => res.json())
-      .then(res => setTeam(res))
-    };
-
     getTeam();
   }, []);
+
+  const getTeam = () => {
+    fetch(`http://localhost:3005/api/teams/0`)
+    .then(res => res.json())
+    .then(res => setTeam(res))
+  };
 
   // CRUD operations
   // const addTeam = team => {
@@ -82,7 +82,7 @@ const LeagueContainer = () => {
             render={props => (
               <Team 
                 { ...props }
-                // getTeam={getTeam}
+                getTeam={getTeam}
                 team={team}
               />
             )}
