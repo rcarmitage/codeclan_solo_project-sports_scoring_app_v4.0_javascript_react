@@ -19,6 +19,7 @@ const LeagueContainer = () => {
   const [teams, setTeams] = useState([]);
   const [team, setTeam] = useState({});
 
+  // TEAMS
   // Get all teams
   useEffect(() => {
     const getTeams = () => {
@@ -35,8 +36,8 @@ const LeagueContainer = () => {
     getTeam();
   }, []);
 
-  const getTeam = () => {
-    fetch(`http://localhost:3005/api/teams/0`)
+  const getTeam = (slug) => {
+    fetch(`http://localhost:3005/api/teams/${slug}`)
     .then(res => res.json())
     .then(res => setTeam(res))
   };
@@ -69,16 +70,8 @@ const LeagueContainer = () => {
               />
             )}
           />
-          <Route 
-            exact path="/teams/add-team"
-            render={() =>
-              <AddTeamForm
-                // addTeam={addTeam}
-              />
-            }
-            />
           <Route
-            exact path="/teams/:id"
+            exact path="/teams/:slug"
             render={props => (
               <Team 
                 { ...props }
@@ -87,6 +80,14 @@ const LeagueContainer = () => {
               />
             )}
           />
+          <Route 
+            exact path="/teams/add-team"
+            render={() =>
+              <AddTeamForm
+                // addTeam={addTeam}
+              />
+            }
+            />
           <Route 
             exact path="/teams/:id/edit"
             render={() =>
@@ -102,8 +103,8 @@ const LeagueContainer = () => {
         </Switch>
       </Fragment>
     </Router>
-  )
-}
+  );
+};
 
 
 //   // handleSelect(event) {
