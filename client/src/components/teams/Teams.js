@@ -8,8 +8,8 @@ const Teams = ({ teams }) => {
     <Fragment>
       <div>
         <h4>Teams (Teams.js with hooks)</h4>
-        <Link to="/teams/add-team">
-            <button>Add a Team</button>
+        <Link to="/add-team">
+          <button>Add a Team</button>
         </Link>
         {teams.map(team => (
           <TeamItem key={team.id} team={team} />

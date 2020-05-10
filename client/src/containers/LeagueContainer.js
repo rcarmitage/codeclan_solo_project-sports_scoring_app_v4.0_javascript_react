@@ -7,8 +7,8 @@ import Teams from '../components/teams/Teams';
 import Team from '../components/teams/Team';
 import AddTeamForm from '../components/teams/AddTeamForm';
 import EditTeamForm from '../components/teams/EditTeamForm';
-import FixturesComponent from '../components/fixtures/FixturesComponent';
-// import FixtureView from '../components/fixtures/FixtureView';
+import Fixtures from '../components/fixtures/Fixtures';
+import Fixture from '../components/fixtures/Fixture';
 // import AddFixture from '../components/fixtures/AddFixture';
 // import EditFixture from '../components/fixtures/EditFixture';
 import LeagueTable from '../components/pages/LeagueTable';
@@ -18,6 +18,8 @@ import ErrorPage from '../components/pages/ErrorPage';
 const LeagueContainer = () => {
   const [teams, setTeams] = useState([]);
   const [team, setTeam] = useState({});
+  const [fixtures, setFixtures] = useState([]);
+  const [fixture, setFixture] = useState({});
 
   // TEAMS
   // Get all teams
@@ -54,6 +56,25 @@ const LeagueContainer = () => {
   // const updateTeam = (id, updatedTeam) => {
   //   setTeams(teams.map(team => (team.id === id ? updatedTeam : team)))
   // }
+
+  // FIXTURES
+  // Get all fixtures
+  useEffect(() => {
+    const getFixtures = () => {
+      fetch('http://localhost:3005/api/fixtures/')
+      .then(res => res.json())
+      .then(res => setFixtures(res))
+    };
+    
+    getFixtures();
+  }, []);
+
+  // Get single team
+  const getFixture = id => {
+    fetch(`http://localhost:3005/api/fixtures/${id}`)
+    .then(res => res.json())
+    .then(res => setFixture(res))
+  };
 
   return (
     <Router>
@@ -96,7 +117,24 @@ const LeagueContainer = () => {
               />
             }
           />
-          <Route exact path="/fixtures" component={FixturesComponent} />
+          <Route 
+            exact path="/fixtures" 
+            render={props => (
+              <Fixtures 
+                fixtures={fixtures}
+              />
+            )} 
+          />
+          <Route
+            exact path="/fixtures/:id"
+            render={props => (
+              <Fixture 
+                { ...props }
+                getFixture={getFixture}
+                fixture={fixture}
+              />
+            )}
+          />
           <Route exact path="/league-table" component={LeagueTable} />
           <Route exact path="/about" component={About} />
           <Route component={ErrorPage} />
