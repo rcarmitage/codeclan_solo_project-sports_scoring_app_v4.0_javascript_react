@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-const FixtureItem = ({ fixture: { id } }) => {
+const FixtureItem = ({ fixture: { id, team_a, team_b, winning_team } }) => {
   return(
     <Fragment>
       <div className="fixtures-container">
@@ -28,4 +28,4 @@ const FixtureItem = ({ fixture: { id } }) => {
   );
 };
 
-export default FixtureList;
+export default FixtureItem;

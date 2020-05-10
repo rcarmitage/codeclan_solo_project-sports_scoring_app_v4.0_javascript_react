@@ -11,7 +11,7 @@ const Fixtures = ({ fixtures }) => {
         <Link to="/add-fixture">
           <button>Add a Fixture</button>
         </Link>
-        {fixturesmap(fixture = (
+        {fixtures.map(fixture => (
           <FixtureItem key={fixture.id} fixture={fixture} />
         ))}
       </div>
