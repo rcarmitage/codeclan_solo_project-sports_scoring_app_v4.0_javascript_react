@@ -32,7 +32,7 @@ const LeagueContainer = () => {
   }, []);
 
   // Get single team
-  const getTeam = (id) => {
+  const getTeam = id => {
     fetch(`http://localhost:3005/api/teams/${id}`)
     .then(res => res.json())
     .then(res => setTeam(res))
@@ -43,9 +43,9 @@ const LeagueContainer = () => {
   // }, []);
 
   // CRUD operations
-  // const addTeam = team => {
-  //   setTeams([ ...teams, team ])
-  // }
+  const addTeam = team => {
+    setTeams([ ...teams, team ])
+  }
 
   // const deleteTeam = id => {
   //   setTeams(teams.filter(team => team.id !== id))
@@ -84,7 +84,7 @@ const LeagueContainer = () => {
             exact path="/teams/add-team"
             render={() =>
               <AddTeamForm
-                // addTeam={addTeam}
+                addTeam={addTeam}
               />
             }
             />
@@ -106,32 +106,6 @@ const LeagueContainer = () => {
   );
 };
 
-
-//   // handleSelect(event) {
-//   //   console.log(event.target.value);
-//   // }
-
-//   // handleTeamSelected(id) {
-//   //   const selectedTeam = this.state.teams.find((team) => { return team.id === id })
-//   //   this.setState({ currentTeam: selectedTeam })
-//   // }
-
-//   onTeamSubmit(newTeam) {
-//     fetch('http://localhost:3005/api/teams', {
-//       method: 'POST',
-//       headers: {
-//         'Accept': 'application/json',
-//         'Content-Type': 'application/json'
-//       },
-//       body: JSON.stringify(newTeam),
-//     })
-//     .then(res => res.json())
-//     .then(newEntry => {
-//       const updatedTeams = [...this.state.teams, newEntry]
-//       this.setState({ teams: updatedTeams })
-//     })
-//   }
-
 //   handleTeamEdit(updatedTeam) {
 //     fetch(`http://localhost:3005/api/teams/${updatedTeam.id}`, {
 //       method: 'PUT',
@@ -147,53 +121,4 @@ const LeagueContainer = () => {
 //     )
 //   }
   
-//   render() {
-//     return (
-      // <Router>
-      //   <Fragment>
-      //     <Header />
-      //     <NavBar id="nav" />
-      //     <Switch>
-      //       <Route exact path="/" component={Home} />
-      //       <Route
-      //         exact path="/teams"
-      //         render={() => (
-      //           <TeamsComponent
-      //             teams={this.state.teams}
-      //             // handleTeamSelected={this.handleTeamSelected}
-      //             // handleSelect={this.handleSelect}
-      //           />
-      //         )}
-      //       />
-      //       <Route 
-      //         exact path="/teams/add-team"
-      //         render={() =>
-      //           <AddTeamForm
-      //             onTeamSubmit={this.onTeamSubmit}
-      //           />
-      //         }
-      //         />
-      //       <Route path="/teams/:id" component={TeamDetail}>
-      //         {/* <TeamDetail /> */}
-      //       </Route>
-      //       <Route 
-      //         exact path="/teams/:id/edit"
-      //         render={() =>
-      //           <EditTeamForm
-      //             handleTeamEdit={this.handleTeamEdit}
-      //             // team={this.state.currentTeam}
-      //           />
-      //         }
-      //       />
-      //       <Route exact path="/fixtures" component={FixturesComponent} />
-      //       <Route exact path="/league-table" component={LeagueTable} />
-      //       <Route exact path="/about" component={About} />
-      //       <Route component={ErrorPage} />
-      //     </Switch>
-      //   </Fragment>
-      // </Router>
-//     );
-//   }
-// }
-
 export default LeagueContainer;

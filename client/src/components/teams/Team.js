@@ -4,7 +4,7 @@ import React, { Fragment, useEffect } from 'react';
 
 const Team = ({ team, getTeam, match }) => {
   useEffect(() => {
-    getTeam(match.params.id);
+    getTeam(match.params.slug);
     // eslint-disable-next-line
   }, []);
 
