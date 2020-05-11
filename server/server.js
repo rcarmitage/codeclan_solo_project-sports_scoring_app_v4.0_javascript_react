@@ -86,7 +86,24 @@ const teams = [
   }
 ];
 
-const fixtures = [];
+// const fixtures = [];
+
+const fixtures = [
+  {
+    id: 1,
+    team_a: "Test Team 01",
+    team_b: "Test Team 02",
+    winning_team: "Test Team 01",
+    losing_team: "Test Team 02"
+  },
+  {
+    id: 2,
+    team_a: "Test Team 03",
+    team_b: "Test Team 04",
+    winning_team: "Test Team 03",
+    losing_team: "Test Team 04"
+  }
+];
 
 // db connection with localhost
 // const Pool = require('pg').Pool
