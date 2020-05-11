@@ -11,7 +11,7 @@ import Fixtures from '../components/fixtures/Fixtures';
 import Fixture from '../components/fixtures/Fixture';
 // import AddFixture from '../components/fixtures/AddFixture';
 // import EditFixture from '../components/fixtures/EditFixture';
-import LeagueTable from '../components/pages/LeagueTable';
+import LeagueTable from '../components/league_table/LeagueTable';
 import About from '../components/pages/About';
 import ErrorPage from '../components/pages/ErrorPage';
 
@@ -20,6 +20,7 @@ const LeagueContainer = () => {
   const [team, setTeam] = useState({});
   const [fixtures, setFixtures] = useState([]);
   const [fixture, setFixture] = useState({});
+  const [leagueTableTeams, setLeagueTableTeams] = useState([]);
 
   // TEAMS
   // Get all teams
@@ -75,6 +76,17 @@ const LeagueContainer = () => {
     .then(res => res.json())
     .then(res => setFixture(res))
   };
+
+  // LEAGUE TABLE
+  useEffect(() => {
+    const getLeagueTableTeams = () => {
+      fetch('http://localhost:3005/api/teams/')
+      .then(res => res.json())
+      .then(res => setLeagueTableTeams(res))
+    };
+    
+    getLeagueTableTeams();
+  }, []);
 
   return (
     <Router>
@@ -135,7 +147,14 @@ const LeagueContainer = () => {
               />
             )}
           />
-          <Route exact path="/league-table" component={LeagueTable} />
+          <Route 
+            exact path="/league-table" 
+            render={props => (
+              <LeagueTable 
+                leagueTableTeams={leagueTableTeams}
+              />
+            )}
+          />
           <Route exact path="/about" component={About} />
           <Route component={ErrorPage} />
         </Switch>
