@@ -19,7 +19,7 @@ const LeagueContainer = () => {
   const [teams, setTeams] = useState([]);
   const [team, setTeam] = useState({});
   const [fixtures, setFixtures] = useState([]);
-  // const [leagueTableTeams, setLeagueTableTeams] = useState([]);
+  const [leagueTableTeams, setLeagueTableTeams] = useState([]);
 
   // TEAMS
   // Get all teams
@@ -101,6 +101,17 @@ const LeagueContainer = () => {
   //   getLeagueTableTeams();
   // }, []);
 
+  // LEAGUE TABLE (WITH REACT-TABLE)
+  useEffect(() => {
+    const getLeagueTableTeams = () => {
+      fetch('https://jsonplaceholder.typicode.com/posts')
+      .then(res => res.json())
+      .then(res => setLeagueTableTeams(res))
+    };
+    
+    getLeagueTableTeams();
+  }, []);
+
   return (
     <Router>
       <Fragment>
@@ -162,12 +173,12 @@ const LeagueContainer = () => {
           /> */}
           <Route 
             exact path="/league-table" 
-            // render={props => (
-              // <LeagueTable 
-              //   leagueTableTeams={leagueTableTeams}
-              // />
-            // )}
-            component={ReactTableTest}
+            render={props => (
+              <ReactTableTest 
+                leagueTableTeams={leagueTableTeams}
+              />
+            )}
+            // component={ReactTableTest}
           />
           <Route exact path="/about" component={About} />
           <Route component={ErrorPage} />
