@@ -8,10 +8,10 @@ import Team from '../components/teams/Team';
 import AddTeamForm from '../components/teams/AddTeamForm';
 import EditTeamForm from '../components/teams/EditTeamForm';
 import Fixtures from '../components/fixtures/Fixtures';
-import Fixture from '../components/fixtures/Fixture';
 // import AddFixture from '../components/fixtures/AddFixture';
 // import EditFixture from '../components/fixtures/EditFixture';
-import LeagueTable from '../components/league_table/LeagueTable';
+// import LeagueTable from '../components/league_table/LeagueTable';
+import ReactTableTest from '../components/league_table/ReactTableTest';
 import About from '../components/pages/About';
 import ErrorPage from '../components/pages/ErrorPage';
 
@@ -19,31 +19,44 @@ const LeagueContainer = () => {
   const [teams, setTeams] = useState([]);
   const [team, setTeam] = useState({});
   const [fixtures, setFixtures] = useState([]);
-  const [fixture, setFixture] = useState({});
-  const [leagueTableTeams, setLeagueTableTeams] = useState([]);
+  // const [leagueTableTeams, setLeagueTableTeams] = useState([]);
 
   // TEAMS
   // Get all teams
   useEffect(() => {
-    const getTeams = () => {
-      fetch('http://localhost:3005/api/teams/')
-      .then(res => res.json())
-      .then(res => setTeams(res))
+    async function getTeams() {
+      const res = await fetch('http://localhost:3005/api/teams/');
+      res
+        .json()
+        .then(res => setTeams(res))
     };
+    
+    // const getTeams = () => {
+    //   fetch('http://localhost:3005/api/teams/')
+    //   .then(res => res.json())
+    //   .then(res => setTeams(res))
+    // };
     
     getTeams();
   }, []);
 
   // Get single team
+  // useEffect(() => {
+  //   async function getTeam(id) {
+  //     const res = await fetch(`http://localhost:3005/api/teams/${id}`);
+  //     res
+  //       .json()
+  //       .then(res => setTeam(res))
+  //   };
+
+  //   getTeam();
+  // }, []);
+  
   const getTeam = id => {
     fetch(`http://localhost:3005/api/teams/${id}`)
     .then(res => res.json())
     .then(res => setTeam(res))
   };
-
-  // useEffect(() => {
-  //   getTeam();
-  // }, []);
 
   // CRUD operations
   const addTeam = team => {
@@ -70,23 +83,23 @@ const LeagueContainer = () => {
     getFixtures();
   }, []);
 
-  // Get single team
-  const getFixture = id => {
-    fetch(`http://localhost:3005/api/fixtures/${id}`)
-    .then(res => res.json())
-    .then(res => setFixture(res))
-  };
+  // Get single fixture
+  // const getFixture = id => {
+  //   fetch(`http://localhost:3005/api/fixtures/${id}`)
+  //   .then(res => res.json())
+  //   .then(res => setFixture(res))
+  // };
 
-  // LEAGUE TABLE
-  useEffect(() => {
-    const getLeagueTableTeams = () => {
-      fetch('http://localhost:3005/api/teams/')
-      .then(res => res.json())
-      .then(res => setLeagueTableTeams(res))
-    };
+  // // LEAGUE TABLE
+  // useEffect(() => {
+  //   const getLeagueTableTeams = () => {
+  //     fetch('http://localhost:3005/api/teams/')
+  //     .then(res => res.json())
+  //     .then(res => setLeagueTableTeams(res))
+  //   };
     
-    getLeagueTableTeams();
-  }, []);
+  //   getLeagueTableTeams();
+  // }, []);
 
   return (
     <Router>
@@ -103,6 +116,14 @@ const LeagueContainer = () => {
               />
             )}
           />
+          <Route 
+            exact path="/teams/add-team"
+            render={() =>
+              <AddTeamForm
+                addTeam={addTeam}
+              />
+            }
+          />
           <Route
             exact path="/teams/:id"
             render={props => (
@@ -113,14 +134,6 @@ const LeagueContainer = () => {
               />
             )}
           />
-          <Route 
-            exact path="/teams/add-team"
-            render={() =>
-              <AddTeamForm
-                addTeam={addTeam}
-              />
-            }
-            />
           <Route 
             exact path="/teams/:id/edit"
             render={() =>
@@ -137,7 +150,7 @@ const LeagueContainer = () => {
               />
             )} 
           />
-          <Route
+          {/* <Route
             exact path="/fixtures/:id"
             render={props => (
               <Fixture 
@@ -146,14 +159,15 @@ const LeagueContainer = () => {
                 fixture={fixture}
               />
             )}
-          />
+          /> */}
           <Route 
             exact path="/league-table" 
-            render={props => (
-              <LeagueTable 
-                leagueTableTeams={leagueTableTeams}
-              />
-            )}
+            // render={props => (
+              // <LeagueTable 
+              //   leagueTableTeams={leagueTableTeams}
+              // />
+            // )}
+            component={ReactTableTest}
           />
           <Route exact path="/about" component={About} />
           <Route component={ErrorPage} />

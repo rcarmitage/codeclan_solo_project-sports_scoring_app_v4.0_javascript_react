@@ -37,7 +37,7 @@ function normalizeData(leagueTableData) {
   })
 }
 
-const LeagueTable = ({ leagueTableTeams }) => {
+function LeagueTable({ normalizeData }) {
   const [headerMeta, setHeaderMeta] = useState(meta);
   const [leagueTableData, setLeagueTableData] = useState([]);
 
