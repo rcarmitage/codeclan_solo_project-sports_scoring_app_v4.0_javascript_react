@@ -24,17 +24,11 @@ const LeagueContainer = () => {
   // Get all teams
   useEffect(() => {
     async function getTeams() {
-      const res = await fetch('http://localhost:5000/api/teams/');
+      const res = await fetch("http://localhost:5000/api/teams/");
       res
         .json()
         .then(res => setTeams(res))
     };
-    
-    // const getTeams = () => {
-    //   fetch('http://localhost:5000/api/teams/')
-    //   .then(res => res.json())
-    //   .then(res => setTeams(res))
-    // };
     
     getTeams();
   }, []);
@@ -62,6 +56,9 @@ const LeagueContainer = () => {
     setTeams([ ...teams, team ])
   }
 
+  // const onTeamSubmit(newTeam)
+
+
   // const deleteTeam = id => {
   //   setTeams(teams.filter(team => team.id !== id))
   // }
@@ -74,7 +71,7 @@ const LeagueContainer = () => {
   // Get all fixtures
   useEffect(() => {
     const getFixtures = () => {
-      fetch('http://localhost:5000/api/fixtures/')
+      fetch("http://localhost:5000/api/fixtures/")
       .then(res => res.json())
       .then(res => setFixtures(res))
     };
@@ -92,7 +89,7 @@ const LeagueContainer = () => {
   // // LEAGUE TABLE
   // useEffect(() => {
   //   const getLeagueTableTeams = () => {
-  //     fetch('http://localhost:5000/api/teams/')
+  //     fetch("http://localhost:5000/api/teams/")
   //     .then(res => res.json())
   //     .then(res => setLeagueTableTeams(res))
   //   };

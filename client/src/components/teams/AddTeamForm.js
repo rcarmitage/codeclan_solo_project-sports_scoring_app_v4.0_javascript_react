@@ -4,24 +4,45 @@ const AddTeamForm = props => {
   const initialFormState = {name: ""};
   const [team, setTeam] = useState(initialFormState);
 
-  const handleInputChange = event => {
-    const { name, value } = event.target
+  const { name } = team;
 
-    setTeam({ ...team, [name]: value })
+  // const handleInputChange = event => {
+  //   const { name, value } = event.target
+
+  //   setTeam({ ...team, [name]: value })
+  // };
+
+  const onChange = event => setTeam({ ...team, [event.target.name]: event.target.value });
+
+  const onSubmitForm = async (event) => {
+    event.preventDefault();
+    try {
+      const body = { name };
+      const response = await fetch("http://localhost:5000/api/teams/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body)
+      });
+
+      console.log(response);
+    } catch (err) {
+      console.error(err.message);
+    };
   };
 
-  return (
-    <form
-      onSubmit={event => {
-        event.preventDefault();
-        if (!team.name) return
+  // const onSubmit = event => {
+  //   event.preventDefault();
+  //   // if (!team.name) return
         
-        props.addTeam(team)
-        setTeam(initialFormState)
-      }}
-    >
+  //   props.addTeam(team);
+  //   // Clear form for next entry
+  //   setTeam(initialFormState);
+  // };
+
+  return (
+    <form onSubmit={onSubmitForm}>
       <label>Team Name: </label>
-      <input type="text" name="name" value={team.name} onChange={handleInputChange} />
+      <input type="text" name="name" value={name} onChange={onChange} />
       <button>Add Team</button>
     </form>
   );
