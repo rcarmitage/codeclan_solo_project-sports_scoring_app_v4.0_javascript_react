@@ -1,43 +1,31 @@
 import React, { useState } from 'react';
 
 const AddTeamForm = props => {
-  const initialFormState = {id: '', name: '', played: '', won: '', lost: '', points: '', slug: ''};
+  const initialFormState = {name: ""};
   const [team, setTeam] = useState(initialFormState);
 
   const handleInputChange = event => {
     const { name, value } = event.target
 
     setTeam({ ...team, [name]: value })
-  }
+  };
 
   return (
     <form
       onSubmit={event => {
         event.preventDefault();
-        if (!team.name || !team.played || !team.won || !team.lost || !team.points || !team.slug) return
+        if (!team.name) return
         
         props.addTeam(team)
         setTeam(initialFormState)
       }}
     >
-      <label>ID (integer, choose higher than 6): </label>
-      <input type="number" name="id" value={team.id} onChange={handleInputChange} />
-      <label>Name: </label>
+      <label>Team Name: </label>
       <input type="text" name="name" value={team.name} onChange={handleInputChange} />
-      <label>Played: </label>
-      <input type="number" name="played" value={team.played} onChange={handleInputChange} />
-      <label>Won: </label>
-      <input type="number" name="won" value={team.won} onChange={handleInputChange} />
-      <label>Lost: </label>
-      <input type="number" name="lost" value={team.lost} onChange={handleInputChange} />
-      <label>Points: </label>
-      <input type="number" name="points" value={team.points} onChange={handleInputChange} />
-      <label>Slug (team name + id, snake case): </label>
-      <input type="text" name="slug" value={team.slug} onChange={handleInputChange} />
       <button>Add Team</button>
     </form>
-  )
-}
+  );
+};
 
 // class AddTeamForm extends Component {
 //   constructor(props) {
