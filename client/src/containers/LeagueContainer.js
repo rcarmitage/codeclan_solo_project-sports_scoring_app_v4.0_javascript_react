@@ -24,7 +24,7 @@ const LeagueContainer = () => {
   // Get all teams
   useEffect(() => {
     async function getTeams() {
-      const res = await fetch('http://localhost:3005/api/teams/');
+      const res = await fetch('http://localhost:3005/teams-test/');
       res
         .json()
         .then(res => setTeams(res))
@@ -52,7 +52,7 @@ const LeagueContainer = () => {
   // }, []);
   
   const getTeam = id => {
-    fetch(`http://localhost:3005/api/teams/${id}`)
+    fetch(`http://localhost:3005/teams-test/${id}`)
     .then(res => res.json())
     .then(res => setTeam(res))
   };

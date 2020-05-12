@@ -55,6 +55,7 @@ async function getTeams() {
 app.get("/teams-test", async (req, res) => {
   const rows = await getTeams();
   res.setHeader("content-type", "application/json");
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
   res.send(JSON.stringify(rows));
 });
 
@@ -62,13 +63,13 @@ app.get("/teams-test", async (req, res) => {
 
 // const teams_model = require('./teams_model');
 
-// app.use(express.json());
-// app.use(function (req, res, next) {
-//   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
-//   res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
-//   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Access-Control-Allow-Headers');
-//   next();
-// })
+app.use(express.json());
+app.use(function (req, res, next) {
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+  res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Access-Control-Allow-Headers');
+  next();
+})
 
 // app.get('/', (req, res) => {
 //   teams_model.getTeams()
@@ -139,7 +140,7 @@ const teams = [];
 //   }
 // ];
 
-// const fixtures = [];
+const fixtures = [];
 
 // const fixtures = [
 //   {
@@ -167,14 +168,14 @@ const teams = [];
 //   database: 'sports_scoring_app_v4.0'
 // });
 
-// app.use(cors());
-// app.use(bodyParser.json());
+app.use(cors());
+app.use(bodyParser.json());
 
 const teamsRouter = createRouter(teams);
 app.use('/api/teams', teamsRouter);
 
-// const fixturesRouter = createRouter(fixtures);
-// app.use('/api/fixtures', fixturesRouter);
+const fixturesRouter = createRouter(fixtures);
+app.use('/api/fixtures', fixturesRouter);
 
 app.listen(PORT, function () {
   console.log(`App running on port ${ this.address().port }`);
