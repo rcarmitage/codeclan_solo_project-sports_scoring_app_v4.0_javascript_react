@@ -11,7 +11,6 @@ import Fixtures from '../components/fixtures/Fixtures';
 // import AddFixture from '../components/fixtures/AddFixture';
 // import EditFixture from '../components/fixtures/EditFixture';
 // import LeagueTable from '../components/league_table/LeagueTable';
-import ReactTableTest from '../components/league_table/ReactTableTest';
 import About from '../components/pages/About';
 import ErrorPage from '../components/pages/ErrorPage';
 
@@ -167,7 +166,6 @@ const LeagueContainer = () => {
               //   leagueTableTeams={leagueTableTeams}
               // />
             // )}
-            component={ReactTableTest}
           />
           <Route exact path="/about" component={About} />
           <Route component={ErrorPage} />
