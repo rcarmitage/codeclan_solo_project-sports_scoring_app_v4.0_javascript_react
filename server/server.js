@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const PORT = 5000;
 const cors = require('cors');
+const pool = require('./db');
+
 // const bodyParser = require('body-parser');
 // const createRouter = require('./helpers/create_router.js');
 // const {Client} = require('pg');
@@ -14,12 +16,74 @@ const cors = require('cors');
 //   port: 5432
 // });
 
-// Middleware
+// MIDDLEWARE
 app.use(cors());
-app.use(express.json());
+app.use(express.json()); //req.body
 
-app.listen(PORT, function () {
-  console.log(`App running on port ${this.address.port}`);
+// ROUTES
+
+// Get All Teams
+app.get("/api/teams", async (req, res) => {
+  try {
+    const allTeams = await pool.query("SELECT * FROM teams");
+
+    res.json(allTeams.rows);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+// Get Single Team
+app.get("/api/teams/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const team = await pool.query("SELECT * FROM teams WHERE team_id = $1", [id]);
+
+    res.json(team.rows[0]);
+  } catch (err) {
+    console.error(err.message);
+  }
+})
+
+// Add Team
+app.post("/api/teams", async (req, res) => {
+  try {
+    const { name } = req.body;
+    const newTeam = await pool.query("INSERT INTO teams (name) VALUES ($1) RETURNING *", [name]);
+    
+    res.json(newTeam.rows[0]);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+// Edit Team
+app.put("/api/teams/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { name } = req.body;
+    const updateTeam = await pool.query("UPDATE teams SET name = $1 WHERE team_id = $2", [name, id]);
+
+    res.json("Team was updated");
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+// Delete Team
+app.delete("/api/teams/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const deleteTeam = await pool.query("DELETE FROM teams WHERE team_id = $1", [id]);
+
+    res.json("Team was deleted")
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+app.listen(PORT, () => {
+  console.log(`App running on port ${PORT}`);
 });
 
 // start();
