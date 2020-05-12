@@ -24,14 +24,14 @@ const LeagueContainer = () => {
   // Get all teams
   useEffect(() => {
     async function getTeams() {
-      const res = await fetch('http://localhost:3005/teams-test/');
+      const res = await fetch('http://localhost:5000/teams-test/');
       res
         .json()
         .then(res => setTeams(res))
     };
     
     // const getTeams = () => {
-    //   fetch('http://localhost:3005/api/teams/')
+    //   fetch('http://localhost:5000/api/teams/')
     //   .then(res => res.json())
     //   .then(res => setTeams(res))
     // };
@@ -42,7 +42,7 @@ const LeagueContainer = () => {
   // Get single team
   // useEffect(() => {
   //   async function getTeam(id) {
-  //     const res = await fetch(`http://localhost:3005/api/teams/${id}`);
+  //     const res = await fetch(`http://localhost:5000/api/teams/${id}`);
   //     res
   //       .json()
   //       .then(res => setTeam(res))
@@ -52,7 +52,7 @@ const LeagueContainer = () => {
   // }, []);
   
   const getTeam = id => {
-    fetch(`http://localhost:3005/teams-test/${id}`)
+    fetch(`http://localhost:5000/teams-test/${id}`)
     .then(res => res.json())
     .then(res => setTeam(res))
   };
@@ -74,7 +74,7 @@ const LeagueContainer = () => {
   // Get all fixtures
   useEffect(() => {
     const getFixtures = () => {
-      fetch('http://localhost:3005/api/fixtures/')
+      fetch('http://localhost:5000/api/fixtures/')
       .then(res => res.json())
       .then(res => setFixtures(res))
     };
@@ -84,7 +84,7 @@ const LeagueContainer = () => {
 
   // Get single fixture
   // const getFixture = id => {
-  //   fetch(`http://localhost:3005/api/fixtures/${id}`)
+  //   fetch(`http://localhost:5000/api/fixtures/${id}`)
   //   .then(res => res.json())
   //   .then(res => setFixture(res))
   // };
@@ -92,7 +92,7 @@ const LeagueContainer = () => {
   // // LEAGUE TABLE
   // useEffect(() => {
   //   const getLeagueTableTeams = () => {
-  //     fetch('http://localhost:3005/api/teams/')
+  //     fetch('http://localhost:5000/api/teams/')
   //     .then(res => res.json())
   //     .then(res => setLeagueTableTeams(res))
   //   };
@@ -176,7 +176,7 @@ const LeagueContainer = () => {
 };
 
 //   handleTeamEdit(updatedTeam) {
-//     fetch(`http://localhost:3005/api/teams/${updatedTeam.id}`, {
+//     fetch(`http://localhost:5000/api/teams/${updatedTeam.id}`, {
 //       method: 'PUT',
 //       headers: {
 //         accept: 'application/json',
@@ -184,7 +184,7 @@ const LeagueContainer = () => {
 //       },
 //       body: JSON.stringify(updatedTeam),
 //     }).then(() =>
-//     fetch('http://localhost:3005/api/teams')
+//     fetch('http://localhost:5000/api/teams')
 //       .then(res => res.json())
 //       .then(teams => this.setState({ teams: teams }))
 //     )

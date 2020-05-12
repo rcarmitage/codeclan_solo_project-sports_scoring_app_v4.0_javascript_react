@@ -1,75 +1,102 @@
 const express = require('express');
 const app = express();
-const PORT = 3005;
+const PORT = 5000;
 const cors = require('cors');
-const bodyParser = require('body-parser');
-const createRouter = require('./helpers/create_router.js');
-const {Client} = require('pg');
+// const bodyParser = require('body-parser');
+// const createRouter = require('./helpers/create_router.js');
+// const {Client} = require('pg');
 
-const client = new Client({
-  user: 'postgres',
-  host: 'localhost',
-  password: 'password',
-  database: 'sports_scoring_app_v4.0',
-  port: 5432
+// const client = new Client({
+//   user: 'postgres',
+//   host: 'localhost',
+//   password: 'password',
+//   database: 'sports_scoring_app_v4',
+//   port: 5432
+// });
+
+// Middleware
+app.use(cors());
+app.use(express.json());
+
+app.listen(PORT, function () {
+  console.log(`App running on port ${this.address.port}`);
 });
 
-start();
-async function start() {
-  await connect();
+// start();
+// async function start() {
+//   await connect();
   // const teams = await getTeams();
   // console.log(teams);
-}
+// }
 
-async function connect() {
-  try
-  {
-    await client.connect()
-    console.log("Connected successfully")
-    // const results = await client.query("SELECT * FROM teams")
-    // console.table(results.rows)
-  }
-  catch (ex)
-  {
-    console.log(`Failed to connect (async connect() function): ${ex}`)
-  }
+// async function connect() {
+//   try
+//   {
+//     await client.connect()
+//     console.log("Connected successfully")
+//     // const results = await client.query("SELECT * FROM teams")
+//     // console.table(results.rows)
+//   }
+//   catch (ex)
+//   {
+//     console.log(`Failed to connect (async connect() function): ${ex}`)
+//   }
   // finally
   // {
   //   await client.end()
   //   console.log("Client disconnected successfully")
   // }
-}
+// }
 
-async function getTeams() {
-  try
-  {
-    const results = await client.query("SELECT * FROM teams");
-    return results.rows;
-  }
-  catch (ex)
-  {
-    return [];
-  }
-};
+// async function getTeams() {
+//   try
+//   {
+//     const results = await client.query("SELECT * FROM teams");
+//     return results.rows;
+//   }
+//   catch (ex)
+//   {
+//     return [];
+//   }
+// };
 
-app.get("/teams-test", async (req, res) => {
-  const rows = await getTeams();
-  res.setHeader("content-type", "application/json");
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
-  res.send(JSON.stringify(rows));
-});
+// async function getTeam(id) {
+//   try
+//   {
+//     const results = await client.query("SELECT * FROM teams WHERE id = $1", [id]);
+//     return results.rows;
+//   }
+//   catch (ex)
+//   {
+//     return [];
+//   }
+// };
+
+// app.get("/teams-test", async (req, res) => {
+//   const rows = await getTeams();
+//   res.setHeader("content-type", "application/json");
+//   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+//   res.send(JSON.stringify(rows));
+// });
+
+// app.get('/teams-test/:id', async (req, res) => {
+//   const rows = await getTeam();
+//   res.setHeader("content-type", "application/json");
+//   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+//   res.send(JSON.stringify(rows));
+// });
 
 // require('dotenv').config();
 
 // const teams_model = require('./teams_model');
 
-app.use(express.json());
-app.use(function (req, res, next) {
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
-  res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Access-Control-Allow-Headers');
-  next();
-})
+// app.use(express.json());
+// app.use(function (req, res, next) {
+//   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+//   res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
+//   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Access-Control-Allow-Headers');
+//   next();
+// })
 
 // app.get('/', (req, res) => {
 //   teams_model.getTeams()
@@ -81,7 +108,7 @@ app.use(function (req, res, next) {
 //   })
 // })
 
-const teams = [];
+// const teams = [];
 
 // const teams = [
 //   {
@@ -140,7 +167,7 @@ const teams = [];
 //   }
 // ];
 
-const fixtures = [];
+// const fixtures = [];
 
 // const fixtures = [
 //   {
@@ -165,21 +192,19 @@ const fixtures = [];
 //   user: 'postgres',
 //   host: 'localhost',
 //   password: 'password',
-//   database: 'sports_scoring_app_v4.0'
+//   database: 'sports_scoring_app_v4'
 // });
 
-app.use(cors());
-app.use(bodyParser.json());
+// app.use(bodyParser.json());
 
-const teamsRouter = createRouter(teams);
-app.use('/api/teams', teamsRouter);
+// const teamsTestRouter = createRouter(teamsTest);
+// app.use('/teams-test', teamsTestRouter);
 
-const fixturesRouter = createRouter(fixtures);
-app.use('/api/fixtures', fixturesRouter);
+// const teamsRouter = createRouter(teams);
+// app.use('/api/teams', teamsRouter);
 
-app.listen(PORT, function () {
-  console.log(`App running on port ${ this.address().port }`);
-});
+// const fixturesRouter = createRouter(fixtures);
+// app.use('/api/fixtures', fixturesRouter);
 
 // module.exports = {
 //   pool
