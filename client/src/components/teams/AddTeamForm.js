@@ -14,7 +14,7 @@ const AddTeamForm = props => {
 
   const onChange = event => setTeam({ ...team, [event.target.name]: event.target.value });
 
-  const onSubmitForm = async (event) => {
+  const onSubmitTeam = async (event) => {
     event.preventDefault();
     try {
       const body = { name };
@@ -24,7 +24,7 @@ const AddTeamForm = props => {
         body: JSON.stringify(body)
       });
 
-      console.log(response);
+      window.location = "/teams";
     } catch (err) {
       console.error(err.message);
     };
@@ -40,7 +40,7 @@ const AddTeamForm = props => {
   // };
 
   return (
-    <form onSubmit={onSubmitForm}>
+    <form onSubmit={onSubmitTeam}>
       <label>Team Name: </label>
       <input type="text" name="name" value={name} onChange={onChange} />
       <button>Add Team</button>

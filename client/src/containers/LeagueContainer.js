@@ -22,14 +22,29 @@ const LeagueContainer = () => {
 
   // TEAMS
   // Get all teams
-  useEffect(() => {
-    async function getTeams() {
-      const res = await fetch("http://localhost:5000/api/teams/");
-      res
-        .json()
-        .then(res => setTeams(res))
-    };
+  // useEffect(() => {
+  //   async function getTeams() {
+  //     const res = await fetch("http://localhost:5000/api/teams/");
+  //     res
+  //       .json()
+  //       .then(res => setTeams(res))
+  //   };
     
+  //   getTeams();
+  // }, []);
+
+  const getTeams = async () => {
+    try {
+      const response = await fetch("http://localhost:5000/api/teams/");
+      const jsonData = await response.json();
+
+      setTeams(jsonData);
+    } catch (err) {
+      console.error(err.message);
+    };
+  };
+
+  useEffect(() => {
     getTeams();
   }, []);
 
@@ -52,9 +67,25 @@ const LeagueContainer = () => {
   };
 
   // CRUD operations
-  const addTeam = team => {
-    setTeams([ ...teams, team ])
-  }
+  // const addTeam = team => {
+  //   setTeams([ ...teams, team ])
+  // }
+
+  // const onSubmitTeam = async (event) => {
+  //   event.preventDefault();
+  //   try {
+  //     const body = { name };
+  //     const response = await fetch("http://localhost:5000/api/teams/", {
+  //       method: "POST",
+  //       headers: { "Content-Type": "application/json" },
+  //       body: JSON.stringify(body)
+  //     });
+
+  //     console.log(response);
+  //   } catch (err) {
+  //     console.error(err.message);
+  //   };
+  // };
 
   // const onTeamSubmit(newTeam)
 
@@ -62,6 +93,19 @@ const LeagueContainer = () => {
   // const deleteTeam = id => {
   //   setTeams(teams.filter(team => team.id !== id))
   // }
+
+    // Delete Team
+    const deleteTeam = async (id) => {
+      try {
+        const deleteTeam = await fetch(`http://localhost:5000/api/teams/${id}`, {
+          method: "DELETE",
+         });
+  
+         setTeams(teams.filter(team => team.team_id !== id));
+      } catch (err) {
+        console.error(err.message);
+      };
+    };
 
   // const updateTeam = (id, updatedTeam) => {
   //   setTeams(teams.map(team => (team.id === id ? updatedTeam : team)))
@@ -109,6 +153,7 @@ const LeagueContainer = () => {
             render={props => (
               <Teams
                 teams={teams}
+                deleteTeam={deleteTeam}
               />
             )}
           />
@@ -116,7 +161,8 @@ const LeagueContainer = () => {
             exact path="/teams/add-team"
             render={() =>
               <AddTeamForm
-                addTeam={addTeam}
+                // addTeam={addTeam}
+                // onSubmitTeam={onSubmitTeam}
               />
             }
           />

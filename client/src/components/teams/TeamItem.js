@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-const TeamItem = ({ team: { id, name } }) => {
+const TeamItem = ({ team: { id, name } }) => { 
   return (
     <Fragment>
       <div className="teams-container">
@@ -21,9 +21,9 @@ const TeamItem = ({ team: { id, name } }) => {
           <Link className="btn-edit-team" to={`/teams/${id}/edit`}>
             <button>Edit</button>
           </Link>
-          <Link className="btn-delete-team" to={`/teams/${id}/delete`}>
-            <button>Delete</button>
-          </Link>
+          <button className="btn-delete-team" onClick={() => deleteTeam(team.team_id)}>
+            Delete
+          </button>
         </div>
       
       </div>

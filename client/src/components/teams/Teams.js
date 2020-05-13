@@ -12,7 +12,7 @@ const Teams = ({ teams }) => {
           <button>Add a Team</button>
         </Link>
         {teams.map(team => (
-          <TeamItem key={team.id} team={team} />
+          <TeamItem key={team.team_id} team={team} />
         ))}
       </div>
     </Fragment>
