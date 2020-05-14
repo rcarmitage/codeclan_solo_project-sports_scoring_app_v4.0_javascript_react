@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import TeamItem from './TeamItem';
 import PropTypes from 'prop-types';
 
-const Teams = ({ teams }) => {
+const Teams = ({ teams, deleteTeam }) => {
   return (
     <Fragment>
       <div>

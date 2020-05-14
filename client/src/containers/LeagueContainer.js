@@ -101,7 +101,7 @@ const LeagueContainer = () => {
           method: "DELETE",
          });
   
-         setTeams(teams.filter(team => team.team_id !== id));
+        //  setTeams(teams.filter(team => team.team_id !== id));
       } catch (err) {
         console.error(err.message);
       };
