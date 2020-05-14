@@ -1,5 +1,6 @@
 const Pool = require('pg').Pool;
 
+// Connect to db
 const pool = new Pool({
   user: 'postgres',
   host: 'localhost',

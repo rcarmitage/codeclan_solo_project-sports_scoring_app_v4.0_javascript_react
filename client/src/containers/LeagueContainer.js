@@ -46,6 +46,7 @@ const LeagueContainer = () => {
 
   useEffect(() => {
     getTeams();
+    // eslint-disable-next-line
   }, []);
 
   // Get single team
@@ -121,6 +122,7 @@ const LeagueContainer = () => {
     };
     
     getFixtures();
+    // eslint-disable-next-line
   }, []);
 
   // Get single fixture
