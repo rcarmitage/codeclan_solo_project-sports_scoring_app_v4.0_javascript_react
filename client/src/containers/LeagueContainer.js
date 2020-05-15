@@ -35,22 +35,6 @@ const LeagueContainer = () => {
   //   getTeams();
   // }, []);
 
-  const getTeams = async () => {
-    try {
-      const response = await fetch('http://localhost:5000/api/teams/');
-      const jsonData = await response.json();
-
-      setTeams(jsonData);
-    } catch (err) {
-      console.error(err.message);
-    }
-  };
-
-  useEffect(() => {
-    getTeams();
-    // eslint-disable-next-line
-  }, []);
-
   // Get single team
   // useEffect(() => {
   //   async function getTeam(id) {
@@ -155,9 +139,7 @@ const LeagueContainer = () => {
             <Route
               exact
               path='/teams'
-              render={(props) => (
-                <Teams teams={teams} deleteTeam={deleteTeam} />
-              )}
+              render={(props) => <Teams deleteTeam={deleteTeam} />}
             />
             <Route
               exact
