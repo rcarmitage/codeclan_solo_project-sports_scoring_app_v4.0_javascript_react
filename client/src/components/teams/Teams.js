@@ -6,6 +6,8 @@ import LeagueContext from '../../context/league/leagueContext';
 const Teams = () => {
   const leagueContext = useContext(LeagueContext);
 
+  const { teams } = leagueContext;
+
   return (
     <Fragment>
       <div>
@@ -13,7 +15,7 @@ const Teams = () => {
         <Link to='/teams/add-team'>
           <button>Add a Team</button>
         </Link>
-        {leagueContext.teams.map((team) => (
+        {teams.map((team) => (
           <TeamItem key={team.team_id} team={team} />
         ))}
       </div>

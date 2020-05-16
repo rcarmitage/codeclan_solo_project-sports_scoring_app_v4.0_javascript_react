@@ -8,7 +8,7 @@ import {
   EDIT_TEAM,
   DELETE_TEAM,
 } from '../types';
-import Teams from '../../components/teams/Teams';
+// import Teams from '../../components/teams/Teams';
 
 const LeagueState = (props) => {
   const initialState = {

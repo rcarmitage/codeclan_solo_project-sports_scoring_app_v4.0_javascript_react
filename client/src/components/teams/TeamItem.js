@@ -29,7 +29,7 @@ const TeamItem = () => {
           </Link>
           <button
             className='btn-delete-team'
-            onClick={() => deleteTeam(team.team_id)}
+            onClick={() => deleteTeam(team_id)}
           >
             Delete
           </button>
