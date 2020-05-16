@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 // import PropTypes from 'prop-types';
 import LeagueContext from '../../context/league/leagueContext';
 
-const TeamItem = ({ team: name, team_id }) => {
+const TeamItem = ({ team: { team_id, name } }) => {
   const leagueContext = useContext(LeagueContext);
 
-  const { team, deleteTeam } = leagueContext;
+  const { deleteTeam } = leagueContext;
 
-  const { team_id, name } = team;
+  // const { team_id, name } = team;
 
   return (
     <Fragment>
