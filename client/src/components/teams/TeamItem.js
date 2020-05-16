@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 // import PropTypes from 'prop-types';
 import LeagueContext from '../../context/league/leagueContext';
 
-const TeamItem = () => {
+const TeamItem = ({ team: name, team_id }) => {
   const leagueContext = useContext(LeagueContext);
 
   const { team, deleteTeam } = leagueContext;
