@@ -1,17 +1,18 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment, useEffect, useContext } from 'react';
 // import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import LeagueContext from '../../context/league/leagueContext';
 
-const Team = ({ team, getTeam, match }) => {
+const Team = ({ match }) => {
+  const leagueContext = useContext(LeagueContext);
+
+  const { getTeam, team } = leagueContext;
+
   useEffect(() => {
     getTeam(match.params.id);
     // eslint-disable-next-line
   }, []);
 
-  const {
-    team_id,
-    name
-  } = team;
+  const { team_id, name } = team;
 
   return (
     <Fragment>
@@ -33,11 +34,6 @@ const Team = ({ team, getTeam, match }) => {
       </div> */}
     </Fragment>
   );
-};
-
-Team.propTypes = {
-  team: PropTypes.object.isRequired,
-  getTeam: PropTypes.func.isRequired
 };
 
 export default Team;

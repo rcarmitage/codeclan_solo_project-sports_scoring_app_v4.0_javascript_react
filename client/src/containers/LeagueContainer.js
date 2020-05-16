@@ -17,8 +17,6 @@ import ErrorPage from '../components/pages/ErrorPage';
 import LeagueState from '../context/league/LeagueState';
 
 const LeagueContainer = () => {
-  const [teams, setTeams] = useState([]);
-  const [team, setTeam] = useState({});
   const [fixtures, setFixtures] = useState([]);
   // const [leagueTableTeams, setLeagueTableTeams] = useState([]);
 
@@ -46,12 +44,6 @@ const LeagueContainer = () => {
 
   //   getTeam();
   // }, []);
-
-  const getTeam = (id) => {
-    fetch(`http://localhost:5000/api/teams/${id}`)
-      .then((res) => res.json())
-      .then((res) => setTeam(res));
-  };
 
   // CRUD operations
   // const addTeam = team => {
@@ -151,13 +143,7 @@ const LeagueContainer = () => {
                 />
               )}
             />
-            <Route
-              exact
-              path='/teams/:id'
-              render={(props) => (
-                <Team {...props} getTeam={getTeam} team={team} />
-              )}
-            />
+            <Route exact path='/teams/:id' component={Team} />
             <Route
               exact
               path='/teams/:id/edit'

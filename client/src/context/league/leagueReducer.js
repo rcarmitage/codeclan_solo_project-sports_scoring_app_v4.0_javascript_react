@@ -13,6 +13,11 @@ export default (state, action) => {
         ...state,
         teams: action.payload,
       };
+    case GET_TEAM:
+      return {
+        ...state,
+        team: action.payload,
+      };
     default:
       return state;
   }

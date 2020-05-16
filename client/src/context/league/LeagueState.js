@@ -39,6 +39,30 @@ const LeagueState = (props) => {
   }, []);
 
   // Get Single Team
+  // const getTeam = (id) => {
+  //   fetch(`http://localhost:5000/api/teams/${id}`)
+  //     .then((res) => res.json())
+  //     .then((res) => setTeam(res));
+  // };
+
+  const getTeam = async (id) => {
+    try {
+      const response = await fetch(`http://localhost:5000/api/teams/${id}`);
+      const jsonData = await response.json();
+
+      dispatch({
+        type: GET_TEAM,
+        payload: jsonData,
+      });
+    } catch (err) {
+      console.error(err.message);
+    }
+  };
+
+  // useEffect(() => {
+  //   getTeam();
+  //   // eslint-disable-next-line
+  // }, []);
 
   // Add Team
 
@@ -51,6 +75,7 @@ const LeagueState = (props) => {
       value={{
         teams: state.teams,
         team: state.team,
+        getTeam,
       }}
     >
       {props.children}
