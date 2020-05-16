@@ -20,7 +20,6 @@ const Team = ({ match }) => {
         <h4>Team (Team.js)</h4>
         <h3>Name: {name}</h3>
         <h3>ID: {team_id}</h3>
-        {/* <h5>params ID: {params.id}</h5> */}
         <p>(Played/Won/Lost to come from 'fixtures' table, Points = Won)</p>
         <p>(Fixtures to be listed here)</p>
       </div>

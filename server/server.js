@@ -14,9 +14,9 @@ app.use(express.json()); //req.body
 // ROUTES
 
 // Get All Teams
-app.get("/api/teams", async (req, res) => {
+app.get('/api/teams', async (req, res) => {
   try {
-    const allTeams = await pool.query("SELECT * FROM teams");
+    const allTeams = await pool.query('SELECT * FROM teams');
 
     res.json(allTeams.rows);
   } catch (err) {
@@ -25,23 +25,28 @@ app.get("/api/teams", async (req, res) => {
 });
 
 // Get Single Team
-app.get("/api/teams/:id", async (req, res) => {
+app.get('/api/teams/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    const team = await pool.query("SELECT * FROM teams WHERE team_id = $1", [id]);
+    const team = await pool.query('SELECT * FROM teams WHERE team_id = $1', [
+      id,
+    ]);
 
     res.json(team.rows[0]);
   } catch (err) {
     console.error(err.message);
   }
-})
+});
 
 // Add Team
-app.post("/api/teams", async (req, res) => {
+app.post('/api/teams', async (req, res) => {
   try {
     const { name } = req.body;
-    const newTeam = await pool.query("INSERT INTO teams (name) VALUES ($1) RETURNING *", [name]);
-    
+    const newTeam = await pool.query(
+      'INSERT INTO teams (name) VALUES ($1) RETURNING *',
+      [name]
+    );
+
     res.json(newTeam.rows[0]);
   } catch (err) {
     console.error(err.message);
@@ -49,25 +54,31 @@ app.post("/api/teams", async (req, res) => {
 });
 
 // Edit Team
-app.put("/api/teams/:id", async (req, res) => {
+app.put('/api/teams/:id', async (req, res) => {
   try {
     const { id } = req.params;
     const { name } = req.body;
-    const updateTeam = await pool.query("UPDATE teams SET name = $1 WHERE team_id = $2", [name, id]);
+    const updateTeam = await pool.query(
+      'UPDATE teams SET name = $1 WHERE team_id = $2',
+      [name, id]
+    );
 
-    res.json("Team was updated");
+    res.json('Team was updated');
   } catch (err) {
     console.error(err.message);
   }
 });
 
 // Delete Team
-app.delete("/api/teams/:id", async (req, res) => {
+app.delete('/api/teams/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    const deleteTeam = await pool.query("DELETE FROM teams WHERE team_id = $1", [id]);
+    const deleteTeam = await pool.query(
+      'DELETE FROM teams WHERE team_id = $1',
+      [id]
+    );
 
-    res.json("Team was deleted")
+    res.json('Team was deleted');
   } catch (err) {
     console.error(err.message);
   }
@@ -80,8 +91,8 @@ app.listen(PORT, () => {
 // start();
 // async function start() {
 //   await connect();
-  // const teams = await getTeams();
-  // console.log(teams);
+// const teams = await getTeams();
+// console.log(teams);
 // }
 
 // async function connect() {
@@ -96,11 +107,11 @@ app.listen(PORT, () => {
 //   {
 //     console.log(`Failed to connect (async connect() function): ${ex}`)
 //   }
-  // finally
-  // {
-  //   await client.end()
-  //   console.log("Client disconnected successfully")
-  // }
+// finally
+// {
+//   await client.end()
+//   console.log("Client disconnected successfully")
+// }
 // }
 
 // async function getTeams() {

@@ -21,31 +21,8 @@ const LeagueContainer = () => {
   // const [leagueTableTeams, setLeagueTableTeams] = useState([]);
 
   // TEAMS
-  // Get all teams
-  // useEffect(() => {
-  //   async function getTeams() {
-  //     const res = await fetch("http://localhost:5000/api/teams/");
-  //     res
-  //       .json()
-  //       .then(res => setTeams(res))
-  //   };
 
-  //   getTeams();
-  // }, []);
-
-  // Get single team
-  // useEffect(() => {
-  //   async function getTeam(id) {
-  //     const res = await fetch(`http://localhost:5000/api/teams/${id}`);
-  //     res
-  //       .json()
-  //       .then(res => setTeam(res))
-  //   };
-
-  //   getTeam();
-  // }, []);
-
-  // CRUD operations
+  // Add Team
   // const addTeam = team => {
   //   setTeams([ ...teams, team ])
   // }
@@ -68,23 +45,7 @@ const LeagueContainer = () => {
 
   // const onTeamSubmit(newTeam)
 
-  // const deleteTeam = id => {
-  //   setTeams(teams.filter(team => team.id !== id))
-  // }
-
-  // Delete Team
-  const deleteTeam = async (id) => {
-    try {
-      const deleteTeam = await fetch(`http://localhost:5000/api/teams/${id}`, {
-        method: 'DELETE',
-      });
-
-      //  setTeams(teams.filter(team => team.team_id !== id));
-    } catch (err) {
-      console.error(err.message);
-    }
-  };
-
+  // Edit Team
   // const updateTeam = (id, updatedTeam) => {
   //   setTeams(teams.map(team => (team.id === id ? updatedTeam : team)))
   // }
@@ -128,11 +89,7 @@ const LeagueContainer = () => {
           <NavBar id='nav' />
           <Switch>
             <Route exact path='/' component={Home} />
-            <Route
-              exact
-              path='/teams'
-              render={(props) => <Teams deleteTeam={deleteTeam} />}
-            />
+            <Route exact path='/teams' component={Teams} />
             <Route
               exact
               path='/teams/add-team'

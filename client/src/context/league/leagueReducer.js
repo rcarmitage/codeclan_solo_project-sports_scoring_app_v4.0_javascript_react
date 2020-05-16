@@ -18,6 +18,11 @@ export default (state, action) => {
         ...state,
         team: action.payload,
       };
+    case DELETE_TEAM:
+      return {
+        ...state,
+        teams: state.teams.filter((team) => team.team_id !== action.payload),
+      };
     default:
       return state;
   }

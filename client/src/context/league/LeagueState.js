@@ -39,12 +39,6 @@ const LeagueState = (props) => {
   }, []);
 
   // Get Single Team
-  // const getTeam = (id) => {
-  //   fetch(`http://localhost:5000/api/teams/${id}`)
-  //     .then((res) => res.json())
-  //     .then((res) => setTeam(res));
-  // };
-
   const getTeam = async (id) => {
     try {
       const response = await fetch(`http://localhost:5000/api/teams/${id}`);
@@ -59,16 +53,27 @@ const LeagueState = (props) => {
     }
   };
 
-  // useEffect(() => {
-  //   getTeam();
-  //   // eslint-disable-next-line
-  // }, []);
-
   // Add Team
 
   // Edit Team
 
   // Delete Team
+  const deleteTeam = async (id) => {
+    try {
+      const deleteTeam = await fetch(`http://localhost:5000/api/teams/${id}`, {
+        method: 'DELETE',
+      });
+
+      dispatch({
+        type: DELETE_TEAM,
+        payload: id,
+      });
+
+      window.location = '/teams';
+    } catch (err) {
+      console.error(err.message);
+    }
+  };
 
   return (
     <LeagueContext.Provider
@@ -76,6 +81,7 @@ const LeagueState = (props) => {
         teams: state.teams,
         team: state.team,
         getTeam,
+        deleteTeam,
       }}
     >
       {props.children}
