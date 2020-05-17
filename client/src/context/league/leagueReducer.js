@@ -4,6 +4,7 @@ import {
   ADD_TEAM,
   EDIT_TEAM,
   DELETE_TEAM,
+  TEAM_ERROR,
 } from '../types';
 
 export default (state, action) => {
@@ -18,10 +19,20 @@ export default (state, action) => {
         ...state,
         team: action.payload,
       };
+    case ADD_TEAM:
+      return {
+        ...state,
+        teams: [action.payload, ...state.teams],
+      };
     case DELETE_TEAM:
       return {
         ...state,
         teams: state.teams.filter((team) => team.team_id !== action.payload),
+      };
+    case TEAM_ERROR:
+      return {
+        ...state,
+        error: action.payload,
       };
     default:
       return state;

@@ -7,6 +7,7 @@ import {
   ADD_TEAM,
   EDIT_TEAM,
   DELETE_TEAM,
+  TEAM_ERROR,
 } from '../types';
 // import Teams from '../../components/teams/Teams';
 
@@ -14,11 +15,13 @@ const LeagueState = (props) => {
   const initialState = {
     teams: [],
     team: {},
+    error: null,
   };
 
+  const [team, setTeam] = useState(initialState);
   const [state, dispatch] = useReducer(LeagueReducer, initialState);
 
-  // Get All Teams
+  // GET ALL TEAMS
   const getTeams = async () => {
     try {
       const response = await fetch('http://localhost:5000/api/teams/');
@@ -36,9 +39,9 @@ const LeagueState = (props) => {
   useEffect(() => {
     getTeams();
     // eslint-disable-next-line
-  }, []);
+  }, [teams]);
 
-  // Get Single Team
+  // GET SINGLE TEAM
   const getTeam = async (id) => {
     try {
       const response = await fetch(`http://localhost:5000/api/teams/${id}`);
@@ -53,11 +56,35 @@ const LeagueState = (props) => {
     }
   };
 
-  // Add Team
+  // ADD TEAM
+  const addTeam = async (event) => {
+    event.preventDefault();
+    try {
+      const body = { name };
+      const response = await fetch('http://localhost:5000/api/teams/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
+      });
 
-  // Edit Team
+      dispatch({
+        type: ADD_TEAM,
+        payload: response,
+      });
 
-  // Delete Team
+      // TODO: Take this out, add alets for "Add a Fixture for the new Team" and "Go back to Teams page"
+      window.location = '/teams';
+    } catch (err) {
+      dispatch({
+        type: TEAM_ERROR,
+        payload: err.response.msg,
+      });
+    }
+  };
+
+  // EDIT TEAM
+
+  // DELETE TEAM
   const deleteTeam = async (id) => {
     try {
       const deleteTeam = await fetch(`http://localhost:5000/api/teams/${id}`, {
@@ -80,7 +107,9 @@ const LeagueState = (props) => {
       value={{
         teams: state.teams,
         team: state.team,
+        error: state.error,
         getTeam,
+        addTeam,
         deleteTeam,
       }}
     >
