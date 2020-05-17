@@ -1,4 +1,4 @@
-import React, { useReducer, useEffect } from 'react';
+import React, { useReducer, useEffect, useState } from 'react';
 import LeagueContext from './leagueContext';
 import LeagueReducer from './leagueReducer';
 import {
@@ -39,7 +39,7 @@ const LeagueState = (props) => {
   useEffect(() => {
     getTeams();
     // eslint-disable-next-line
-  }, [teams]);
+  }, []);
 
   // GET SINGLE TEAM
   const getTeam = async (id) => {
@@ -57,30 +57,30 @@ const LeagueState = (props) => {
   };
 
   // ADD TEAM
-  const addTeam = async (event) => {
-    event.preventDefault();
-    try {
-      const body = { name };
-      const response = await fetch('http://localhost:5000/api/teams/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(body),
-      });
+  // const addTeam = async (event) => {
+  //   event.preventDefault();
+  //   try {
+  //     const body = { name };
+  //     const response = await fetch('http://localhost:5000/api/teams/', {
+  //       method: 'POST',
+  //       headers: { 'Content-Type': 'application/json' },
+  //       body: JSON.stringify(body),
+  //     });
 
-      dispatch({
-        type: ADD_TEAM,
-        payload: response,
-      });
+  //     dispatch({
+  //       type: ADD_TEAM,
+  //       payload: response,
+  //     });
 
-      // TODO: Take this out, add alets for "Add a Fixture for the new Team" and "Go back to Teams page"
-      window.location = '/teams';
-    } catch (err) {
-      dispatch({
-        type: TEAM_ERROR,
-        payload: err.response.msg,
-      });
-    }
-  };
+  //     // TODO: Take this out, add alets for "Add a Fixture for the new Team" and "Go back to Teams page"
+  //     window.location = '/teams';
+  //   } catch (err) {
+  //     dispatch({
+  //       type: TEAM_ERROR,
+  //       payload: err.response.msg,
+  //     });
+  //   }
+  // };
 
   // EDIT TEAM
 
@@ -109,7 +109,7 @@ const LeagueState = (props) => {
         team: state.team,
         error: state.error,
         getTeam,
-        addTeam,
+        // addTeam,
         deleteTeam,
       }}
     >

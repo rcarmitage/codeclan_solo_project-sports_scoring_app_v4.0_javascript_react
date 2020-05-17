@@ -6,16 +6,20 @@ const AddTeamForm = (props) => {
 
   const { addTeam } = leagueContext;
 
-  const initialFormState = { name: '' };
+  // const initialFormState = { name: '' };
   // const [team, setTeam] = useState(initialFormState);
 
-  const { name } = team;
+  const [name, setName] = useState('');
 
-  const onChange = (event) =>
-    setTeam({ ...team, [event.target.name]: event.target.value });
+  // const { name } = team;
+
+  // const onChange = (event) =>
+  //   setTeam({ ...team, [event.target.name]: event.target.value });
 
   const handleSubmit = (event) => {
-    addTeam(team);
+    event.preventDefault();
+    addTeam();
+    setName('');
   };
 
   return (
@@ -26,8 +30,9 @@ const AddTeamForm = (props) => {
           <input
             type='text'
             name='name'
-            value={team.name}
-            onChange={onChange}
+            value={name}
+            onChange={(event) => setName(event.target.value)}
+            required
           />
           <button>Add Team</button>
         </form>
