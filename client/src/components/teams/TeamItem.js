@@ -1,14 +1,14 @@
 import React, { Fragment, useContext } from 'react';
 import { Link } from 'react-router-dom';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import LeagueContext from '../../context/league/leagueContext';
 
-const TeamItem = ({ team: { team_id, name } }) => {
+const TeamItem = ({ team }) => {
   const leagueContext = useContext(LeagueContext);
 
   const { deleteTeam } = leagueContext;
 
-  // const { team_id, name } = team;
+  const { team_id, name } = team;
 
   return (
     <Fragment>
@@ -39,8 +39,8 @@ const TeamItem = ({ team: { team_id, name } }) => {
   );
 };
 
-// TeamItem.propTypes = {
-//   team: PropTypes.object.isRequired,
-// };
+TeamItem.propTypes = {
+  team: PropTypes.object.isRequired,
+};
 
 export default TeamItem;
