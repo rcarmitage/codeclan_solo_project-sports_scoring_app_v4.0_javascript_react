@@ -57,6 +57,10 @@ const LeagueState = (props) => {
   };
 
   // ADD TEAM
+  const addTeam = (team) => {
+    dispatch({ type: ADD_TEAM, payload: team });
+  };
+
   // const addTeam = async (event) => {
   //   event.preventDefault();
   //   try {
@@ -109,7 +113,7 @@ const LeagueState = (props) => {
         team: state.team,
         error: state.error,
         getTeam,
-        // addTeam,
+        addTeam,
         deleteTeam,
       }}
     >

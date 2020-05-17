@@ -22,7 +22,7 @@ export default (state, action) => {
     case ADD_TEAM:
       return {
         ...state,
-        teams: [action.payload, ...state.teams],
+        teams: [...state.teams, action.payload],
       };
     case DELETE_TEAM:
       return {

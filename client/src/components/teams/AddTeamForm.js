@@ -4,34 +4,47 @@ import LeagueContext from '../../context/league/leagueContext';
 const AddTeamForm = () => {
   const leagueContext = useContext(LeagueContext);
 
-  const { dispatch } = leagueContext;
+  const [team, setTeam] = useState({ name: '' });
+
+  const { name } = team;
+
+  const onChange = (event) =>
+    setTeam({ ...team, [event.target.name]: event.target.value });
+
+  const onSubmit = (event) => {
+    event.preventDefault();
+    leagueContext.addTeam(team);
+    setTeam({ name: '' });
+  };
+
+  // const { dispatch } = leagueContext;
 
   // const initialFormState = { name: '' };
   // const [team, setTeam] = useState(initialFormState);
 
-  const [name, setName] = useState('');
+  // const [name, setName] = useState('');
 
   // const { name } = team;
 
   // const onChange = (event) =>
   //   setTeam({ ...team, [event.target.name]: event.target.value });
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    dispatch({ type: 'ADD-TEAM', team: { name } });
-    setName('');
-  };
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+  //   dispatch({ type: 'ADD-TEAM', team: { name } });
+  //   setName('');
+  // };
 
   return (
     <Fragment>
       <div className='add-team-form'>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={onSubmit}>
           <label>Team Name: </label>
           <input
             type='text'
             name='name'
             value={name}
-            onChange={(event) => setName(event.target.value)}
+            onChange={onChange}
             required
           />
           <button>Add Team</button>
