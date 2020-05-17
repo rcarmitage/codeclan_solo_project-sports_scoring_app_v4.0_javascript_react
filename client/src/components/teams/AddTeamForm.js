@@ -1,10 +1,10 @@
 import React, { Fragment, useState, useContext } from 'react';
 import LeagueContext from '../../context/league/leagueContext';
 
-const AddTeamForm = (props) => {
+const AddTeamForm = () => {
   const leagueContext = useContext(LeagueContext);
 
-  const { addTeam } = leagueContext;
+  const { dispatch } = leagueContext;
 
   // const initialFormState = { name: '' };
   // const [team, setTeam] = useState(initialFormState);
@@ -18,7 +18,7 @@ const AddTeamForm = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    addTeam();
+    dispatch({ type: 'ADD-TEAM', team: { name } });
     setName('');
   };
 

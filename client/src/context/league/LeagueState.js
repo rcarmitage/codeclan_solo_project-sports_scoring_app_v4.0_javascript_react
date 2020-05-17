@@ -18,7 +18,7 @@ const LeagueState = (props) => {
     error: null,
   };
 
-  const [team, setTeam] = useState(initialState);
+  // const [team, setTeam] = useState(initialState);
   const [state, dispatch] = useReducer(LeagueReducer, initialState);
 
   // GET ALL TEAMS
