@@ -5,7 +5,6 @@ import LeagueContext from '../../context/league/leagueContext';
 
 const Teams = () => {
   const leagueContext = useContext(LeagueContext);
-
   const { teams } = leagueContext;
 
   return (

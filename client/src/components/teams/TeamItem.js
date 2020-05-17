@@ -5,10 +5,13 @@ import LeagueContext from '../../context/league/leagueContext';
 
 const TeamItem = ({ team }) => {
   const leagueContext = useContext(LeagueContext);
-
   const { deleteTeam } = leagueContext;
 
   const { team_id, name } = team;
+
+  const onDelete = () => {
+    deleteTeam(team_id);
+  };
 
   return (
     <Fragment>
@@ -27,10 +30,7 @@ const TeamItem = ({ team }) => {
           <Link className='btn-edit-team' to={`/teams/${team_id}/edit`}>
             <button>Edit</button>
           </Link>
-          <button
-            className='btn-delete-team'
-            onClick={() => deleteTeam(team_id)}
-          >
+          <button className='btn-delete-team' onClick={onDelete}>
             Delete
           </button>
         </div>
