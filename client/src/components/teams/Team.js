@@ -1,11 +1,11 @@
 import React, { Fragment, useEffect, useContext } from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import LeagueContext from '../../context/league/leagueContext';
 
 const Team = ({ match }) => {
   const leagueContext = useContext(LeagueContext);
 
-  const { getTeam, team } = leagueContext;
+  const { team, getTeam, deleteTeam } = leagueContext;
 
   useEffect(() => {
     getTeam(match.params.id);
@@ -13,6 +13,10 @@ const Team = ({ match }) => {
   }, []);
 
   const { team_id, name } = team;
+
+  const onDelete = () => {
+    deleteTeam(team_id);
+  };
 
   return (
     <Fragment>
@@ -23,14 +27,14 @@ const Team = ({ match }) => {
         <p>(Played/Won/Lost to come from 'fixtures' table, Points = Won)</p>
         <p>(Fixtures to be listed here)</p>
       </div>
-      {/* <div>
-        <Link to={`/teams/${team.id}/edit`}>
+      <div>
+        <Link to={`/teams/${team_id}/edit`}>
           <button>Edit</button>
         </Link>
-        <Link to={`/teams/${team.id}/delete`}>
-          <button>Delete</button>
-        </Link>
-      </div> */}
+        <button className='btn-delete-team' onClick={onDelete}>
+          Delete
+        </button>
+      </div>
     </Fragment>
   );
 };
