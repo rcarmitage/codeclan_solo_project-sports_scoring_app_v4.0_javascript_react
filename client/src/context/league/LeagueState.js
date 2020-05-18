@@ -119,6 +119,31 @@ const LeagueState = (props) => {
   };
 
   // EDIT TEAM
+  const editTeam = async (team) => {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+
+    try {
+      const response = await axios.put(
+        `http://localhost:5000/api/teams/${id}`,
+        team,
+        config
+      );
+
+      dispatch({
+        type: EDIT_TEAM,
+        payload: response.data,
+      });
+    } catch (error) {
+      dispatch({
+        type: TEAM_ERROR,
+        payload: error.response.msg,
+      });
+    }
+  };
 
   // DELETE TEAM
   const deleteTeam = async (id) => {
@@ -155,6 +180,7 @@ const LeagueState = (props) => {
         error: state.error,
         getTeam,
         addTeam,
+        editTeam,
         deleteTeam,
         setCurrentTeam,
         clearCurrentTeam,

@@ -26,6 +26,13 @@ export default (state, action) => {
         ...state,
         teams: [...state.teams, action.payload],
       };
+    case EDIT_TEAM:
+      return {
+        ...state,
+        teams: state.teams.map((team) =>
+          team._id === action.payload._id ? action.payload : team
+        ),
+      };
     case DELETE_TEAM:
       return {
         ...state,
