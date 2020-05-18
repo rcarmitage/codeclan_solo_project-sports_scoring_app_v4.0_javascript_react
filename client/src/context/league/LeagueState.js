@@ -7,6 +7,8 @@ import {
   ADD_TEAM,
   EDIT_TEAM,
   DELETE_TEAM,
+  SET_CURRENT,
+  CLEAR_CURRENT,
   TEAM_ERROR,
 } from '../types';
 // import Teams from '../../components/teams/Teams';
@@ -15,6 +17,7 @@ const LeagueState = (props) => {
   const initialState = {
     teams: [],
     team: {},
+    currentTeam: null,
     error: null,
   };
 
@@ -57,34 +60,46 @@ const LeagueState = (props) => {
   };
 
   // ADD TEAM
-  const addTeam = (team) => {
-    dispatch({ type: ADD_TEAM, payload: team });
-  };
-
-  // const addTeam = async (event) => {
-  //   event.preventDefault();
-  //   try {
-  //     const body = { name };
-  //     const response = await fetch('http://localhost:5000/api/teams/', {
-  //       method: 'POST',
-  //       headers: { 'Content-Type': 'application/json' },
-  //       body: JSON.stringify(body),
-  //     });
-
-  //     dispatch({
-  //       type: ADD_TEAM,
-  //       payload: response,
-  //     });
-
-  //     // TODO: Take this out, add alets for "Add a Fixture for the new Team" and "Go back to Teams page"
-  //     window.location = '/teams';
-  //   } catch (err) {
-  //     dispatch({
-  //       type: TEAM_ERROR,
-  //       payload: err.response.msg,
-  //     });
+  // const addTeam = async (team) => {
+  //   const config = {
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     }
   //   }
+
+  //   try {
+  //     const response = await
+  //   } catch (error) {
+
+  //   }
+
+  //   dispatch({ type: ADD_TEAM, payload: team });
   // };
+
+  const addTeam = async (team) => {
+    // event.preventDefault();
+    try {
+      const body = { team };
+      const response = await fetch('http://localhost:5000/api/teams/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
+      });
+
+      dispatch({
+        type: ADD_TEAM,
+        payload: response,
+      });
+
+      // TODO: Take this out, add alets for "Add a Fixture for the new Team" and "Go back to Teams page"
+      window.location = '/teams';
+    } catch (err) {
+      dispatch({
+        type: TEAM_ERROR,
+        payload: err.response.msg,
+      });
+    }
+  };
 
   // EDIT TEAM
 
@@ -106,15 +121,28 @@ const LeagueState = (props) => {
     }
   };
 
+  // SET CURRENT TEAM
+  const setCurrentTeam = (team) => {
+    dispatch({ type: SET_CURRENT, payload: team });
+  };
+
+  // CLEAR CURRENT TEAM
+  const clearCurrentTeam = () => {
+    dispatch({ type: CLEAR_CURRENT });
+  };
+
   return (
     <LeagueContext.Provider
       value={{
         teams: state.teams,
         team: state.team,
+        currentTeam: state.currentTeam,
         error: state.error,
         getTeam,
         addTeam,
         deleteTeam,
+        setCurrentTeam,
+        clearCurrentTeam,
       }}
     >
       {props.children}

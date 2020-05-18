@@ -1,154 +1,39 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import LeagueContext from '../../context/league/leagueContext';
 
-const EditTeamForm = props => {
+const EditTeamForm = (props) => {
+  const leagueContext = useContext(LeagueContext);
+  const { currentTeam, setCurrentTeam } = leagueContext;
+
   const [team, setTeam] = useState(props.currentTeam);
 
   useEffect(() => {
-    setTeam(props.currentTeam)
-  },
-  [props]
-  )
+    setTeam(props.currentTeam);
+  }, [props]);
 
-  const handleInputChange = event => {
-    const { name, value } = event.target
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
 
-    setTeam({ ...team, [name]: value })
-  }
+    setTeam({ ...team, [name]: value });
+  };
 
   return (
     <form
-      onSubmit={event => {
+      onSubmit={(event) => {
         event.preventDefault();
-        props.updateTeam(team.id, team)
+        props.updateTeam(team.id, team);
       }}
     >
-      <label>Name: </label>
-      <input type="text" name="name" value={team.name} onChange={handleInputChange} />
-      <label>Played: </label>
-      <input type="number" name="played" value={team.played} onChange={handleInputChange} />
-      <label>Won: </label>
-      <input type="number" name="won" value={team.won} onChange={handleInputChange} />
-      <label>Lost: </label>
-      <input type="number" name="lost" value={team.lost} onChange={handleInputChange} />
-      <label>Points: </label>
-      <input type="number" name="points" value={team.points} onChange={handleInputChange} />
-      <label>Slug (team name + id, snake case): </label>
-      <input type="text" name="slug" value={team.slug} onChange={handleInputChange} />
+      {/* <label>Name: </label>
+      <input
+        type='text'
+        name='name'
+        value={name}
+        onChange={handleInputChange}
+      /> */}
       <button>Update Team</button>
     </form>
-  )
-}
-
-// class EditTeamForm extends Component {
-//   constructor(props) {
-//     super(props);
-
-//     this.state = {
-//       id: this.props.team.id,
-//       name: this.props.team.name,
-//       played: this.props.team.played,
-//       won: this.props.team.won,
-//       lost: this.props.team.lost,
-//       points: this.props.team.points,
-//       slug: this.props.team.slug
-//     }
-//     this.handleSubmit = this.handleSubmit.bind(this);
-//     // this.handleIdChange = this.handleIdChange.bind(this);
-//     this.handleNameChange = this.handleNameChange.bind(this);
-//     this.handlePlayedChange = this.handlePlayedChange.bind(this);
-//     this.handleWonChange = this.handleWonChange.bind(this);
-//     this.handleLostChange = this.handleLostChange.bind(this);
-//     this.handlePointsChange = this.handlePointsChange.bind(this);
-//     this.handleSlugChange = this.handleSlugChange.bind(this);
-//   }
-
-//   handleSubmit(event) {
-//     event.preventDefault();
-//     const id = this.props.team.id;
-//     const name = this.state.name.trim();
-//     const played = this.state.played.toString();
-//     const won = this.state.won.toString();
-//     const lost = this.state.lost.toString();
-//     const points = this.state.points.toString();
-//     const slug = this.state.slug.trim();
-//     this.props.onTeamEdit({
-//       id: id,
-//       name: name,
-//       played: played,
-//       won: won,
-//       lost: lost,
-//       points: points,
-//       slug: slug
-//     })
-//   }
-
-//   handleNameChange(event) {
-//     this.setState({
-//       name: event.target.value
-//     })
-//   }
-
-//   handlePlayedChange(event) {
-//     this.setState({
-//       played: event.target.value
-//     })
-//   }
-
-//   handleWonChange(event) {
-//     this.setState({
-//       won: event.target.value
-//     })
-//   }
-
-//   handleLostChange(event) {
-//     this.setState({
-//       lost: event.target.value
-//     })
-//   }
-
-//   handlePointsChange(event) {
-//     this.setState({
-//       points: event.target.value
-//     })
-//   }
-
-//   handleSlugChange(event) {
-//     this.setState({
-//       slug: event.target.value
-//     })
-//   }
-
-//   render() {
-//     return (
-//       <form onSubmit={this.handleSubmit}>
-//       <label>
-//         Name:
-//         <input type="text" value={this.state.name} onChange={this.handleNameChange} />
-//       </label>
-//       <label>
-//         Played: 
-//         <input type="number" value={this.state.played} onChange={this.handlePlayedChange} />
-//       </label>
-//       <label>
-//         Won:
-//         <input type="number" value={this.state.won} onChange={this.handleWonChange} />
-//       </label>
-//       <label>
-//         Lost:
-//         <input type="number" value={this.state.lost} onChange={this.handleLostChange} />
-//       </label>
-//       <label>
-//         Points:
-//         <input type="number" value={this.state.points} onChange={this.handlePointsChange} />
-//       </label>
-//       <label>
-//         Slug (team name + id, snake case):
-//         <input type="text" value={this.state.slug} onChange={this.handleSlugChange} />
-//       </label>
-//       <button type="submit" value="Post">Update Team</button>
-//       </form>
-//     )
-//   }
-// }
+  );
+};
 
 export default EditTeamForm;

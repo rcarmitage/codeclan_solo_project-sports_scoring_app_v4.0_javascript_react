@@ -4,6 +4,8 @@ import {
   ADD_TEAM,
   EDIT_TEAM,
   DELETE_TEAM,
+  SET_CURRENT,
+  CLEAR_CURRENT,
   TEAM_ERROR,
 } from '../types';
 
@@ -28,6 +30,16 @@ export default (state, action) => {
       return {
         ...state,
         teams: state.teams.filter((team) => team.team_id !== action.payload),
+      };
+    case SET_CURRENT:
+      return {
+        ...state,
+        currentTeam: action.payload,
+      };
+    case CLEAR_CURRENT:
+      return {
+        ...state,
+        currentTeam: null,
       };
     case TEAM_ERROR:
       return {
