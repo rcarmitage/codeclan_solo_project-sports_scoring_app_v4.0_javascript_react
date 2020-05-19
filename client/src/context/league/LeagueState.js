@@ -8,8 +8,8 @@ import {
   ADD_TEAM,
   EDIT_TEAM,
   DELETE_TEAM,
-  SET_CURRENT,
-  CLEAR_CURRENT,
+  SET_CURRENT_TEAM,
+  CLEAR_CURRENT_TEAM,
   TEAM_ERROR,
 } from '../types';
 // import Teams from '../../components/teams/Teams';
@@ -119,31 +119,31 @@ const LeagueState = (props) => {
   };
 
   // EDIT TEAM
-  const editTeam = async (team) => {
-    const config = {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    };
+  // const editTeam = async (team) => {
+  //   const config = {
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //   };
 
-    try {
-      const response = await axios.put(
-        `http://localhost:5000/api/teams/${id}`,
-        team,
-        config
-      );
+  //   try {
+  //     const response = await axios.put(
+  //       `http://localhost:5000/api/teams/${team_id}`,
+  //       team,
+  //       config
+  //     );
 
-      dispatch({
-        type: EDIT_TEAM,
-        payload: response.data,
-      });
-    } catch (error) {
-      dispatch({
-        type: TEAM_ERROR,
-        payload: error.response.msg,
-      });
-    }
-  };
+  //     dispatch({
+  //       type: EDIT_TEAM,
+  //       payload: response.data,
+  //     });
+  //   } catch (error) {
+  //     dispatch({
+  //       type: TEAM_ERROR,
+  //       payload: error.response.msg,
+  //     });
+  //   }
+  // };
 
   // DELETE TEAM
   const deleteTeam = async (id) => {
@@ -163,12 +163,12 @@ const LeagueState = (props) => {
 
   // SET CURRENT TEAM
   const setCurrentTeam = (team) => {
-    dispatch({ type: SET_CURRENT, payload: team });
+    dispatch({ type: SET_CURRENT_TEAM, payload: team });
   };
 
   // CLEAR CURRENT TEAM
   const clearCurrentTeam = () => {
-    dispatch({ type: CLEAR_CURRENT });
+    dispatch({ type: CLEAR_CURRENT_TEAM });
   };
 
   return (
@@ -180,7 +180,7 @@ const LeagueState = (props) => {
         error: state.error,
         getTeam,
         addTeam,
-        editTeam,
+        // editTeam,
         deleteTeam,
         setCurrentTeam,
         clearCurrentTeam,

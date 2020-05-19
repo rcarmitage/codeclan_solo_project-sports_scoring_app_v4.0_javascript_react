@@ -5,7 +5,7 @@ import LeagueContext from '../../context/league/leagueContext';
 
 const TeamItem = ({ team }) => {
   const leagueContext = useContext(LeagueContext);
-  const { deleteTeam } = leagueContext;
+  const { deleteTeam, setCurrentTeam } = leagueContext;
 
   const { team_id, name } = team;
 
@@ -28,7 +28,7 @@ const TeamItem = ({ team }) => {
 
         <div className='teams-container-bottom-row'>
           <Link className='btn-edit-team' to={`/teams/${team_id}/edit`}>
-            <button>Edit</button>
+            <button onClick={() => setCurrentTeam(team)}>Edit</button>
           </Link>
           <button className='btn-delete-team' onClick={onDelete}>
             Delete

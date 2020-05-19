@@ -38,12 +38,12 @@ export default (state, action) => {
         ...state,
         teams: state.teams.filter((team) => team.team_id !== action.payload),
       };
-    case SET_CURRENT:
+    case SET_CURRENT_TEAM:
       return {
         ...state,
         currentTeam: action.payload,
       };
-    case CLEAR_CURRENT:
+    case CLEAR_CURRENT_TEAM:
       return {
         ...state,
         currentTeam: null,
