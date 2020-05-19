@@ -120,6 +120,39 @@ const LeagueState = (props) => {
   };
 
   // EDIT TEAM
+  // const editTeam = (team) => {
+  //   dispatch({ type: EDIT_TEAM, payload: team });
+  // };
+
+  const editTeam = async (team) => {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+
+    try {
+      const response = await axios.put(
+        `http://localhost:5000/api/teams/${team.team_id}`,
+        team,
+        config
+      );
+
+      dispatch({
+        type: EDIT_TEAM,
+        payload: response.data,
+      });
+
+      // TODO: Take this out, add alets for "Add a Fixture for the new Team" and "Go back to Teams page"
+      window.location = '/teams';
+    } catch (error) {
+      dispatch({
+        type: TEAM_ERROR,
+        payload: error.response.msg,
+      });
+    }
+  };
+
   // const editTeam = async (team) => {
   //   const config = {
   //     headers: {
@@ -181,7 +214,7 @@ const LeagueState = (props) => {
         error: state.error,
         getTeam,
         addTeam,
-        // editTeam,
+        editTeam,
         deleteTeam,
         setCurrentTeam,
         clearCurrentTeam,

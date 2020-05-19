@@ -6,7 +6,6 @@ import Home from '../components/pages/Home';
 import Teams from '../components/teams/Teams';
 import Team from '../components/teams/Team';
 import TeamForm from '../components/teams/TeamForm';
-// import EditTeamForm from '../components/teams/EditTeamForm';
 import Fixtures from '../components/fixtures/Fixtures';
 // import AddFixture from '../components/fixtures/AddFixture';
 // import EditFixture from '../components/fixtures/EditFixture';

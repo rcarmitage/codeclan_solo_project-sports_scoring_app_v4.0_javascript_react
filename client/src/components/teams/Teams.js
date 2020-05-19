@@ -7,6 +7,10 @@ const Teams = () => {
   const leagueContext = useContext(LeagueContext);
   const { teams } = leagueContext;
 
+  if (teams.length === 0) {
+    return <h5>Please add a Team</h5>;
+  }
+
   return (
     <Fragment>
       <div>

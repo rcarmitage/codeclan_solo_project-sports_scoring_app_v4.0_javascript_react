@@ -1,10 +1,10 @@
 import React, { Fragment, useState, useContext, useEffect } from 'react';
 import LeagueContext from '../../context/league/leagueContext';
 
-const AddTeamForm = () => {
+const TeamForm = () => {
   const leagueContext = useContext(LeagueContext);
 
-  const { addTeam, currentTeam } = leagueContext;
+  const { addTeam, editTeam, currentTeam, clearCurrentTeam } = leagueContext;
 
   useEffect(() => {
     if (currentTeam !== null) {
@@ -23,8 +23,16 @@ const AddTeamForm = () => {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    leagueContext.addTeam(team);
+    if (currentTeam === null) {
+      addTeam(team);
+    } else {
+      editTeam(team);
+    }
     setTeam({ name: '' });
+  };
+
+  const clearAll = () => {
+    clearCurrentTeam();
   };
 
   // const { dispatch } = leagueContext;
@@ -47,6 +55,9 @@ const AddTeamForm = () => {
 
   return (
     <Fragment>
+      <div>
+        <h4>{currentTeam ? 'Edit Team' : 'Add Team'}</h4>
+      </div>
       <div className='add-team-form'>
         <form onSubmit={onSubmit}>
           <label>Team Name: </label>
@@ -57,9 +68,17 @@ const AddTeamForm = () => {
             onChange={onChange}
             required
           />
-          <button>Add Team</button>
+          <input
+            type='submit'
+            value={currentTeam ? 'Update Team' : 'Add Team'}
+          />
         </form>
       </div>
+      {currentTeam && (
+        <div>
+          <button onClick={clearAll}>Clear</button>
+        </div>
+      )}
       <div>
         <p>
           (Think about how to suggest adding Fixtures for the new Team: possibly
@@ -76,4 +95,4 @@ const AddTeamForm = () => {
   );
 };
 
-export default AddTeamForm;
+export default TeamForm;

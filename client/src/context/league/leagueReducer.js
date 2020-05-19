@@ -30,7 +30,7 @@ export default (state, action) => {
       return {
         ...state,
         teams: state.teams.map((team) =>
-          team._id === action.payload._id ? action.payload : team
+          team.team_id === action.payload.team_id ? action.payload : team
         ),
       };
     case DELETE_TEAM:
