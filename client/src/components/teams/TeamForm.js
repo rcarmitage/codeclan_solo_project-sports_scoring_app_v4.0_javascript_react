@@ -35,24 +35,6 @@ const TeamForm = () => {
     clearCurrentTeam();
   };
 
-  // const { dispatch } = leagueContext;
-
-  // const initialFormState = { name: '' };
-  // const [team, setTeam] = useState(initialFormState);
-
-  // const [name, setName] = useState('');
-
-  // const { name } = team;
-
-  // const onChange = (event) =>
-  //   setTeam({ ...team, [event.target.name]: event.target.value });
-
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   dispatch({ type: 'ADD-TEAM', team: { name } });
-  //   setName('');
-  // };
-
   return (
     <Fragment>
       <div>
