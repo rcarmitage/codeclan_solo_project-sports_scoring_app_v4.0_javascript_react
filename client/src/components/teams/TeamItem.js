@@ -5,12 +5,13 @@ import LeagueContext from '../../context/league/leagueContext';
 
 const TeamItem = ({ team }) => {
   const leagueContext = useContext(LeagueContext);
-  const { deleteTeam, setCurrentTeam } = leagueContext;
+  const { deleteTeam, setCurrentTeam, clearCurrentTeam } = leagueContext;
 
   const { team_id, name } = team;
 
   const onDelete = () => {
     deleteTeam(team_id);
+    clearCurrentTeam();
   };
 
   return (

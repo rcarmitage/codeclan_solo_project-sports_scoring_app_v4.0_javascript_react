@@ -1,8 +1,18 @@
-import React, { Fragment, useState, useContext } from 'react';
+import React, { Fragment, useState, useContext, useEffect } from 'react';
 import LeagueContext from '../../context/league/leagueContext';
 
 const AddTeamForm = () => {
   const leagueContext = useContext(LeagueContext);
+
+  const { addTeam, currentTeam } = leagueContext;
+
+  useEffect(() => {
+    if (currentTeam !== null) {
+      setTeam(currentTeam);
+    } else {
+      setTeam({ name: '' });
+    }
+  }, [leagueContext, currentTeam]);
 
   const [team, setTeam] = useState({ name: '' });
 

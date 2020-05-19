@@ -5,8 +5,8 @@ import NavBar from '../components/layout/NavBar';
 import Home from '../components/pages/Home';
 import Teams from '../components/teams/Teams';
 import Team from '../components/teams/Team';
-import AddTeamForm from '../components/teams/AddTeamForm';
-import EditTeamForm from '../components/teams/EditTeamForm';
+import TeamForm from '../components/teams/TeamForm';
+// import EditTeamForm from '../components/teams/EditTeamForm';
 import Fixtures from '../components/fixtures/Fixtures';
 // import AddFixture from '../components/fixtures/AddFixture';
 // import EditFixture from '../components/fixtures/EditFixture';
@@ -94,7 +94,7 @@ const LeagueContainer = () => {
               exact
               path='/teams/add-team'
               render={() => (
-                <AddTeamForm
+                <TeamForm
                 // addTeam={addTeam}
                 // onSubmitTeam={onSubmitTeam}
                 />
@@ -105,7 +105,7 @@ const LeagueContainer = () => {
               exact
               path='/teams/:id/edit'
               render={() => (
-                <EditTeamForm
+                <TeamForm
                 // updateTeam={updateTeam}
                 />
               )}

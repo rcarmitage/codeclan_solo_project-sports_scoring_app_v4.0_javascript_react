@@ -4,8 +4,8 @@ import {
   ADD_TEAM,
   EDIT_TEAM,
   DELETE_TEAM,
-  SET_CURRENT,
-  CLEAR_CURRENT,
+  SET_CURRENT_TEAM,
+  CLEAR_CURRENT_TEAM,
   TEAM_ERROR,
 } from '../types';
 

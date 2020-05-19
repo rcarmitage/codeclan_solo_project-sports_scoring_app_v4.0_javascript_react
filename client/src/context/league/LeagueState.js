@@ -42,6 +42,7 @@ const LeagueState = (props) => {
 
   useEffect(() => {
     getTeams();
+    // clearCurrentTeam();
     // eslint-disable-next-line
   }, []);
 
