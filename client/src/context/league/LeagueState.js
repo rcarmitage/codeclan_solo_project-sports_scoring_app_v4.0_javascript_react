@@ -234,6 +234,39 @@ const LeagueState = (props) => {
     // eslint-disable-next-line
   }, []);
 
+  // GET SINGLE FIXTURE - I don't plan to need this so I'll leave it for now
+
+  // ADD FIXTURE
+  const addFixture = async (fixture) => {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+
+    try {
+      const response = await axios.post(
+        'http://localhost:5000/api/fixtures',
+        fixture,
+        config
+      );
+
+      dispatch({
+        type: ADD_FIXTURE,
+        payload: response.data,
+      });
+
+      window.location = '/fixtures';
+    } catch (error) {
+      dispatch({
+        type: FIXTURE_ERROR,
+        payload: error.response.msg,
+      });
+    }
+
+    dispatch({ type: ADD_FIXTURE, payload: fixture });
+  };
+
   return (
     <LeagueContext.Provider
       value={{
@@ -251,7 +284,7 @@ const LeagueState = (props) => {
         setCurrentTeam,
         clearCurrentTeam,
         // getFixture,
-        // addFixture,
+        addFixture,
         // editFixture,
         // deleteFixture,
         // setCurrentFixture,

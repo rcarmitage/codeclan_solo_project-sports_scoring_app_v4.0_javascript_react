@@ -7,6 +7,7 @@ import Teams from '../components/teams/Teams';
 import Team from '../components/teams/Team';
 import TeamForm from '../components/teams/TeamForm';
 import Fixtures from '../components/fixtures/Fixtures';
+import FixtureForm from '../components/fixtures/FixtureForm';
 // import AddFixture from '../components/fixtures/AddFixture';
 // import EditFixture from '../components/fixtures/EditFixture';
 // import LeagueTable from '../components/league_table/LeagueTable';
@@ -16,7 +17,7 @@ import ErrorPage from '../components/pages/ErrorPage';
 import LeagueState from '../context/league/LeagueState';
 
 const LeagueContainer = () => {
-  const [fixtures, setFixtures] = useState([]);
+  // const [fixtures, setFixtures] = useState([]);
   // const [leagueTableTeams, setLeagueTableTeams] = useState([]);
 
   // TEAMS
@@ -51,16 +52,16 @@ const LeagueContainer = () => {
 
   // FIXTURES
   // Get all fixtures
-  useEffect(() => {
-    const getFixtures = () => {
-      fetch('http://localhost:5000/api/fixtures/')
-        .then((res) => res.json())
-        .then((res) => setFixtures(res));
-    };
+  // useEffect(() => {
+  //   const getFixtures = () => {
+  //     fetch('http://localhost:5000/api/fixtures/')
+  //       .then((res) => res.json())
+  //       .then((res) => setFixtures(res));
+  //   };
 
-    getFixtures();
-    // eslint-disable-next-line
-  }, []);
+  //   getFixtures();
+  //   // eslint-disable-next-line
+  // }, []);
 
   // Get single fixture
   // const getFixture = id => {
@@ -89,16 +90,7 @@ const LeagueContainer = () => {
           <Switch>
             <Route exact path='/' component={Home} />
             <Route exact path='/teams' component={Teams} />
-            <Route
-              exact
-              path='/teams/add-team'
-              render={() => (
-                <TeamForm
-                // addTeam={addTeam}
-                // onSubmitTeam={onSubmitTeam}
-                />
-              )}
-            />
+            <Route exact path='/teams/add-team' render={() => <TeamForm />} />
             <Route exact path='/teams/:id' component={Team} />
             <Route
               exact
@@ -120,6 +112,11 @@ const LeagueContainer = () => {
               />
             )}
           /> */}
+            <Route
+              exact
+              path='/fixtures/add-fixture'
+              render={() => <FixtureForm />}
+            />
             <Route
               exact
               path='/league-table'

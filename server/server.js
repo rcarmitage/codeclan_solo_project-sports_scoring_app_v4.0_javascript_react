@@ -97,7 +97,7 @@ app.get('/api/fixtures', async (req, res) => {
   }
 });
 
-// Get Single Team
+// Get Single Fixture
 app.get('/api/fixtures/:id', async (req, res) => {
   try {
     const { id } = req.params;
@@ -112,13 +112,13 @@ app.get('/api/fixtures/:id', async (req, res) => {
   }
 });
 
-// Add Team
+// Add Fixture
 app.post('/api/fixtures', async (req, res) => {
   try {
-    const { name } = req.body;
+    const { team_a_id, team_b_id, winning_team_id, losing_team_id } = req.body;
     const newFixture = await pool.query(
-      'INSERT INTO fixtures (name) VALUES ($1) RETURNING *',
-      [name]
+      'INSERT INTO fixtures (team_a_id, team_b_id, winning_team_id, losing_team_id) VALUES ($1, $2, $3, $4) RETURNING *',
+      [team_a_id, team_b_id, winning_team_id, losing_team_id]
     );
 
     res.json(newFixture.rows[0]);
@@ -127,7 +127,7 @@ app.post('/api/fixtures', async (req, res) => {
   }
 });
 
-// Edit Team
+// Edit Fixture
 app.put('/api/fixtures/:id', async (req, res) => {
   try {
     const { id } = req.params;
@@ -143,7 +143,7 @@ app.put('/api/fixtures/:id', async (req, res) => {
   }
 });
 
-// Delete Team
+// Delete Fixture
 app.delete('/api/fixtures/:id', async (req, res) => {
   try {
     const { id } = req.params;

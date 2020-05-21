@@ -15,22 +15,27 @@ const FixtureForm = () => {
     if (currentFixture !== null) {
       setFixture(currentFixture);
     } else {
-      setFixture({ team_a: '', team_b: '', winning_team: '', losing_team: '' });
+      setFixture({
+        team_a_id: '',
+        team_b_id: '',
+        winning_team_id: '',
+        losing_team_id: '',
+      });
     }
   }, [leagueContext, currentFixture]);
 
   const [fixture, setFixture] = useState({
-    team_a: '',
-    team_b: '',
-    winning_team: '',
-    losing_team: '',
+    team_a_id: '',
+    team_b_id: '',
+    winning_team_id: '',
+    losing_team_id: '',
   });
 
-  const { team_a, team_b, winning_team, losing_team } = team;
+  const { team_a_id, team_b_id, winning_team_id, losing_team_id } = fixture;
 
   // Needs more done to make it work
   const onChange = (event) =>
-    setTeam({ ...fixture, [event.target.name]: event.target.value });
+    setFixture({ ...fixture, [event.target.name]: event.target.value });
 
   const onSubmit = (event) => {
     event.preventDefault();
@@ -39,7 +44,12 @@ const FixtureForm = () => {
     } else {
       editFixture(fixture);
     }
-    setFixture({ team_a: '', team_b: '', winning_team: '', losing_team: '' });
+    setFixture({
+      team_a_id: '',
+      team_b_id: '',
+      winning_team_id: '',
+      losing_team_id: '',
+    });
   };
 
   const clearAll = () => {
@@ -49,45 +59,45 @@ const FixtureForm = () => {
   return (
     <Fragment>
       <div>
-        <h4>{currentTeam ? 'Edit Fixture' : 'Add Fixture'}</h4>
+        <h4>{currentFixture ? 'Edit Fixture' : 'Add Fixture'}</h4>
       </div>
       <div className='fixture-form'>
         <form onSubmit={onSubmit}>
           <label>Team A: </label>
           <input
             type='text'
-            name='team_a'
-            value={team_a}
+            name='team_a_id'
+            value={team_a_id}
             onChange={onChange}
             required
           />
           <label>Team B: </label>
           <input
             type='text'
-            name='team_b'
-            value={team_b}
+            name='team_b_id'
+            value={team_b_id}
             onChange={onChange}
             required
           />
           <label>Winning Team: </label>
           <input
             type='text'
-            name='winning_team'
-            value={winning_team}
+            name='winning_team_id'
+            value={winning_team_id}
             onChange={onChange}
             required
           />
           <label>Losing Team: </label>
           <input
             type='text'
-            name='losing_team'
-            value={losing_team}
+            name='losing_team_id'
+            value={losing_team_id}
             onChange={onChange}
             required
           />
           <input
             type='submit'
-            value={currentTeam ? 'Update Fixture' : 'Add Fixture'}
+            value={currentFixture ? 'Update Fixture' : 'Add Fixture'}
           />
         </form>
       </div>
@@ -100,4 +110,4 @@ const FixtureForm = () => {
   );
 };
 
-export default TeamForm;
+export default FixtureForm;
