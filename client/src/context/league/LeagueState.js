@@ -287,13 +287,30 @@ const LeagueState = (props) => {
         payload: response.data,
       });
 
-      // TODO: Take this out, add alets for "Add a Fixture for the new Team" and "Go back to Teams page"
       window.location = '/fixtures';
     } catch (error) {
       dispatch({
         type: FIXTURE_ERROR,
         payload: error.response.msg,
       });
+    }
+  };
+
+  const deleteFixture = async (id) => {
+    try {
+      const deleteFixture = await fetch(
+        `http://localhost:5000/api/fixtures/${id}`,
+        {
+          method: 'DELETE',
+        }
+      );
+
+      dispatch({
+        type: DELETE_FIXTURE,
+        payload: id,
+      });
+    } catch (err) {
+      console.error(err.message);
     }
   };
 
@@ -326,7 +343,7 @@ const LeagueState = (props) => {
         // getFixture,
         addFixture,
         editFixture,
-        // deleteFixture,
+        deleteFixture,
         setCurrentFixture,
         clearCurrentFixture,
       }}
