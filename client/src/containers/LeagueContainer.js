@@ -109,11 +109,7 @@ const LeagueContainer = () => {
                 />
               )}
             />
-            <Route
-              exact
-              path='/fixtures'
-              render={(props) => <Fixtures fixtures={fixtures} />}
-            />
+            <Route exact path='/fixtures' component={Fixtures} />} />
             {/* <Route
             exact path="/fixtures/:id"
             render={props => (

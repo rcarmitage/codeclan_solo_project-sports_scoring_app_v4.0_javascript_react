@@ -11,6 +11,14 @@ import {
   SET_CURRENT_TEAM,
   CLEAR_CURRENT_TEAM,
   TEAM_ERROR,
+  GET_FIXTURES,
+  GET_FIXTURE,
+  ADD_FIXTURE,
+  EDIT_FIXTURE,
+  DELETE_FIXTURE,
+  SET_CURRENT_FIXTURE,
+  CLEAR_CURRENT_FIXTURE,
+  FIXTURE_ERROR,
 } from '../types';
 // import Teams from '../../components/teams/Teams';
 
@@ -19,11 +27,15 @@ const LeagueState = (props) => {
     teams: [],
     team: {},
     currentTeam: null,
+    fixtures: [],
+    fixture: {},
+    currentFixture: null,
     error: null,
   };
 
-  // const [team, setTeam] = useState(initialState);
   const [state, dispatch] = useReducer(LeagueReducer, initialState);
+
+  // FUNCTIONS - TEAMS
 
   // GET ALL TEAMS
   const getTeams = async () => {
@@ -42,7 +54,6 @@ const LeagueState = (props) => {
 
   useEffect(() => {
     getTeams();
-    // clearCurrentTeam();
     // eslint-disable-next-line
   }, []);
 
@@ -120,10 +131,6 @@ const LeagueState = (props) => {
   };
 
   // EDIT TEAM
-  // const editTeam = (team) => {
-  //   dispatch({ type: EDIT_TEAM, payload: team });
-  // };
-
   const editTeam = async (team) => {
     const config = {
       headers: {
@@ -205,12 +212,37 @@ const LeagueState = (props) => {
     dispatch({ type: CLEAR_CURRENT_TEAM });
   };
 
+  // FUNCTIONS - FIXTURES
+
+  // GET ALL FIXTURES
+  const getTeams = async () => {
+    try {
+      const response = await fetch('http://localhost:5000/api/teams/');
+      const jsonData = await response.json();
+
+      dispatch({
+        type: GET_TEAMS,
+        payload: jsonData,
+      });
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
+
+  useEffect(() => {
+    getTeams();
+    // eslint-disable-next-line
+  }, []);
+
   return (
     <LeagueContext.Provider
       value={{
         teams: state.teams,
         team: state.team,
         currentTeam: state.currentTeam,
+        fixtures: state.fixtures,
+        fixture: state.fixture,
+        currentFixture: state.currentFixture,
         error: state.error,
         getTeam,
         addTeam,
@@ -218,6 +250,12 @@ const LeagueState = (props) => {
         deleteTeam,
         setCurrentTeam,
         clearCurrentTeam,
+        // getFixture,
+        // addFixture,
+        // editFixture,
+        // deleteFixture,
+        // setCurrentFixture,
+        // clearCurrentFixture,
       }}
     >
       {props.children}

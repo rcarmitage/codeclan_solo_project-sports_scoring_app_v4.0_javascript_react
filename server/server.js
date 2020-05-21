@@ -11,7 +11,7 @@ const pool = require('./db');
 app.use(cors());
 app.use(express.json()); //req.body
 
-// ROUTES
+// ROUTES - TEAMS
 
 // Get All Teams
 app.get('/api/teams', async (req, res) => {
@@ -79,6 +79,80 @@ app.delete('/api/teams/:id', async (req, res) => {
     );
 
     res.json('Team was deleted');
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+// ROUTES - FIXTURES
+
+// Get All Fixtures
+app.get('/api/fixtures', async (req, res) => {
+  try {
+    const allFixtures = await pool.query('SELECT * FROM fixtures');
+
+    res.json(allFixtures.rows);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+// Get Single Team
+app.get('/api/fixtures/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const fixture = await pool.query(
+      'SELECT * FROM fixture WHERE fixture_id = $1',
+      [id]
+    );
+
+    res.json(fixture.rows[0]);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+// Add Team
+app.post('/api/fixtures', async (req, res) => {
+  try {
+    const { name } = req.body;
+    const newFixture = await pool.query(
+      'INSERT INTO fixtures (name) VALUES ($1) RETURNING *',
+      [name]
+    );
+
+    res.json(newFixture.rows[0]);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+// Edit Team
+app.put('/api/fixtures/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { name } = req.body;
+    const updateFixture = await pool.query(
+      'UPDATE fixtures SET name = $1 WHERE fixture_id = $2',
+      [name, id]
+    );
+
+    res.json('Fixture was updated');
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+// Delete Team
+app.delete('/api/fixtures/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const deleteFixture = await pool.query(
+      'DELETE FROM fixtures WHERE fixture_id = $1',
+      [id]
+    );
+
+    res.json('Fixture was deleted');
   } catch (err) {
     console.error(err.message);
   }

@@ -3,9 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import LeagueContext from '../../context/league/leagueContext';
 
-const FixtureItem = ({
-  fixture: { fixture_id, team_a, team_b, winning_team },
-}) => {
+const FixtureItem = ({ fixture }) => {
   const leagueContext = useContext(LeagueContext);
   const {
     deleteFixture,
