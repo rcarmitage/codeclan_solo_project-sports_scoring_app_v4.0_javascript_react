@@ -90,17 +90,9 @@ const LeagueContainer = () => {
           <Switch>
             <Route exact path='/' component={Home} />
             <Route exact path='/teams' component={Teams} />
-            <Route exact path='/teams/add-team' render={() => <TeamForm />} />
             <Route exact path='/teams/:id' component={Team} />
-            <Route
-              exact
-              path='/teams/:id/edit'
-              render={() => (
-                <TeamForm
-                // updateTeam={updateTeam}
-                />
-              )}
-            />
+            <Route exact path='/teams/add-team' render={() => <TeamForm />} />
+            <Route exact path='/teams/:id/edit' render={() => <TeamForm />} />
             <Route exact path='/fixtures' component={Fixtures} />} />
             {/* <Route
             exact path="/fixtures/:id"
@@ -115,6 +107,11 @@ const LeagueContainer = () => {
             <Route
               exact
               path='/fixtures/add-fixture'
+              render={() => <FixtureForm />}
+            />
+            <Route
+              exact
+              path='/fixtures/:id/edit'
               render={() => <FixtureForm />}
             />
             <Route

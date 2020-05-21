@@ -267,6 +267,46 @@ const LeagueState = (props) => {
     dispatch({ type: ADD_FIXTURE, payload: fixture });
   };
 
+  // EDIT FIXTURE
+  const editFixture = async (fixture) => {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+
+    try {
+      const response = await axios.put(
+        `http://localhost:5000/api/fixtures/${fixture.fixture_id}`,
+        fixture,
+        config
+      );
+
+      dispatch({
+        type: EDIT_FIXTURE,
+        payload: response.data,
+      });
+
+      // TODO: Take this out, add alets for "Add a Fixture for the new Team" and "Go back to Teams page"
+      window.location = '/fixtures';
+    } catch (error) {
+      dispatch({
+        type: FIXTURE_ERROR,
+        payload: error.response.msg,
+      });
+    }
+  };
+
+  // SET CURRENT FIXTURE
+  const setCurrentFixture = (fixture) => {
+    dispatch({ type: SET_CURRENT_FIXTURE, payload: fixture });
+  };
+
+  // CLEAR CURRENT FIXTURE
+  const clearCurrentFixture = () => {
+    dispatch({ type: CLEAR_CURRENT_FIXTURE });
+  };
+
   return (
     <LeagueContext.Provider
       value={{
@@ -285,10 +325,10 @@ const LeagueState = (props) => {
         clearCurrentTeam,
         // getFixture,
         addFixture,
-        // editFixture,
+        editFixture,
         // deleteFixture,
-        // setCurrentFixture,
-        // clearCurrentFixture,
+        setCurrentFixture,
+        clearCurrentFixture,
       }}
     >
       {props.children}

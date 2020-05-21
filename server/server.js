@@ -131,10 +131,10 @@ app.post('/api/fixtures', async (req, res) => {
 app.put('/api/fixtures/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    const { name } = req.body;
+    const { team_a_id, team_b_id, winning_team_id, losing_team_id } = req.body;
     const updateFixture = await pool.query(
-      'UPDATE fixtures SET name = $1 WHERE fixture_id = $2',
-      [name, id]
+      'UPDATE fixtures SET (team_a_id, team_b_id, winning_team_id, losing_team_id) = ($1, $2, $3, $4) WHERE fixture_id = $5',
+      [team_a_id, team_b_id, winning_team_id, losing_team_id, id]
     );
 
     res.json('Fixture was updated');
