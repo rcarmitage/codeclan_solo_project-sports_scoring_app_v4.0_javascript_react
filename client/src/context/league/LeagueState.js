@@ -215,13 +215,13 @@ const LeagueState = (props) => {
   // FUNCTIONS - FIXTURES
 
   // GET ALL FIXTURES
-  const getTeams = async () => {
+  const getFixtures = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/teams/');
+      const response = await fetch('http://localhost:5000/api/fixtures/');
       const jsonData = await response.json();
 
       dispatch({
-        type: GET_TEAMS,
+        type: GET_FIXTURES,
         payload: jsonData,
       });
     } catch (error) {
@@ -230,7 +230,7 @@ const LeagueState = (props) => {
   };
 
   useEffect(() => {
-    getTeams();
+    getFixtures();
     // eslint-disable-next-line
   }, []);
 

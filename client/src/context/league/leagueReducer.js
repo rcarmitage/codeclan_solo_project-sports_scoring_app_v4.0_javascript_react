@@ -7,6 +7,14 @@ import {
   SET_CURRENT_TEAM,
   CLEAR_CURRENT_TEAM,
   TEAM_ERROR,
+  GET_FIXTURES,
+  GET_FIXTURE,
+  ADD_FIXTURE,
+  EDIT_FIXTURE,
+  DELETE_FIXTURE,
+  SET_CURRENT_FIXTURE,
+  CLEAR_CURRENT_FIXTURE,
+  FIXTURE_ERROR,
 } from '../types';
 
 export default (state, action) => {
@@ -49,6 +57,52 @@ export default (state, action) => {
         currentTeam: null,
       };
     case TEAM_ERROR:
+      return {
+        ...state,
+        error: action.payload,
+      };
+    case GET_FIXTURES:
+      return {
+        ...state,
+        fixtures: action.payload,
+      };
+    case GET_FIXTURE:
+      return {
+        ...state,
+        fixture: action.payload,
+      };
+    case ADD_FIXTURE:
+      return {
+        ...state,
+        fixtures: [...state.fixtures, action.payload],
+      };
+    case EDIT_FIXTURE:
+      return {
+        ...state,
+        fixtures: state.fixtures.map((fixture) =>
+          fixture.fixture_id === action.payload.fixture_id
+            ? action.payload
+            : fixture
+        ),
+      };
+    case DELETE_FIXTURE:
+      return {
+        ...state,
+        fixtures: state.fixtures.filter(
+          (fixture) => fixture.fixture_id !== action.payload
+        ),
+      };
+    case SET_CURRENT_FIXTURE:
+      return {
+        ...state,
+        currentFixture: action.payload,
+      };
+    case CLEAR_CURRENT_FIXTURE:
+      return {
+        ...state,
+        currentFixture: null,
+      };
+    case FIXTURE_ERROR:
       return {
         ...state,
         error: action.payload,
