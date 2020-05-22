@@ -11,6 +11,8 @@ const pool = require('./db');
 app.use(cors());
 app.use(express.json()); //req.body
 
+// const team_a_id = ;
+
 // ROUTES - TEAMS
 
 // Get All Teams
@@ -97,30 +99,35 @@ app.get('/api/fixtures', async (req, res) => {
   }
 });
 
-// Get Single Fixture
-app.get('/api/fixtures/:id', async (req, res) => {
-  try {
-    const { id } = req.params;
-    const fixture = await pool.query(
-      'SELECT * FROM fixtures WHERE fixture_id = $1',
-      [id]
-    );
+// Get Single Fixture - as a function so I can use it to get Team data
+const getFixture = () => {
+  app.get('/api/fixtures/:id', async (req, res) => {
+    try {
+      const { id } = req.params;
+      const fixture = await pool.query(
+        'SELECT * FROM fixtures WHERE fixture_id = $1',
+        [id]
+      );
 
-    res.json(fixture.rows[0]);
-  } catch (error) {
-    console.error(error.message);
-  }
-});
+      res.json(fixture.rows[0]);
+    } catch (error) {
+      console.error(error.message);
+    }
+  });
+};
 
 // Get Team A Name
 app.get('/api/fixtures/:id/team-a', async (req, res) => {
   try {
-    const { team_a_id } = req.params;
-    const team_a = await pool.query('SELECT * FROM teams WHERE team_id = $1', [
-      team_a_id,
-    ]);
+    getFixture(id);
 
-    res.json(team_a.rows[0]);
+    // const { id } = req.params;
+    // const { team_a_id } = id(team_a_id);
+    // const team_a = await pool.query('SELECT * FROM teams WHERE team_id = $1', [
+    //   team_a_id,
+    // ]);
+
+    // res.json(team_a.rows[0]);
   } catch (error) {
     console.error(error.message);
   }
