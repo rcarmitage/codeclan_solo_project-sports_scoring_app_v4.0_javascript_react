@@ -19,8 +19,8 @@ app.get('/api/teams', async (req, res) => {
     const allTeams = await pool.query('SELECT * FROM teams');
 
     res.json(allTeams.rows);
-  } catch (err) {
-    console.error(err.message);
+  } catch (error) {
+    console.error(error.message);
   }
 });
 
@@ -33,8 +33,8 @@ app.get('/api/teams/:id', async (req, res) => {
     ]);
 
     res.json(team.rows[0]);
-  } catch (err) {
-    console.error(err.message);
+  } catch (error) {
+    console.error(error.message);
   }
 });
 
@@ -48,8 +48,8 @@ app.post('/api/teams', async (req, res) => {
     );
 
     res.json(newTeam.rows[0]);
-  } catch (err) {
-    console.error(err.message);
+  } catch (error) {
+    console.error(error.message);
   }
 });
 
@@ -64,8 +64,8 @@ app.put('/api/teams/:id', async (req, res) => {
     );
 
     res.json('Team was updated');
-  } catch (err) {
-    console.error(err.message);
+  } catch (error) {
+    console.error(error.message);
   }
 });
 
@@ -79,8 +79,8 @@ app.delete('/api/teams/:id', async (req, res) => {
     );
 
     res.json('Team was deleted');
-  } catch (err) {
-    console.error(err.message);
+  } catch (error) {
+    console.error(error.message);
   }
 });
 
@@ -92,8 +92,8 @@ app.get('/api/fixtures', async (req, res) => {
     const allFixtures = await pool.query('SELECT * FROM fixtures');
 
     res.json(allFixtures.rows);
-  } catch (err) {
-    console.error(err.message);
+  } catch (error) {
+    console.error(error.message);
   }
 });
 
@@ -102,13 +102,27 @@ app.get('/api/fixtures/:id', async (req, res) => {
   try {
     const { id } = req.params;
     const fixture = await pool.query(
-      'SELECT * FROM fixture WHERE fixture_id = $1',
+      'SELECT * FROM fixtures WHERE fixture_id = $1',
       [id]
     );
 
     res.json(fixture.rows[0]);
-  } catch (err) {
-    console.error(err.message);
+  } catch (error) {
+    console.error(error.message);
+  }
+});
+
+// Get Team A Name
+app.get('/api/fixtures/:id/team-a', async (req, res) => {
+  try {
+    const { team_a_id } = req.params;
+    const team_a = await pool.query('SELECT * FROM teams WHERE team_id = $1', [
+      team_a_id,
+    ]);
+
+    res.json(team_a.rows[0]);
+  } catch (error) {
+    console.error(error.message);
   }
 });
 
@@ -122,8 +136,8 @@ app.post('/api/fixtures', async (req, res) => {
     );
 
     res.json(newFixture.rows[0]);
-  } catch (err) {
-    console.error(err.message);
+  } catch (error) {
+    console.error(error.message);
   }
 });
 
@@ -138,8 +152,8 @@ app.put('/api/fixtures/:id', async (req, res) => {
     );
 
     res.json('Fixture was updated');
-  } catch (err) {
-    console.error(err.message);
+  } catch (error) {
+    console.error(error.message);
   }
 });
 
@@ -153,8 +167,8 @@ app.delete('/api/fixtures/:id', async (req, res) => {
     );
 
     res.json('Fixture was deleted');
-  } catch (err) {
-    console.error(err.message);
+  } catch (error) {
+    console.error(error.message);
   }
 });
 

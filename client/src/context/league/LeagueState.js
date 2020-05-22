@@ -30,6 +30,10 @@ const LeagueState = (props) => {
     fixtures: [],
     fixture: {},
     currentFixture: null,
+    teamA: null,
+    teamB: null,
+    winningTeam: null,
+    losingTeam: null,
     error: null,
   };
 
@@ -197,8 +201,8 @@ const LeagueState = (props) => {
         type: DELETE_TEAM,
         payload: id,
       });
-    } catch (err) {
-      console.error(err.message);
+    } catch (error) {
+      console.error(error.message);
     }
   };
 
@@ -309,8 +313,8 @@ const LeagueState = (props) => {
         type: DELETE_FIXTURE,
         payload: id,
       });
-    } catch (err) {
-      console.error(err.message);
+    } catch (error) {
+      console.error(error.message);
     }
   };
 
@@ -323,6 +327,26 @@ const LeagueState = (props) => {
   const clearCurrentFixture = () => {
     dispatch({ type: CLEAR_CURRENT_FIXTURE });
   };
+
+  // GET TEAM A NAME
+  const getTeamA = async () => {
+    try {
+    } catch (error) {}
+  };
+
+  // const getTeam = async (id) => {
+  //   try {
+  //     const response = await fetch(`http://localhost:5000/api/teams/${id}`);
+  //     const jsonData = await response.json();
+
+  //     dispatch({
+  //       type: GET_TEAM,
+  //       payload: jsonData,
+  //     });
+  //   } catch (error) {
+  //     console.error(error.message);
+  //   }
+  // };
 
   return (
     <LeagueContext.Provider
