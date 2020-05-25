@@ -349,8 +349,15 @@ const LeagueState = (props) => {
   //   WHERE id = $1
 
   // SET TEAM A
-  const setTeamA = (team_a_id) => {
-    dispatch({ type: SET_TEAM_A, payload: team_a_id });
+  const setTeamA = (teams, team_a_id) => {
+    // Get teams array of objects, which has been called earlier with useEffect
+    // getTeams();
+
+    // Filter teams searching for team_a_id in team_id, set to teamAData
+    const teamAData = teams.filter((team) => team.team_id == team_a_id);
+
+    // Dispatch
+    dispatch({ type: SET_TEAM_A, payload: teamAData });
   };
 
   // const getTeam = async (id) => {

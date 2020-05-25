@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import LeagueContext from '../../context/league/leagueContext';
 
-const FixtureItem = ({ fixture, team }) => {
+const FixtureItem = ({ fixture, teams }) => {
   const leagueContext = useContext(LeagueContext);
   const {
     deleteFixture,
@@ -12,7 +12,7 @@ const FixtureItem = ({ fixture, team }) => {
     setTeamA,
   } = leagueContext;
 
-  const { fixture_id, team_a_id, team_b_id, winning_team_id } = fixture;
+  const { fixture_id, team_a_id, team_b_id, winning_team_id, teamA } = fixture;
   // const { team_id, name } = team;
 
   const onDelete = () => {
@@ -20,17 +20,15 @@ const FixtureItem = ({ fixture, team }) => {
     clearCurrentFixture();
   };
 
-  const teamA = (team_a_id) => {
-    // Get team_a_id from the fixture
-    // Use it to find the relevant team in teams array in Context
-    // Set this as teamA object
+  const getTeamA = (team_a_id) => {
+    setTeamA(team_a_id);
   };
 
   return (
     <Fragment>
       <div className='fixtures-container'>
         <div className='fixtures-container-top-row'>
-          <p className='team-a'>{team_a_id}</p>
+          <p className='team-a'>{teamA.name}</p>
           <p className='vs'>vs</p>
           <p className='team-b'>{team_b_id}</p>
         </div>

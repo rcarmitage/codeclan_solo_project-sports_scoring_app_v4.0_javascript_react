@@ -14,6 +14,7 @@ import {
   DELETE_FIXTURE,
   SET_CURRENT_FIXTURE,
   CLEAR_CURRENT_FIXTURE,
+  SET_TEAM_A,
   FIXTURE_ERROR,
 } from '../types';
 
@@ -102,7 +103,7 @@ export default (state, action) => {
         ...state,
         currentFixture: null,
       };
-    case SET_CURRENT_FIXTURE:
+    case SET_TEAM_A:
       return {
         ...state,
         teamA: action.payload,
