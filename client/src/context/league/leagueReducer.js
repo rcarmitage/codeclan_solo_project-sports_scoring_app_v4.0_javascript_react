@@ -102,6 +102,11 @@ export default (state, action) => {
         ...state,
         currentFixture: null,
       };
+    case SET_CURRENT_FIXTURE:
+      return {
+        ...state,
+        teamA: action.payload,
+      };
     case FIXTURE_ERROR:
       return {
         ...state,

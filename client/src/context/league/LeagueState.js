@@ -18,6 +18,7 @@ import {
   DELETE_FIXTURE,
   SET_CURRENT_FIXTURE,
   CLEAR_CURRENT_FIXTURE,
+  SET_TEAM_A,
   FIXTURE_ERROR,
 } from '../types';
 // import Teams from '../../components/teams/Teams';
@@ -239,6 +240,7 @@ const LeagueState = (props) => {
   }, []);
 
   // GET SINGLE FIXTURE - I don't plan to need this so I'll leave it for now
+  // TEAM NAMES - Running getFixture will return an object with ids for team_a, team_b, winning_team and losing_team
 
   // ADD FIXTURE
   const addFixture = async (fixture) => {
@@ -329,9 +331,26 @@ const LeagueState = (props) => {
   };
 
   // GET TEAM A NAME
-  const getTeamA = async () => {
-    try {
-    } catch (error) {}
+  // const getTeamA = async () => {
+  //   try {
+  //     const response = await fetch(`http://localhost:5000/api/fixtures/${id}.team_a_id`);
+  //     const jsonData = await response.json();
+
+  //     dispatch({
+  //       type: GET_TEAM_A,
+  //       payload: jsonData,
+  //     });
+  //   } catch (error) {
+  //     console.error(error.message);
+  //   }
+  // };
+
+  // SELECT * FROM teams
+  //   WHERE id = $1
+
+  // SET TEAM A
+  const setTeamA = (team_a_id) => {
+    dispatch({ type: SET_TEAM_A, payload: team_a_id });
   };
 
   // const getTeam = async (id) => {
@@ -357,6 +376,7 @@ const LeagueState = (props) => {
         fixtures: state.fixtures,
         fixture: state.fixture,
         currentFixture: state.currentFixture,
+        teamA: state.teamA,
         error: state.error,
         getTeam,
         addTeam,
@@ -370,6 +390,7 @@ const LeagueState = (props) => {
         deleteFixture,
         setCurrentFixture,
         clearCurrentFixture,
+        setTeamA,
       }}
     >
       {props.children}

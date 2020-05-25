@@ -3,19 +3,27 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import LeagueContext from '../../context/league/leagueContext';
 
-const FixtureItem = ({ fixture }) => {
+const FixtureItem = ({ fixture, team }) => {
   const leagueContext = useContext(LeagueContext);
   const {
     deleteFixture,
     setCurrentFixture,
     clearCurrentFixture,
+    setTeamA,
   } = leagueContext;
 
   const { fixture_id, team_a_id, team_b_id, winning_team_id } = fixture;
+  // const { team_id, name } = team;
 
   const onDelete = () => {
     deleteFixture(fixture_id);
     clearCurrentFixture();
+  };
+
+  const teamA = (team_a_id) => {
+    // Get team_a_id from the fixture
+    // Use it to find the relevant team in teams array in Context
+    // Set this as teamA object
   };
 
   return (

@@ -116,18 +116,22 @@ const getFixture = () => {
   });
 };
 
-// Get Team A Name
+// Get Team A
 app.get('/api/fixtures/:id/team-a', async (req, res) => {
   try {
+    // Get single fixture as an object
     getFixture(id);
 
+    // Get team_a_id
     // const { id } = req.params;
     // const { team_a_id } = id(team_a_id);
-    // const team_a = await pool.query('SELECT * FROM teams WHERE team_id = $1', [
-    //   team_a_id,
-    // ]);
 
-    // res.json(team_a.rows[0]);
+    // Use this to search the teams db and return a team_a object, which is then accessed via the route above
+    const team_a = await pool.query('SELECT * FROM teams WHERE team_id = $1', [
+      team_a_id,
+    ]);
+
+    res.json(team_a.rows[0]);
   } catch (error) {
     console.error(error.message);
   }
