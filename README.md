@@ -72,9 +72,9 @@ I did not do extensive planning before beginning on version 4 for three reasons:
 
 1. I had the MVP goals and the architecture planning available from version 2.
 2. I hadn't thought about what I would use for the back-end, only planning to use React with a view to settling on other technologies once I had a simple version of the front-end.
-3. I only had foundational knowledge of React. For the CodeClan group project where we were required to use (_LINK_) it I had elected to work on the back-end Java Spring functionality, and had therefore only been exposed to the basic process of creating very simple apps with a handful of components.
+3. I only had foundational knowledge of React. For the CodeClan group project where we were required to use it ([CodeClanNewsProject](https://github.com/MichaelA26/CodeClanNewsProject)) I had elected to work on the back-end Java Spring functionality, and had therefore only been exposed to the basic process of creating very simple apps with a handful of components.
 
-This meant I began without a detailed plan of what I needed to learn and expected to zone in on what would be useful as I worked out what I needed to develop.
+This meant I began without a detailed plan of what I would be required to learn and expected to zone in on what would be useful as I worked out what I needed to develop.
 
 - I began by working through the CodeClan classnotes for React again in detail - around 15 hours of exercises. I used this knowledge to create the basic front-end architecture with the relevant Home, Teams, Fixtures, League Table and About pages using Class components and `react-router-dom`.
 - I decided to use Node.js and Express.js on the back-end, connecting to a PostgreSQL database. I used the CodeClan classnotes plus some online tutorials to set up the architecture, but had some difficulty with routes and neglected to finish the SQL queries needed to display the Teams and Fixtures data on the relevant API routes.
