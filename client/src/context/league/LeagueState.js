@@ -354,7 +354,7 @@ const LeagueState = (props) => {
     // getTeams();
 
     // Filter teams searching for team_a_id in team_id, set to teamAData
-    const teamAData = teams.filter((team) => team.team_id == team_a_id);
+    const teamAData = teams.filter((team) => team.team_id === team_a_id);
 
     // Dispatch
     dispatch({ type: SET_TEAM_A, payload: teamAData });

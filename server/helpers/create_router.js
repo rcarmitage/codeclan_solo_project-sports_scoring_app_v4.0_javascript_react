@@ -1,5 +1,6 @@
 const express = require('express');
 
+// 26/05/20: Constructed this when I hadn't thought in depth about the SQL queries my routes required. Not currently being used so I'll likely delete it.
 const createRouter = function (data) {
   const router = express.Router();
 

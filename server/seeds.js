@@ -1,5 +1,6 @@
 const express = require('express');
 
+// 26/05/20: I intended to use the same method as seeds.rb in Sports Scoring App v2 where the user would run the seeds file to populate the database then run the app. I haven't yet worked out whether this is the best way to do things or how I should implement it.
 const team01 = {
   name: 'The Gym Bunnies (db seeds.js)',
   played: 2,

@@ -1,5 +1,6 @@
 const Pool = require('pg').Pool;
 
+// 26/05/20: No further work required
 // Connect to db
 const pool = new Pool({
   user: 'postgres',
