@@ -111,7 +111,7 @@ app.get('/api/fixtures', async (req, res) => {
   }
 });
 
-// 26/05/20: STATUS - Functional (tested in Postman and on app) but not currently being used. I'm unsure about implementation of this. I planned not to have an individual Fixture page like I have a Team page because the Fixture data required for MVP is rendered on Fixtures with FixtureItem, therefore I would not require a getFixture() function. However, for my current task of displaying team.name instead of fixture.fixture_id on my FixtureItem list I've been working through different strategies and thought I may need getFixture. Currently I don't think I need it, but I'm going to hold off deleting it until I solve it with another method.
+// 26/05/20: STATUS - Functional (tested in Postman and on app) but not currently being used. I'm unsure about implementation of this. I planned not to have an individual Fixture page like I have a Team page because the Fixture data required for MVP is rendered on Fixtures with FixtureItem, therefore I would not require a getFixture() function. However, for my current task of displaying team.name instead of fixture.team_a_id/fixture.team_b_id on my FixtureItem list I've been working through different strategies and thought I may need getFixture. Currently I don't think I need it, but I'm going to hold off deleting it until I solve it with another method.
 // 26/05/20: TODO - [After completing MVP] Delete if not being used.
 // Get Single Fixture - as a function so I can use it to get Team data
 const getFixture = () => {
@@ -130,7 +130,7 @@ const getFixture = () => {
   });
 };
 
-// 26/05/20: STATUS - Not functional. Not entirely sure what the best solution is for rendering team.name rather than fixture.fixture_id on FixtureItem. I was working through this on the back-end because I planned to use an SQL query and show the data on a route, but I've switched to creating a method on the front-end which will access the teams array state set by getTeams() in LeagueState. If I get that working I'll delete this.
+// 26/05/20: STATUS - Not functional. Not entirely sure what the best solution is for rendering team.name rather than fixture.team_a_id/fixture.team_b_id on FixtureItem. I was working through this on the back-end because I planned to use an SQL query and show the data on a route, but I've switched to creating a method on the front-end which will access the teams array state set by getTeams() in LeagueState. If I get that working I'll delete this.
 // 26/05/20: TODO - [After completing MVP] Delete if not being used.
 // Get Team A
 app.get('/api/fixtures/:id/team-a', async (req, res) => {

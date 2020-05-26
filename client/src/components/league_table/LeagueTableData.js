@@ -1,3 +1,5 @@
+// 26/05/20: FILE STATUS - Not functional. Will likely start again from scratch once I've completed Teams and Fixtures components.
+
 // import React from 'react';
 // import LeagueTableCell from './LeagueTableCell';
 // // import PropTypes from 'prop-types';
@@ -29,7 +31,7 @@
 // //           <p className="league-table-team-won">{won}</p>
 // //           <p className="league-table-team-lost">{lost}</p>
 // //           <p className="league-table-team-points">{points}</p>
-// //         </div>  
+// //         </div>
 // //       </div>
 // //     </Fragment>
 // //   );

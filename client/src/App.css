@@ -1,7 +1,9 @@
+/* 26/05/20: STATUS - Partially functional. I copied across some CSS from Sports Scoring App v2 but haven't yet worked through my front-end files here to implement it. */
+/* 26/05/20: TODO - [After completing MVP] Look over naming, change where necessary. Implement in front-end files. Copy other CSS from Sports Scoring App v2 if useful. */
 #App {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   --primary-blue: #0c80d0;
-  --dark-blue: #005B9A;
+  --dark-blue: #005b9a;
   --dark: #333;
   --light-blue: #3385ff;
   --light: #fff;
@@ -23,7 +25,7 @@ body {
   font-size: 0.9rem;
   box-shadow: var(--shadow);
 }
-  
+
 .btn:hover {
   background: var(--dark);
   color: var(--primary-blue);

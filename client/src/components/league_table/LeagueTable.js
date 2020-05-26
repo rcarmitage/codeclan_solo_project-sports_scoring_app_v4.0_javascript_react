@@ -1,3 +1,5 @@
+// 26/05/20: FILE STATUS - Not functional. Will likely start again from scratch once I've completed Teams and Fixtures components.
+
 import React, { useEffect, useState } from 'react';
 import LeagueTableHeader from './LeagueTableHeader';
 import LeagueTableData from './LeagueTableData';
@@ -5,36 +7,36 @@ import LeagueTableData from './LeagueTableData';
 
 const meta = [
   {
-    key: "id",
-    text: "ID",
+    key: 'id',
+    text: 'ID',
   },
   {
-    key: "name",
-    text: "Team",
+    key: 'name',
+    text: 'Team',
   },
   {
-    key: "played",
-    text: "Played",
+    key: 'played',
+    text: 'Played',
   },
   {
-    key: "won",
-    text: "Won",
+    key: 'won',
+    text: 'Won',
   },
   {
-    key: "lost",
-    text: "Lost",
+    key: 'lost',
+    text: 'Lost',
   },
   {
-    key: "points",
-    text: "Points",
-  }
-]
+    key: 'points',
+    text: 'Points',
+  },
+];
 
 function normalizeData(leagueTableData) {
-  return leagueTableData.map(td => {
+  return leagueTableData.map((td) => {
     const keys = Object.keys(td);
-    return keys.map(key => ({ key, text: td[key] }));
-  })
+    return keys.map((key) => ({ key, text: td[key] }));
+  });
 }
 
 function LeagueTable({ normalizeData }) {
@@ -52,7 +54,7 @@ function LeagueTable({ normalizeData }) {
   }, []);
 
   return (
-    <div className="container">
+    <div className='container'>
       <LeagueTableHeader headers={headerMeta} />
       <LeagueTableData leagueTableData={leagueTableData} meta={meta} />
     </div>
@@ -73,7 +75,7 @@ function LeagueTable({ normalizeData }) {
   //     )
   //   })
   // }
-  
+
   // return (
   //   <Fragment>
   //     <div>
@@ -101,21 +103,21 @@ function LeagueTable({ normalizeData }) {
 
   // return (
   //   <React.Fragment>
-      // <table>
-      //   <thead>
-      //     <tr>
-      //       <th></th>
-      //       <th> Team </th>
-      //       <th> Played </th>
-      //       <th> Won </th>
-      //       <th> Lost </th>
-      //       <th> Points </th>
-      //     </tr>
-      //   </thead>
-      //   <tbody>
-      //     {leagueNodes}
-      //   </tbody>
-      // </table>
+  // <table>
+  //   <thead>
+  //     <tr>
+  //       <th></th>
+  //       <th> Team </th>
+  //       <th> Played </th>
+  //       <th> Won </th>
+  //       <th> Lost </th>
+  //       <th> Points </th>
+  //     </tr>
+  //   </thead>
+  //   <tbody>
+  //     {leagueNodes}
+  //   </tbody>
+  // </table>
   //   </React.Fragment>
   // )
 
@@ -135,7 +137,7 @@ function LeagueTable({ normalizeData }) {
   //       <p className="league-table-team-points">Points</p>
   //     </div>
   //     <div class="league-table-team-entry">
-  //       <% @teams.each do |team| %> 
+  //       <% @teams.each do |team| %>
   //         <p class="league-table-position">{counter}</p>
   //         <p class="league-table-team-name">{team.name}</p>
   //         <p class="league-table-team-played">{team.played}</p>
@@ -149,16 +151,13 @@ function LeagueTable({ normalizeData }) {
   // </div>
   //   </Fragment>
   // );
-};
+}
 
 // LeagueTable.propTypes = {
 //   leagueTableTeams: PropTypes.array.isRequired
 // };
 
 export default LeagueTable;
-
-
-
 
 //  useEffect(() => {
 //    // normalize data
@@ -169,7 +168,6 @@ export default LeagueTable;
 //    // sort
 //    setTableData(normalizeData(data.sort((d1, d2) => compare[sortBy.order](d1[sortBy.key], d2[sortBy.key]))));
 //  }, [sortBy])
-
 
 //  return (
 //    <div className="container">

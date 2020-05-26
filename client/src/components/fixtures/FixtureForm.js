@@ -1,3 +1,6 @@
+// 26/05/20: STATUS - Partially functional. User can enter fixture_id to add and edit Fixtures. The next step is to implement a dropdown list of the teams available and an option to select one of the teams as a winner.
+// 26/05/20: TODO - Dropdown with team names taken from teams table in db, rather than text input.
+// 26/05/20: TODO - Selector for winning team. My current thought is to have team_a highlighted as the winner by default and the user can click a button under team_b to change the winner to them, and a button under team_a to change it back. The selection will populate the winning_team_id and losing_team_id in the POST request.
 import React, { Fragment, useState, useContext, useEffect } from 'react';
 import LeagueContext from '../../context/league/leagueContext';
 
@@ -33,7 +36,6 @@ const FixtureForm = () => {
 
   const { team_a_id, team_b_id, winning_team_id, losing_team_id } = fixture;
 
-  // Needs more done to make it work
   const onChange = (event) =>
     setFixture({ ...fixture, [event.target.name]: event.target.value });
 

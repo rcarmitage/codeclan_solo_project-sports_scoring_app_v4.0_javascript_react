@@ -1,19 +1,24 @@
+// 26/05/20: FILE STATUS - Functional.
+
 import React, { Fragment, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import LeagueContext from '../../context/league/leagueContext';
 
+// 26/05/20: STATUS - Functional.
 const TeamItem = ({ team }) => {
   const leagueContext = useContext(LeagueContext);
   const { deleteTeam, setCurrentTeam, clearCurrentTeam } = leagueContext;
 
   const { team_id, name } = team;
 
+  // 26/05/20: STATUS - Functional.
   const onDelete = () => {
     deleteTeam(team_id);
     clearCurrentTeam();
   };
 
+  // 26/05/20: STATUS - Functional.
   return (
     <Fragment>
       <div className='teams-container'>

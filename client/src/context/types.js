@@ -1,3 +1,6 @@
+// 26/05/20: FILE STATUS - Functional for current implementation. Need to add types for getting Team B and something for winning_team_id and losing_team_id.
+// 26/05/20: TODO - Get Team data for Fixture.
+
 export const GET_TEAMS = 'GET_TEAMS';
 export const GET_TEAM = 'GET_TEAM';
 export const ADD_TEAM = 'ADD_TEAM';

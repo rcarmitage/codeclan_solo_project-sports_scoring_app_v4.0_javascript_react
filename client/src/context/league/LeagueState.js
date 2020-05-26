@@ -1,3 +1,6 @@
+// 26/05/20: FILE STATUS - Partially functional. I'm working out how to get Team names to render on FixtureItem.
+// 26/05/20: TODO - Get Team data for Fixture.
+
 import React, { useReducer, useEffect, useState } from 'react';
 import axios from 'axios';
 import LeagueContext from './leagueContext';
@@ -23,6 +26,7 @@ import {
 } from '../types';
 // import Teams from '../../components/teams/Teams';
 
+// 26/05/20: STATUS - Partially functional.
 const LeagueState = (props) => {
   const initialState = {
     teams: [],
@@ -42,6 +46,8 @@ const LeagueState = (props) => {
 
   // FUNCTIONS - TEAMS
 
+  // 26/05/20: STATUS - Functional but needs refactoring to use axios instead of fetch to keep code consistent.
+  // 26/05/20: TODO - [After completing MVP] Refactor to axios instead of fetch.
   // GET ALL TEAMS
   const getTeams = async () => {
     try {
@@ -62,6 +68,8 @@ const LeagueState = (props) => {
     // eslint-disable-next-line
   }, []);
 
+  // 26/05/20: STATUS - Functional but needs refactoring to use axios instead of fetch to keep code consistent.
+  // 26/05/20: TODO - [After completing MVP] Refactor to axios instead of fetch.
   // GET SINGLE TEAM
   const getTeam = async (id) => {
     try {
@@ -77,33 +85,9 @@ const LeagueState = (props) => {
     }
   };
 
+  // 26/05/20: STATUS - Functional for current implementation. Want messages to show after submitting form.
+  // 26/05/20: TODO - [After completing MVP] Message with links to 'Add Fixture' and 'Go to Teams'.
   // ADD TEAM
-  // BUG: I couldn't get this to send to the server/db - error "null value in column 'name' violates not-null constraint, so the data was being sent but in the wrong format to be saved to the db". Alternate version below.
-  // const addTeam = async (team) => {
-  //   // event.preventDefault();
-  //   try {
-  //     const body = { team };
-  //     const response = await fetch('http://localhost:5000/api/teams/', {
-  //       method: 'POST',
-  //       headers: { 'Content-Type': 'application/json' },
-  //       body: JSON.stringify(body),
-  //     });
-
-  //     dispatch({
-  //       type: ADD_TEAM,
-  //       payload: response,
-  //     });
-
-  //     // TODO: Take this out, add alets for "Add a Fixture for the new Team" and "Go back to Teams page"
-  //     window.location = '/teams';
-  //   } catch (err) {
-  //     dispatch({
-  //       type: TEAM_ERROR,
-  //       payload: err.response.msg,
-  //     });
-  //   }
-  // };
-
   const addTeam = async (team) => {
     const config = {
       headers: {
@@ -135,6 +119,8 @@ const LeagueState = (props) => {
     dispatch({ type: ADD_TEAM, payload: team });
   };
 
+  // 26/05/20: STATUS - Functional for current implementation. Want messages to show after submitting form.
+  // 26/05/20: TODO - [After completing MVP] Message with links to 'Add Fixture' and 'Go to Teams'.
   // EDIT TEAM
   const editTeam = async (team) => {
     const config = {
@@ -165,32 +151,8 @@ const LeagueState = (props) => {
     }
   };
 
-  // const editTeam = async (team) => {
-  //   const config = {
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //   };
-
-  //   try {
-  //     const response = await axios.put(
-  //       `http://localhost:5000/api/teams/${team_id}`,
-  //       team,
-  //       config
-  //     );
-
-  //     dispatch({
-  //       type: EDIT_TEAM,
-  //       payload: response.data,
-  //     });
-  //   } catch (error) {
-  //     dispatch({
-  //       type: TEAM_ERROR,
-  //       payload: error.response.msg,
-  //     });
-  //   }
-  // };
-
+  // 26/05/20: STATUS - Functional but needs refactoring to use axios instead of fetch to keep code consistent.
+  // 26/05/20: TODO - [After completing MVP] Refactor to axios instead of fetch.
   // DELETE TEAM
   const deleteTeam = async (id) => {
     try {
@@ -219,6 +181,8 @@ const LeagueState = (props) => {
 
   // FUNCTIONS - FIXTURES
 
+  // 26/05/20: STATUS - Functional but needs refactoring to use axios instead of fetch to keep code consistent.
+  // 26/05/20: TODO - [After completing MVP] Refactor to axios instead of fetch.
   // GET ALL FIXTURES
   const getFixtures = async () => {
     try {
@@ -239,8 +203,8 @@ const LeagueState = (props) => {
     // eslint-disable-next-line
   }, []);
 
-  // GET SINGLE FIXTURE - I don't plan to need this so I'll leave it for now
-  // TEAM NAMES - Running getFixture will return an object with ids for team_a, team_b, winning_team and losing_team
+  // GET SINGLE FIXTURE - I don't plan to need this so I'll leave it for now.
+  // TEAM NAMES - Running getFixture will return an object with ids for team_a, team_b, winning_team and losing_team.
 
   // ADD FIXTURE
   const addFixture = async (fixture) => {
@@ -302,6 +266,8 @@ const LeagueState = (props) => {
     }
   };
 
+  // 26/05/20: STATUS - Functional but needs refactoring to use axios instead of fetch to keep code consistent.
+  // 26/05/20: TODO - [After completing MVP] Refactor to axios instead of fetch.
   const deleteFixture = async (id) => {
     try {
       const deleteFixture = await fetch(
@@ -320,16 +286,20 @@ const LeagueState = (props) => {
     }
   };
 
+  // 26/05/20: STATUS - Functional.
   // SET CURRENT FIXTURE
   const setCurrentFixture = (fixture) => {
     dispatch({ type: SET_CURRENT_FIXTURE, payload: fixture });
   };
 
+  // 26/05/20: STATUS - Functional.
   // CLEAR CURRENT FIXTURE
   const clearCurrentFixture = () => {
     dispatch({ type: CLEAR_CURRENT_FIXTURE });
   };
 
+  // 26/05/20: STATUS - Not functional. Have tried a few ways to get and render Team data and this seems to be one that isn't going to work. I'll likely delete it.
+  // 26/05/20: TODO - [After completing MVP] Delete if unused.
   // GET TEAM A NAME
   // const getTeamA = async () => {
   //   try {
@@ -348,6 +318,8 @@ const LeagueState = (props) => {
   // SELECT * FROM teams
   //   WHERE id = $1
 
+  // 26/05/20: STATUS - Not functional. This seems to be the best option of the ones I've tried - have teams array, use team_a_id to filter the array and return one Team as an object, set that to teamA so I can render teamA.name on FixtureItem.
+  // 26/05/20: TODO - Work out what I need to do to make this functional.
   // SET TEAM A
   const setTeamA = (teams, team_a_id) => {
     // Get teams array of objects, which has been called earlier with useEffect
@@ -360,7 +332,8 @@ const LeagueState = (props) => {
     dispatch({ type: SET_TEAM_A, payload: teamAData });
   };
 
-  // const getTeam = async (id) => {
+  // 26/05/20: STATUS - Not functional. Have tried a few ways to get and render Team data and this seems to be one that isn't going to work. I'll likely delete it.
+  // 26/05/20: TODO - [After completing MVP] Delete if unused.// const getTeam = async (id) => {
   //   try {
   //     const response = await fetch(`http://localhost:5000/api/teams/${id}`);
   //     const jsonData = await response.json();
@@ -374,6 +347,8 @@ const LeagueState = (props) => {
   //   }
   // };
 
+  // 26/05/20: STATUS - Partially functional. Will continue to add state and functions as I work on them, then need to delete anything that's unused.
+  // 26/05/20: TODO - [After completion of MVP] Delete anything that's not being used.
   return (
     <LeagueContext.Provider
       value={{

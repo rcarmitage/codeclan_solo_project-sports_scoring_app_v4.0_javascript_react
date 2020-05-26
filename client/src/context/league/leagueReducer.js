@@ -1,3 +1,6 @@
+// 26/05/20: FILE STATUS - Functional for current implementation. Need to add types for getting Team B and something for winning_team_id and losing_team_id.
+// 26/05/20: TODO - Get Team data for Fixture.
+
 import {
   GET_TEAMS,
   GET_TEAM,
@@ -103,6 +106,7 @@ export default (state, action) => {
         ...state,
         currentFixture: null,
       };
+    // 26/05/20: STATUS - Not functional. It may be correct but when I attempt to use it there are error messages, possibly because I haven't called setTeamA() or getTeamA() in the right place.
     case SET_TEAM_A:
       return {
         ...state,
