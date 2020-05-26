@@ -1,6 +1,6 @@
 # Sports Scoring App v4
 
-### A full-stack app for showing teams and fixtures in a league
+### A full-stack app for showing Teams and Fixtures in a League
 
 This is version 4.
 
@@ -8,7 +8,7 @@ I created version 1 using Ruby and Sinatra as my first project during week 5 (Au
 
 Upon completion of the course I have recreated the app using different languages and frameworks in order to further understand implementation of functionality and design choices.
 
-I have created version 4 with a React.js front-end and a Node.js, Express.js and PostgreSQL back-end. I began work on version 4 in April 2020.
+I have created version 4 with a **React.js front-end** and a **Node.js**, **Express.js** and **PostgreSQL back-end**. I began work on version 4 in April 2020.
 
 Other versions:
 
