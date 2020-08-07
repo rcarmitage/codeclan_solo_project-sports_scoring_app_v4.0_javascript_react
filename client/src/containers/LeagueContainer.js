@@ -97,7 +97,7 @@ const LeagueContainer = () => {
             <Route exact path='/teams/:id' component={Team} />
             <Route exact path='/teams/add-team' render={() => <TeamForm />} />
             <Route exact path='/teams/:id/edit' render={() => <TeamForm />} />
-            <Route exact path='/fixtures' component={Fixtures} />} />
+            <Route exact path='/fixtures' component={Fixtures} />
             {/* <Route
             exact path="/fixtures/:id"
             render={props => (

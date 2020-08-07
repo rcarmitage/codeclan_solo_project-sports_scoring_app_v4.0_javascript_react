@@ -20,6 +20,8 @@ const FixtureItem = ({ fixture, teams }) => {
   const { fixture_id, team_a_id, team_b_id, winning_team_id, teamA } = fixture;
   // const { team_id, name } = team;
 
+  // 07/08/2020: POTENTIAL SOLUTION - Create a teamA or teamAData object, use team_a_id to filter the teams array and load that data into the object, the team name can then be displayed
+
   // 26/05/20: STATUS - Functional.
   const onDelete = () => {
     deleteFixture(fixture_id);
