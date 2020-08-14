@@ -321,15 +321,19 @@ const LeagueState = (props) => {
   // 26/05/20: STATUS - Not functional. This seems to be the best option of the ones I've tried - have teams array, use team_a_id to filter the array and return one Team as an object, set that to teamA so I can render teamA.name on FixtureItem.
   // 26/05/20: TODO - Work out what I need to do to make this functional.
   // SET TEAM A
-  const setTeamA = (teams, team_a_id) => {
-    // Get teams array of objects, which has been called earlier with useEffect
-    // getTeams();
+  // const setTeamA = (teams, team_a_id) => {
+  //   // Get teams array of objects, which has been called earlier with useEffect
+  //   // getTeams();
 
-    // Filter teams searching for team_a_id in team_id, set to teamAData
-    const teamAData = teams.filter((team) => team.team_id === team_a_id);
+  //   // Filter teams searching for team_a_id in team_id, set to teamAData
+  //   const teamAData = teams.filter((team) => team.team_id === team_a_id);
 
-    // Dispatch
-    dispatch({ type: SET_TEAM_A, payload: teamAData });
+  //   // Dispatch
+  //   dispatch({ type: SET_TEAM_A, payload: teamAData });
+  // };
+
+  const setTeamA = (team) => {
+    dispatch({ type: SET_TEAM_A, payload: team });
   };
 
   // 26/05/20: STATUS - Not functional. Have tried a few ways to get and render Team data and this seems to be one that isn't going to work. I'll likely delete it.

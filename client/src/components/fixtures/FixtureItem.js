@@ -30,9 +30,11 @@ const FixtureItem = ({ fixture, teams }) => {
 
   // 26/05/20: STATUS - Not functional.
   // 26/05/20: TODO - Complete setTeamA() function in LeagueState, then choose the best place to call it.
-  const getTeamA = (team_a_id) => {
-    setTeamA(team_a_id);
-  };
+  // const getTeamA = (team_a_id) => {
+  //   setTeamA(team_a_id);
+  // };
+
+  setTeamA(team_a_id);
 
   // 26/05/20: STATUS - Partially functional.
   // 26/05/20: TODO - Team names rendered instead of team_a_id, etc.
