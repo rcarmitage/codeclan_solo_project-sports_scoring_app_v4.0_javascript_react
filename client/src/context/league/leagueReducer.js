@@ -110,7 +110,9 @@ export default (state, action) => {
     case SET_TEAM_A:
       return {
         ...state,
-        teamA: action.payload,
+        teamA: state.teams.filter(
+          (team) => fixture.team_a_id == action.payload
+        ),
       };
     case FIXTURE_ERROR:
       return {
