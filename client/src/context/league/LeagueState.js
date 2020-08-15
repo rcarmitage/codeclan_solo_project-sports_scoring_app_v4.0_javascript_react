@@ -298,26 +298,6 @@ const LeagueState = (props) => {
     dispatch({ type: CLEAR_CURRENT_FIXTURE });
   };
 
-  // 26/05/20: STATUS - Not functional. Have tried a few ways to get and render Team data and this seems to be one that isn't going to work. I'll likely delete it.
-  // 26/05/20: TODO - [After completing MVP] Delete if unused.
-  // GET TEAM A NAME
-  // const getTeamA = async () => {
-  //   try {
-  //     const response = await fetch(`http://localhost:5000/api/fixtures/${id}.team_a_id`);
-  //     const jsonData = await response.json();
-
-  //     dispatch({
-  //       type: GET_TEAM_A,
-  //       payload: jsonData,
-  //     });
-  //   } catch (error) {
-  //     console.error(error.message);
-  //   }
-  // };
-
-  // SELECT * FROM teams
-  //   WHERE id = $1
-
   // 26/05/20: STATUS - Not functional. This seems to be the best option of the ones I've tried - have teams array, use team_a_id to filter the array and return one Team as an object, set that to teamA so I can render teamA.name on FixtureItem.
   // 26/05/20: TODO - Work out what I need to do to make this functional.
   // SET TEAM A
@@ -335,21 +315,6 @@ const LeagueState = (props) => {
   const setTeamA = (team) => {
     dispatch({ type: SET_TEAM_A, payload: team });
   };
-
-  // 26/05/20: STATUS - Not functional. Have tried a few ways to get and render Team data and this seems to be one that isn't going to work. I'll likely delete it.
-  // 26/05/20: TODO - [After completing MVP] Delete if unused.// const getTeam = async (id) => {
-  //   try {
-  //     const response = await fetch(`http://localhost:5000/api/teams/${id}`);
-  //     const jsonData = await response.json();
-
-  //     dispatch({
-  //       type: GET_TEAM,
-  //       payload: jsonData,
-  //     });
-  //   } catch (error) {
-  //     console.error(error.message);
-  //   }
-  // };
 
   // 26/05/20: STATUS - Partially functional. Will continue to add state and functions as I work on them, then need to delete anything that's unused.
   // 26/05/20: TODO - [After completion of MVP] Delete anything that's not being used.

@@ -19,72 +19,8 @@ import ErrorPage from '../components/pages/ErrorPage';
 import LeagueState from '../context/league/LeagueState';
 
 // 26/05/20: STATUS - Functional, in that everything within return () does what it needs to do. Functions for CRUD need to be deleted as the logic is now in LeagueState.
-// 26/05/20: TODO - [After completing MVP] Delete all code that is not being used.
+// 15/08/20: TODO - [After completing MVP] Delete all code that is not being used - deleted some, work still needs to be done in return().
 const LeagueContainer = () => {
-  // const [fixtures, setFixtures] = useState([]);
-  // const [leagueTableTeams, setLeagueTableTeams] = useState([]);
-
-  // TEAMS
-
-  // Add Team
-  // const addTeam = team => {
-  //   setTeams([ ...teams, team ])
-  // }
-
-  // const onSubmitTeam = async (event) => {
-  //   event.preventDefault();
-  //   try {
-  //     const body = { name };
-  //     const response = await fetch("http://localhost:5000/api/teams/", {
-  //       method: "POST",
-  //       headers: { "Content-Type": "application/json" },
-  //       body: JSON.stringify(body)
-  //     });
-
-  //     console.log(response);
-  //   } catch (err) {
-  //     console.error(err.message);
-  //   };
-  // };
-
-  // const onTeamSubmit(newTeam)
-
-  // Edit Team
-  // const updateTeam = (id, updatedTeam) => {
-  //   setTeams(teams.map(team => (team.id === id ? updatedTeam : team)))
-  // }
-
-  // FIXTURES
-  // Get all fixtures
-  // useEffect(() => {
-  //   const getFixtures = () => {
-  //     fetch('http://localhost:5000/api/fixtures/')
-  //       .then((res) => res.json())
-  //       .then((res) => setFixtures(res));
-  //   };
-
-  //   getFixtures();
-  //   // eslint-disable-next-line
-  // }, []);
-
-  // Get single fixture
-  // const getFixture = id => {
-  //   fetch(`http://localhost:5000/api/fixtures/${id}`)
-  //   .then(res => res.json())
-  //   .then(res => setFixture(res))
-  // };
-
-  // // LEAGUE TABLE
-  // useEffect(() => {
-  //   const getLeagueTableTeams = () => {
-  //     fetch("http://localhost:5000/api/teams/")
-  //     .then(res => res.json())
-  //     .then(res => setLeagueTableTeams(res))
-  //   };
-
-  //   getLeagueTableTeams();
-  // }, []);
-
   return (
     <LeagueState>
       <Router>
